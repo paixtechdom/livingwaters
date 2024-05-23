@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+    
+    ---primary-color: #798CFC;
+    ---secondary-color: #000853; 
+}
+*{
+    font-family: 'Poppins', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.bg-primary{
+    background-color: var(---primary-color);
+}
+.text-primary{
+    color: var(---primary-color)
+}
+.text-secondary{
+    color: var(---secondary-color)
+}
+.bg-secondary{
+    background-color: var(---secondary-color);
+}
+.border-primary{
+    border-color: var(---primary-color)
+}
+
+.border-secondary{
+    border-color: var(---secondary-color)
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.small{
+    font-size: 12px;
+}
