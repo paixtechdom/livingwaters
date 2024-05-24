@@ -25,7 +25,7 @@ const AMessagePage = () => {
     
     return(
         <div className="flex items-center flex-col min-h-screen py-[15vh]">
-        <div className="w-11/12 lg:10/12 xl:w-9/12 mt-5 flex flex-col gap-[10vh]">
+        <div className="w-11/12 lg:10/12 xl:w-9/12 mt-5 flex flex-col gap-[5vh]">
             <div className="text-center">
                 <h1 className="font-bold text-2xl">Edit message</h1>
             </div>

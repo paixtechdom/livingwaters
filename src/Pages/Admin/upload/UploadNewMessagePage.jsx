@@ -9,6 +9,7 @@ import { LoadingIcon } from "../../../Components/LoadingIcon";
 
 
 
+
 const UploadNewMessagePage = () => {
     const fileNameRef = useRef()
     const [ audio, setAudio ] = useState(null)
@@ -65,56 +66,56 @@ const UploadNewMessagePage = () => {
                     <h1 className="font-bold text-2xl">Upload a new message</h1>
                 </div>
 
-                
-               <SelectAudioComponent value={file} setValue={setFile} selecting={selecting} setSelecting={setSelecting} setAudio={setAudio}/>
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-[50px]">
+                {
+                    file !== null && !selecting ?
+                        <form encType="multipart/form-data" className="w-full flex center flex-col gap-[5vh] lg:gap-[5vh] bg-gradient-to-l from-blue-100 to-orange-100 p-5 md:p-9 py-[10vh] shadow-xl rounded-xl">
+                            <audio src={audio} controls className="col-span-2"/>
 
-
-               {
-                   file !== null && !selecting ?
-                    <form encType="multipart/form-data" className="flex center flex-col lg:grid lg:grid-cols-2 mt-[10vh] gap-[7vh] lg:gap-[9vh] bg-gray-100 p-3 md:p-9 py-[10vh] shadow-xl rounded-xl">
-                        <audio src={audio} controls className="col-span-2"/>
-
-                        <div className="flex flex-col gap-5 w-full col-span-2">
-                            <div className="flex items-center gap-3">
-                                <i className="bi bi-pencil-fill text"></i>
+                            <div className="flex flex-col gap-5 w-full col-span-2">
+                                <div className="flex items-center gap-3">
                                 <p className="text-sm">Edit File Name</p>
+                                </div>
+                                <input type="text" 
+                                className="text-sm p-4 shadow-lg rounded-lg bg-white outline-gray-300" 
+                                placeholder="File name"
+                                value={fileName} 
+                                onChange={(e) => {
+                                    setFileName(e.target.value)
+                                }}
+                                />
+
                             </div>
-                            <input type="text" 
-                            className="text-sm p-4 shadow-lg rounded-lg bg-white outline-gray-300" 
-                            placeholder="File name"
-                            value={fileName} 
-                            onChange={(e) => {
-                                setFileName(e.target.value)
-                            }}
-                            />
 
-                        </div>
+                            <div className="w-full flex-wrap flex gap-4">
 
+                                <p className="text-sm w-full">
+                                    File Size: {ConvertFileSize(file?.size) }
 
-                        <p className="text-sm w-full">
-                            File Size: {ConvertFileSize(file?.size) }
+                                </p>
 
-                        </p>
-
-                        <div className="flex flex-col gap-5 w-full">
-                           <p className="text-sm">
-                            Date Created: { FormatDate(file?.lastModified) }
-                           </p>
-                        </div>
-                        <div className="w-full col-span-2 center">
-                            <Button text={uploading ? 'Uploading Message' : 'Upload Message'}
-                             type={'primary'} className={"w-11/12 md:w-9/12 lg:w-7/12 xl:w-5/12"} icon={uploading ? <LoadingIcon /> :  <i className="bi bi-upload m-3 my-2"></i> } 
-                            btnType={'submit'}
-                            func={UploadAudio}/>
-                        </div>
-                    </form>
-                    
-                    : ''
-                }
-
+                                <div className="flex flex-col gap-5 w-full">
+                                <p className="text-sm">
+                                    Date Created: { FormatDate(file?.lastModified) }
+                                </p>
+                            </div>
+                            </div>
+                            <div className="w-full col-span-2 center">
+                                <Button text={uploading ? 'Uploading Message' : 'Upload Message'}
+                                type={'primary'} className={"w-11/12 md:w-9/12 lg:w-7/12"} icon={uploading ? <LoadingIcon /> :  <i className="bi bi-upload m-3 my-2"></i> } 
+                                btnType={'submit'}
+                                func={UploadAudio}/>
+                            </div>
+                        </form>
+                        
+                        : ''
+                    }
                 
+                <SelectAudioComponent value={file} setValue={setFile} selecting={selecting} setSelecting={setSelecting} setAudio={setAudio}/>
 
-                {/* edit file name, add tags, add preacher, change date */}
+
+                </div>
+                
             </div>
         </div>
     )

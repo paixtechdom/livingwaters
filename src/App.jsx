@@ -6,11 +6,12 @@ import './assets/Styles/index.css';
 import { PageNotFound } from './Components/PageNotFound';
 import { Loader } from './Components/Loader';
 import { delayLoad } from './assets/Functions';
-import UploadNewMessagePage from './Pages/Admin/upload/UploadNewMessagePage';
-import MessagesPage from './Pages/Admin/messages/page';
-import AMessagePage from './Pages/Admin/messages/amessage/page';
-import MesagesList from './Pages/Home/Messages/MessageList';
 
+const MesagesList = lazy(() => delayLoad(import('./Pages/Home/Messages/MessageList')));
+const AMessagePage = lazy(() => delayLoad(import('./Pages/Admin/messages/amessage/page')));
+const MessagesPage = lazy(() => delayLoad(import('./Pages/Admin/messages/page')));
+const UploadNewMessagePage = lazy(() => delayLoad(import('./Pages/Admin/upload/UploadNewMessagePage')));
+const LoginPage = lazy(() => delayLoad(import('./Pages/Admin/Login/LoginPage')));
 const Home = lazy(() => delayLoad(import('./Pages/Home/Home')));
 const Navbar = lazy(() => delayLoad(import('./Components/Navbar')));
 
@@ -30,7 +31,7 @@ const Layout = () => {
     return (
       <AppContext.Provider value={{ currentNav, setCurrentNav }}>
         
-        <div className='app bg-gray-100'>
+        <div className='app bg-white orange-50 bg-opacity-20'>
           <Suspense fallback={<></>}>
             <Navbar />
           </Suspense>    
@@ -62,6 +63,13 @@ const router = createBrowserRouter([
         element:   
               <Suspense fallback={<Loader />}>
                 <UploadNewMessagePage />
+              </Suspense>
+      },
+      {
+        path: '/admin/login',
+        element:   
+              <Suspense fallback={<Loader />}>
+                <LoginPage />
               </Suspense>
       },
       {
