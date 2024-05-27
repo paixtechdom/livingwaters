@@ -1,4 +1,4 @@
-import React, { useState, createContext, Suspense, lazy } from 'react'
+import React, { useState, createContext, Suspense, lazy, useEffect } from 'react'
 import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter } from 'react-router-dom';
 
 import './assets/Styles/index.css';
@@ -6,6 +6,7 @@ import './assets/Styles/index.css';
 import { PageNotFound } from './Components/PageNotFound';
 import { Loader } from './Components/Loader';
 import { delayLoad } from './assets/Functions';
+import { Alert } from './Components/Alert';
 
 const MesagesList = lazy(() => delayLoad(import('./Pages/Home/Messages/MessageList')));
 const AMessagePage = lazy(() => delayLoad(import('./Pages/Admin/messages/amessage/page')));
@@ -21,6 +22,10 @@ export const AppContext = createContext()
 
 const Layout = () => {
   const [ currentNav, setCurrentNav ] = useState(0)
+  const [ showAlert, setShowAlert ] = useState(false)
+  const [ alertType, setAlertType ] = useState('')
+  const [ alertMessage, setAlertMessage ] = useState('')
+  const [ loginTo, setLoginTo ] = useState('/admin/messages')
 
     document.querySelectorAll('a').forEach((a) => {
       a.addEventListener('click', () => {
@@ -29,12 +34,16 @@ const Layout = () => {
     })
 
     return (
-      <AppContext.Provider value={{ currentNav, setCurrentNav }}>
+      <AppContext.Provider value={{ currentNav, setCurrentNav, showAlert, setShowAlert, alertType, setAlertType, alertMessage, setAlertMessage, loginTo, setLoginTo }}>
         
         <div className='app bg-white orange-50 bg-opacity-20'>
           <Suspense fallback={<></>}>
             <Navbar />
-          </Suspense>    
+          </Suspense>   
+          {
+            showAlert ?
+            <Alert /> : ''
+          } 
 
           <Outlet />
         

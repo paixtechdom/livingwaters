@@ -14,7 +14,7 @@ const Home = () => {
                 <MesagesList />
             {/* <Suspense fallback={<>Loading Messages</>}>
             </Suspense> */}
-
+    
 
             <div className="parent center w-full  border-t border-primary border-4 bg-primary pb-[10vh] pt-[15vh]">
 

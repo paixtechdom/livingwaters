@@ -1,15 +1,11 @@
-export const LoadingIcon = () => {
+export const LoadingIcon = ({className}) => {
     return(
-        <div className="animate-bounce">
-        <div className="scale-[0.6]">
-        <div className="rounded-full relative bg-gradient-to-l from-blue-600 to-orange-500 gray-900
-        overflow-hidden h-12 w-12 animate-spin center flex-col">
-            <div className="bg-gray-100 h-5 w-2 rounded-t-full"></div>
-            <div className="rounded-full h-2 w-12 bg-gray-100"></div>
-            <div className="bg-gray-100 h-5 w-2 rounded-b-full"></div>
-
-        </div>
-        </div>
+        <div className={`mx-2`}>
+            <div className="rounded-full relative bg-gradient-to-l from-blue-500 to-orange-500 overflow-hidden h-8 w-8 animate-spin center flex-col">
+                <div className="h-4 w-4 bg-gray-100 rounded-full z-10">
+                </div>
+                <div className="absolute bg-white bg-opacity-60 h-6 w-6 rounded-tl-full -top-2 -left-2 z-0"></div>
+            </div>
         </div>
     )
 }

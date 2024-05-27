@@ -79,12 +79,12 @@ const MesagesList = () => {
                     </p>
                 </div> : 
                 total == messages.length && !messages.length < 1 ? 
-                    <p className="mt-4">
+                    <p className="mt-4 text-sm font-bold">
                         You are all caught up
                     </p>
                  : messages.length > 1 && total !== messages.length ?
                     <Button type={''} text={'Load More'} 
-                    className={'min-w-[250px] mt-9 min-h-[60px]'}
+                    className={'min-w-[250px] mt-9 min-h-[60px] text-xl'}
                     func={() => fetchMessages(messages.length, searchInput, setMessages, setFetching, messages, setTotal)}/> : ''
 
             }
