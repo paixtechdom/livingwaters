@@ -2,9 +2,10 @@ import { backendLocation } from "./Constant";
 
 export function delayLoad(promise) {
     return new Promise(resolve => {
-      setTimeout(resolve, 0);
+      setTimeout(resolve, 1500);
     }).then(() => promise);
   }
+
 
 
   export const ConvertFileSize = (size) => {

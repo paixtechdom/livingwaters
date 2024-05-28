@@ -132,7 +132,7 @@ const EditMessage = ({message, savedFile}) => {
     } else{
         return(
             <>
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-[50px]">
+                <section className="flex flex-col lg:flex-row items-center justify-between gap-[50px]">
                     {
                         file !== null ?
                         <form encType="multipart/form-data" className="w-full flex center flex-col mt-[5vh] gap-[5vh] lg:gap-[6vh] bg-gradient-to-l from-blue-100 to-orange-100 p-5 md:p-9 py-[10vh] shadow-xl rounded-xl">
@@ -205,7 +205,7 @@ const EditMessage = ({message, savedFile}) => {
                     <SelectAudioComponent value={file} setValue={setFile} audio={audio} setAudio={setAudio} selecting={selecting} setSelecting={setSelecting}/>
                     
                     
-                </div>
+                </section>
 
                 {
                 promptAction ?

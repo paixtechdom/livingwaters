@@ -57,7 +57,7 @@ export const SelectAudioComponent = ({value, setValue, selecting, setSelecting, 
 
     return(
         
-        <div className="w-full flex flex-col gap-4 center">
+        <section className="w-full flex flex-col gap-4 center">
             {
                 selecting ? 
                     <div className="mt-5 center flex-col gap-1">
@@ -94,6 +94,6 @@ export const SelectAudioComponent = ({value, setValue, selecting, setSelecting, 
                 </div>
             }
 
-    </div>
+    </section>
     )
 }

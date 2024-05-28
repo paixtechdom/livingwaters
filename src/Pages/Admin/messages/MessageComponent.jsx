@@ -8,8 +8,8 @@ import { AppContext } from "../../../App"
 import { useNavigate } from "react-router-dom"
 
 const MessageComponent = ({message, refetchMessages}) => {
-    const [ promptAction, setPromptAction ] = useState(false)
     const [ deleting, setDeleting ] = useState(false)
+    const [ promptAction, setPromptAction ] = useState(false)
     const [ showPrompt, setShowPrompt ] = useState(false)
     const navigate = useNavigate()
     const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)

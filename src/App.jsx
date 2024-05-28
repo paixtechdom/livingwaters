@@ -1,5 +1,7 @@
 import React, { useState, createContext, Suspense, lazy, useEffect } from 'react'
 import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+
 
 import './assets/Styles/index.css';
 
@@ -15,6 +17,7 @@ const UploadNewMessagePage = lazy(() => delayLoad(import('./Pages/Admin/upload/U
 const LoginPage = lazy(() => delayLoad(import('./Pages/Admin/Login/LoginPage')));
 const Home = lazy(() => delayLoad(import('./Pages/Home/Home')));
 const Navbar = lazy(() => delayLoad(import('./Components/Navbar')));
+
 
 
 
@@ -34,22 +37,24 @@ const Layout = () => {
     })
 
     return (
-      <AppContext.Provider value={{ currentNav, setCurrentNav, showAlert, setShowAlert, alertType, setAlertType, alertMessage, setAlertMessage, loginTo, setLoginTo }}>
-        
-        <div className='app bg-white orange-50 bg-opacity-20'>
-          <Suspense fallback={<></>}>
-            <Navbar />
-          </Suspense>   
-          {
-            showAlert ?
-            <Alert /> : ''
-          } 
+      <HelmetProvider>
+        <AppContext.Provider value={{ currentNav, setCurrentNav, showAlert, setShowAlert, alertType, setAlertType, alertMessage, setAlertMessage, loginTo, setLoginTo }}>
+          
+          <div className='app bg-white orange-50 bg-opacity-20'>
+            <Suspense fallback={<></>}>
+              <Navbar />
+            </Suspense>   
+            {
+              showAlert ?
+              <Alert /> : ''
+            } 
 
-          <Outlet />
-        
-        </div>
+            <Outlet />
+          
+          </div>
 
-      </AppContext.Provider>
+        </AppContext.Provider>
+      </HelmetProvider>
     )
 
 }

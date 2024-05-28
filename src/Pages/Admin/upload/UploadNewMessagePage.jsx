@@ -8,6 +8,7 @@ import { LoadingIcon } from "../../../Components/LoadingIcon";
 import { AppContext } from "../../../App";
 import { useNavigate } from "react-router-dom"
 import Cookie from "js-cookie"
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -79,7 +80,14 @@ const UploadNewMessagePage = () => {
 
     if(loggedIn){
         return(
-            <div className="flex items-center flex-col min-h-screen py-[15vh]">
+            <>
+            <Helmet>
+                <title>
+                    Upload New Message - Living Waters Global Fellowship
+                </title>
+            </Helmet>
+
+            <main className="flex items-center flex-col min-h-screen py-[15vh]">
                 <div className="w-11/12 lg:10/12 xl:w-9/12 mt-5 flex flex-col gap-[10vh]">
                     <div className="text-center">
                         <h1 className="font-bold text-2xl">Upload a new message</h1>
@@ -136,7 +144,8 @@ const UploadNewMessagePage = () => {
                     </div>
                     
                 </div>
-            </div>
+            </main>
+            </>
         )
     }
 }

@@ -11,10 +11,7 @@ const MesagesList = lazy(() => delayLoad(import("./Messages/MessageList")));
 const Home = () => {
     return(
         <div className="center flex-col gap-[10vh] overflow-hidden pt-[10vh] lg:pt-[15vh]">
-                <MesagesList />
-            {/* <Suspense fallback={<>Loading Messages</>}>
-            </Suspense> */}
-    
+                <MesagesList />  
 
             <div className="parent center w-full  border-t border-primary border-4 bg-primary pb-[10vh] pt-[15vh]">
 

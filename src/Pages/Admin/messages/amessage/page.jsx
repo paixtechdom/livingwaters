@@ -4,6 +4,8 @@ import { backendLocation } from "../../../../assets/Constant"
 import EditMessage from "./EditMessage"
 import { AppContext } from "../../../../App"
 import Cookie from "js-cookie"
+import { useNavigate } from "react-router-dom"
+import { Helmet } from "react-helmet-async"
 
 
 const AMessagePage = () => {
@@ -11,7 +13,7 @@ const AMessagePage = () => {
     const [ savedFile, setSavedFile ] = useState(null)
     const [ loggedIn, setLoggedIn ] = useState(false)
     const { setLoginTo } = useContext(AppContext)
-
+    const navigate = useNavigate()
     const params = useParams()
     useEffect(() => {
         const cookie = Cookie.get('adminCookie')
@@ -40,14 +42,21 @@ const AMessagePage = () => {
 
     if(loggedIn){
         return(
-            <div className="flex items-center flex-col min-h-screen py-[15vh]">
-            <div className="w-11/12 lg:10/12 xl:w-9/12 mt-5 flex flex-col gap-[5vh]">
-                <div className="text-center">
-                    <h1 className="font-bold text-2xl">Edit message</h1>
-                </div>
-                  <EditMessage message={message} savedFile={savedFile}/>
-                </div>
-            </div>
+            <>
+             <Helmet>
+                <title>
+                    {`${message?.title}`} - Living Waters Global Fellowship
+                </title>
+                </Helmet>
+                <main className="flex items-center flex-col min-h-screen py-[15vh]">
+                <div className="w-11/12 lg:10/12 xl:w-9/12 mt-5 flex flex-col gap-[5vh]">
+                    <div className="text-center">
+                        <h1 className="font-bold text-2xl">Edit message</h1>
+                    </div>
+                    <EditMessage message={message} savedFile={savedFile}/>
+                    </div>
+                </main>
+            </>
         )
     }
         

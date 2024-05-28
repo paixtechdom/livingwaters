@@ -37,7 +37,7 @@ const LoginPage = () => {
                         expires: 1,
                         path: '/'
                     })
-                    navigate({loginTo})
+                    navigate(`${loginTo}`)
                 }else{
                     setError('Incorrect Login Credentials')
                 }
