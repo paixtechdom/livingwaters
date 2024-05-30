@@ -60,7 +60,8 @@ const Navbar = () => {
                 setCurrentNav(i)
             }
         })
-
+        
+        document.documentElement.scrollTop = 0
     }, [document.URL])
 
     const Logout = () => {

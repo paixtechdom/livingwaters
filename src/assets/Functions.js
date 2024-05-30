@@ -68,7 +68,7 @@ export function delayLoad(promise) {
   }
   
   const fetchDataWithRetry = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal, retryCount = 0) => {
-    const maxRetries = 5;
+    const maxRetries = 2;
     const retryDelay = 1000; // milliseconds
   
     try {
@@ -97,42 +97,62 @@ export function delayLoad(promise) {
         }, retryDelay);
       } else {
         setFetching(false);
-        alert('Error fetching message after multiple attempts');
+        alert('Error fetching messages. Kindly refresh the page.');
       }
     }
   }
   
 
 
-export const HandleSearch = async (searchInput, setFetching, setMessages, setTotal) => {
-  setFetching(true)
-  setMessages([])
-  await fetch(`${backendLocation}/messages.php/${searchInput}/count`, {
-      method: 'GET'
-  }).then(resp => {
-      return resp.json()
-  })
-  .then(data => {
-      setTotal(data[0].total)
-  })
-  try{
-      await fetch(`${backendLocation}/messages.php/${0}/${10}/${searchInput}`, {
-          method: 'GET'
-      }).then(resp => {
-          return resp.json()
-      })
-      .then(data => {
-          document.documentElement.scrollTop = 0
-          setTimeout(() => {
-              setFetching(false)
-              setMessages(data)
-          }, 500);
-      })
-  }catch(error){
-      setFetching(false)
-      alert('Error fetching message')
-  }
-
-}
+  export const HandleSearch = async (searchInput, setFetching, setMessages, setTotal) => {
+    setFetching(true);
+    setMessages([]);
+  
+    try {
+      // Fetch the total count of messages
+      const countResponse = await fetchWithRetry(`${backendLocation}/messages.php/${searchInput}/count`, {
+        method: 'GET'
+      });
+  
+      const countData = await countResponse.json();
+      setTotal(countData[0].total);
+  
+      // Fetch the messages
+      const messagesResponse = await fetchWithRetry(`${backendLocation}/messages.php/0/10/${searchInput}`, {
+        method: 'GET'
+      });
+  
+      const messagesData = await messagesResponse.json();
+  
+      document.documentElement.scrollTop = 0;
+  
+      setTimeout(() => {
+        setFetching(false);
+        setMessages(messagesData);
+      }, 500);
+    } catch (error) {
+      setFetching(false);
+      alert('Error fetching messages. Kindly refresh the page.');
+    }
+  };
+  
+  // Helper function to fetch with retry logic
+  const fetchWithRetry = async (url, options, retries = 2) => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+        return response;
+      } catch (error) {
+        if (i === retries - 1) {
+          throw error; // Rethrow the error if this was the last attempt
+        }
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retrying
+      }
+    }
+  };
+  
 
 
