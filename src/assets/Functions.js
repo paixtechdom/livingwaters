@@ -64,30 +64,35 @@ export function delayLoad(promise) {
 
   export const fetchMessages = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal) => {
     setFetching(true)
-        await fetch(`${backendLocation}/messages.php/${searchInput}/count`, {
-          method: 'GET'
-      }).then(resp => {
-          return resp.json()
-      })
-      .then(data => {
-        setTotal(data[0].total)
-      })
-    try{
-        await fetch(`${backendLocation}/messages.php/${startingPoint}/${10}/${searchInput}`, {
-            method: 'GET'
-        }).then(resp => {
-            return resp.json()
-        })
-        .then(data => {
-            setTimeout(() => {
-              setFetching(false)
-              setMessages(messages.concat(data))
-            }, 500);
-        })
-    }catch(error){
+    fetch()
+  }
+  
+  const fetch = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal) => {
+  await fetch(`${backendLocation}/messages.php/${searchInput}/count`, {
+    method: 'GET'
+}).then(resp => {
+    return resp.json()
+})
+.then(data => {
+  setTotal(data[0].total)
+})
+try{
+  await fetch(`${backendLocation}/messages.php/${startingPoint}/${10}/${searchInput}`, {
+      method: 'GET'
+  }).then(resp => {
+      return resp.json()
+  })
+  .then(data => {
+      setTimeout(() => {
         setFetching(false)
-        alert('Error fetching message')
-    }
+        setMessages(messages.concat(data))
+      }, 500);
+  })
+}catch(error){
+  setFetching(false)
+  alert('Error fetching message')
+}
+
 }
 
 
