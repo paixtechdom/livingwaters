@@ -1,5 +1,5 @@
-import React, { useState, createContext, Suspense, lazy, useEffect } from 'react'
-import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter, } from 'react-router-dom';
+import React, { useState, createContext, Suspense, lazy } from 'react'
+import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter, ScrollRestoration } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
 
@@ -10,11 +10,11 @@ import { Loader } from './Components/Loader';
 import { delayLoad } from './assets/Functions';
 import { Alert } from './Components/Alert';
 
-const MesagesList = React.lazy(() => delayLoad(import('./Pages/Home/Messages/MessageList')));
-const AMessagePage = React.lazy(() => delayLoad(import('./Pages/Admin/messages/amessage/page')));
-const MessagesPage = React.lazy(() => delayLoad(import('./Pages/Admin/messages/page')));
-const UploadNewMessagePage = React.lazy(() => delayLoad(import('./Pages/Admin/upload/UploadNewMessagePage')));
-const LoginPage = React.lazy(() => delayLoad(import('./Pages/Admin/Login/LoginPage')));
+const MesagesList = lazy(() => delayLoad(import('./Pages/Home/Messages/MessageList')));
+const AMessagePage = lazy(() => delayLoad(import('./Pages/Admin/messages/amessage/page')));
+const MessagesPage = lazy(() => delayLoad(import('./Pages/Admin/messages/page')));
+const UploadNewMessagePage = lazy(() => delayLoad(import('./Pages/Admin/upload/UploadNewMessagePage')));
+const LoginPage = lazy(() => delayLoad(import('./Pages/Admin/Login/LoginPage')));
 const Navbar = lazy(() => delayLoad(import('./Components/Navbar')));
 
 
@@ -29,11 +29,7 @@ const Layout = () => {
   const [ alertMessage, setAlertMessage ] = useState('')
   const [ loginTo, setLoginTo ] = useState('/admin/messages')
 
-    document.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => {
-        document.documentElement.scrollTop = 0
-      })
-    })
+
 
     return (
       <div className='app bg-white orange-50 bg-opacity-20'>
@@ -48,11 +44,9 @@ const Layout = () => {
             <Alert /> : ''
           } 
 
-          {/* <Outlet /> */}
+          <Outlet />
           
-          <React.Suspense fallback={<Loader />}>
-            <MesagesList />
-          </React.Suspense>
+          <ScrollRestoration />
 
         </AppContext.Provider>
       </HelmetProvider>
@@ -68,33 +62,33 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: (<React.Suspense fallback={<Loader />}>
+        element: (<Suspense fallback={<Loader />}>
                   <MesagesList />
-                </React.Suspense>)
+                </Suspense>)
       },
       {
         path: 'admin/upload',
-        element: (<React.Suspense fallback={<Loader />}>
+        element: (<Suspense fallback={<Loader />}>
                   <UploadNewMessagePage />
-                </React.Suspense>)
+                </Suspense>)
       },
       {
         path: 'admin/login',
-        element:( <React.Suspense fallback={<Loader />}>
+        element:( <Suspense fallback={<Loader />}>
                   <LoginPage />
-                </React.Suspense>)
+                </Suspense>)
       },
       {
         path: 'admin/messages',
-        element: (<React.Suspense fallback={<Loader />}>
+        element: (<Suspense fallback={<Loader />}>
                   <MessagesPage />
-                </React.Suspense>)
+                </Suspense>)
       },
       {
         path: 'admin/messages/:id',
-        element: (<React.Suspense fallback={<Loader />}>
+        element: (<Suspense fallback={<Loader />}>
                   <AMessagePage />
-                </React.Suspense>)
+                </Suspense>)
       },
       {
         path: '*',
