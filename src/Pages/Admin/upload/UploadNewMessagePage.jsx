@@ -47,7 +47,7 @@ const UploadNewMessagePage = () => {
     }, [file])
 
     const UploadAudio = async (e) => {
-        e.preventDefault()       
+        e.preventDefault() 
         setUploading(true)
         const formData = new FormData();
         formData.append('title', ((fileName).replace(file.name.slice(-4), '') + file.name.slice(-4)))
@@ -55,27 +55,33 @@ const UploadNewMessagePage = () => {
         formData.append('tags', 'living tags')
         formData.append('file', file)
         
-        try{
             await fetch(`${backendLocation}/messages.php`, {
                 method: 'POST',
                 body: formData
-            }).then(function(response) {
-                setFile(null)
-                setFileName('')
-                setAudio(null)
-                setUploading(false)
-                setShowAlert(true)
-                setAlertType('success')
-                setAlertMessage('Message Uploaded successfully')                
-                document.documentElement.scrollTop = 0
+            }).then(resp => {
+                return resp.json()
+            })            
+            .then(function(response) {
+                if(response == "unable to upload file"){
+                    setShowAlert(true)
+                    setAlertType('error')
+                    setAlertMessage('Failed to upload message')           
+                    document.documentElement.scrollTop = 0
+                    setUploading(false)
+                }else{
+                    setFile(null)
+                    setFileName('')
+                    setAudio(null)
+                    setUploading(false)
+                    setShowAlert(true)
+                    setAlertType('success')
+                    setAlertMessage('Message Uploaded successfully')                
+                    document.documentElement.scrollTop = 0
+                }
             })
-        }catch(error){
-            setShowAlert(true)
-            setAlertType('error')
-            setAlertMessage('Failed to upload message')           
-            document.documentElement.scrollTop = 0
-            setUploading(false)
-        }
+
+
+
     }
 
     if(loggedIn){

@@ -24,13 +24,13 @@ const Navbar = () => {
             to: ''
         },
         {
+            nav: 'Messages',
+            to: 'admin/messages'
+        },
+        {
             nav: 'Upload',
             to: 'admin/upload'
         },
-        {
-            nav: 'Messages',
-            to: 'admin/messages'
-        }
     ]
 
     const handleScroll = () => {
@@ -53,7 +53,7 @@ const Navbar = () => {
         const cookie = Cookie.get('adminCookie')
         // const adminCookie = JSON.parse(cookie)
         setLoggedIn(cookie !== undefined)
-        setShowNavbar(document.URL.includes('login') ? false : true)
+        setShowNavbar(document.URL.toLocaleLowerCase().includes('login') ? false : true)
         
         navs.forEach((nav, i) =>{
             if(document.URL.includes(nav.to)){
@@ -116,6 +116,7 @@ const Navbar = () => {
                             <div className={`flex justify-end  w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row ${loggedIn && 'mt-9'}`}>
                                 <Button text={'Logout'} type={'primary'} className={'w-[150px]'} 
                                 func={() => {
+                                    setShowNav(false)
                                     setPromptAction(true)
                                 }}/>
                             </div> 
@@ -123,7 +124,7 @@ const Navbar = () => {
                             <div className={`flex justify-end  w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row ${loggedIn && 'mt-9'}`}>
                                 <Button text={'Login'} type={'primary'} className={'w-[150px]'} 
                                 func={() => {
-                                    navigate('/')
+                                    navigate('/admin/Login')
                                     setShowNav(false)
                                 }}/>
                             </div> 

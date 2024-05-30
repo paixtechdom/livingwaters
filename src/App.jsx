@@ -1,5 +1,5 @@
 import React, { useState, createContext, Suspense, lazy, useEffect } from 'react'
-import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter, } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
 
@@ -10,12 +10,11 @@ import { Loader } from './Components/Loader';
 import { delayLoad } from './assets/Functions';
 import { Alert } from './Components/Alert';
 
-const MesagesList = lazy(() => delayLoad(import('./Pages/Home/Messages/MessageList')));
-const AMessagePage = lazy(() => delayLoad(import('./Pages/Admin/messages/amessage/page')));
-const MessagesPage = lazy(() => delayLoad(import('./Pages/Admin/messages/page')));
-const UploadNewMessagePage = lazy(() => delayLoad(import('./Pages/Admin/upload/UploadNewMessagePage')));
-const LoginPage = lazy(() => delayLoad(import('./Pages/Admin/Login/LoginPage')));
-const Home = lazy(() => delayLoad(import('./Pages/Home/Home')));
+const MesagesList = React.lazy(() => delayLoad(import('./Pages/Home/Messages/MessageList')));
+const AMessagePage = React.lazy(() => delayLoad(import('./Pages/Admin/messages/amessage/page')));
+const MessagesPage = React.lazy(() => delayLoad(import('./Pages/Admin/messages/page')));
+const UploadNewMessagePage = React.lazy(() => delayLoad(import('./Pages/Admin/upload/UploadNewMessagePage')));
+const LoginPage = React.lazy(() => delayLoad(import('./Pages/Admin/Login/LoginPage')));
 const Navbar = lazy(() => delayLoad(import('./Components/Navbar')));
 
 
@@ -37,24 +36,24 @@ const Layout = () => {
     })
 
     return (
+      <div className='app bg-white orange-50 bg-opacity-20'>
       <HelmetProvider>
         <AppContext.Provider value={{ currentNav, setCurrentNav, showAlert, setShowAlert, alertType, setAlertType, alertMessage, setAlertMessage, loginTo, setLoginTo }}>
           
-          <div className='app bg-white orange-50 bg-opacity-20'>
-            <Suspense fallback={<></>}>
-              <Navbar />
-            </Suspense>   
-            {
-              showAlert ?
-              <Alert /> : ''
-            } 
+          <Suspense fallback={<></>}>
+            <Navbar />
+          </Suspense>   
+          {
+            showAlert ?
+            <Alert /> : ''
+          } 
 
-            <Outlet />
+          <Outlet />
           
-          </div>
 
         </AppContext.Provider>
       </HelmetProvider>
+      </div>
     )
 
 }
@@ -65,56 +64,48 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: '/',
-        element:   
-              <Suspense fallback={<Loader />}>
-                <MesagesList />
-                {/* <Home /> */}
-              </Suspense>
+        path: '',
+        element: (<React.Suspense fallback={<Loader />}>
+                  <MesagesList />
+                </React.Suspense>)
       },
       {
-        path: '/admin/upload',
-        element:   
-              <Suspense fallback={<Loader />}>
-                <UploadNewMessagePage />
-              </Suspense>
+        path: 'admin/upload',
+        element: (<React.Suspense fallback={<Loader />}>
+                  <UploadNewMessagePage />
+                </React.Suspense>)
       },
       {
-        path: '/admin/login',
-        element:   
-              <Suspense fallback={<Loader />}>
-                <LoginPage />
-              </Suspense>
+        path: 'admin/login',
+        element:( <React.Suspense fallback={<Loader />}>
+                  <LoginPage />
+                </React.Suspense>)
       },
       {
-        path: '/admin/messages',
-        element:   
-              <Suspense fallback={<Loader />}>
-                <MessagesPage />
-              </Suspense>
+        path: 'admin/messages',
+        element: (<React.Suspense fallback={<Loader />}>
+                  <MessagesPage />
+                </React.Suspense>)
       },
       {
-        path: '/admin/messages/:id',
-        element:   
-              <Suspense fallback={<Loader />}>
-                <AMessagePage />
-              </Suspense>
+        path: 'admin/messages/:id',
+        element: (<React.Suspense fallback={<Loader />}>
+                  <AMessagePage />
+                </React.Suspense>)
       },
       {
-        path: '/*',
+        path: '*',
         element: <PageNotFound />
       }
     ]
-  },
+  }
 ])
 
-function App() {
-  
 
+function App() {
   return (
     <div className='App'>
         <RouterProvider router={router} />
-
     </div>
   );
 

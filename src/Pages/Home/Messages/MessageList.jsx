@@ -8,7 +8,6 @@ import { MessageSkeleton } from "../../../Components/MessageSkeleton";
 const Message = lazy(() => delayLoad(import("./Message")));
 
 
-
 const MesagesList = () => {
     const [ messages, setMessages ] = useState([])
     const [ searchInput, setSearchInput ] = useState('')

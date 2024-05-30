@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { LoadingIcon } from "../../../Components/LoadingIcon"
+import { AppContext } from "../../../App"
 
 export const SelectAudioComponent = ({value, setValue, selecting, setSelecting, setAudio}) => {
+    const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
     const inputRef = useRef()
     const [ dragOver, setDragOver ] = useState(false)
 
@@ -21,9 +23,22 @@ export const SelectAudioComponent = ({value, setValue, selecting, setSelecting, 
     const processAudio = (audioFile) => {
         const reader = new FileReader()
         if(!audioFile.type.includes('audio/')){
-            alert('File must be an audio file')
+            setShowAlert(true)
+            setAlertType('error')
+            setAlertMessage('File must be an audio file')           
+            document.documentElement.scrollTop = 0
             setSelecting(false)
-        }else{
+            
+        }
+        else{
+            if(audioFile.size > 41943040){
+                setShowAlert(true)
+                setAlertType('error')
+                setAlertMessage('File must not be greater than 40mb')           
+                document.documentElement.scrollTop = 0
+                setSelecting(false)
+            }   
+        else{
             reader.onload = () => {
                 setAudio(reader.result)
                 setValue(audioFile)
@@ -37,6 +52,7 @@ export const SelectAudioComponent = ({value, setValue, selecting, setSelecting, 
                 reader.readAsDataURL(audioFile)
             }
         }
+        } 
     }
 
     const handleDragOver = (e) => {

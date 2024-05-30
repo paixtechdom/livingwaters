@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { Button } from "../../../Components/Button"
 import { LoadingIcon } from "../../../Components/LoadingIcon"
 import { backendLocation } from "../../../assets/Constant"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { AppContext } from "../../../App"
 import Cookie from "js-cookie"
 
@@ -51,6 +51,9 @@ const LoginPage = () => {
             <div className="center h-full flex-col lg:flex-row w-11/12 lg:w-10/12 xl:w-9/12 gap-[100px]">
 
             <form action="" onSubmit={Login} className="bg-gradient-to-l from-blue-100 to-orange-100 center flex-col gap-7 p-9 w-full md:w-9/12 lg:w-7/12 rounded-2xl min-h-[60vh] py-[10vh] shadow-xl">
+                    <Link to={'/'} className="text-sm underline text-blue-700 w-full text-right">
+                        Return to the home Page
+                    </Link>
                     <h1 className="text-2xl w-full mb-5 rounded-2xl ">Admin Login</h1>
 
                    <FormInput 
