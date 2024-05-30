@@ -63,37 +63,45 @@ export function delayLoad(promise) {
 
 
   export const fetchMessages = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal) => {
-    setFetching(true)
-    fetch()
+    setFetching(true);
+    await fetchDataWithRetry(startingPoint, searchInput, setMessages, setFetching, messages, setTotal);
   }
   
-  const fetch = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal) => {
-  await fetch(`${backendLocation}/messages.php/${searchInput}/count`, {
-    method: 'GET'
-}).then(resp => {
-    return resp.json()
-})
-.then(data => {
-  setTotal(data[0].total)
-})
-try{
-  await fetch(`${backendLocation}/messages.php/${startingPoint}/${10}/${searchInput}`, {
-      method: 'GET'
-  }).then(resp => {
-      return resp.json()
-  })
-  .then(data => {
+  const fetchDataWithRetry = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal, retryCount = 0) => {
+    const maxRetries = 5;
+    const retryDelay = 1000; // milliseconds
+  
+    try {
+      // Fetch total count
+      const countResponse = await fetch(`${backendLocation}/messages.php/${searchInput}/count`, {
+        method: 'GET'
+      });
+      const countData = await countResponse.json();
+      setTotal(countData[0].total);
+  
+      // Fetch messages
+      const messagesResponse = await fetch(`${backendLocation}/messages.php/${startingPoint}/10/${searchInput}`, {
+        method: 'GET'
+      });
+      const messagesData = await messagesResponse.json();
+  
       setTimeout(() => {
-        setFetching(false)
-        setMessages(messages.concat(data))
+        setFetching(false);
+        setMessages(messages.concat(messagesData));
       }, 500);
-  })
-}catch(error){
-  setFetching(false)
-  alert('Error fetching message')
-}
-
-}
+    } catch (error) {
+      if (retryCount < maxRetries) {
+        console.warn(`Retrying fetch... Attempt ${retryCount + 1} of ${maxRetries}`);
+        setTimeout(() => {
+          fetchDataWithRetry(startingPoint, searchInput, setMessages, setFetching, messages, setTotal, retryCount + 1);
+        }, retryDelay);
+      } else {
+        setFetching(false);
+        alert('Error fetching message after multiple attempts');
+      }
+    }
+  }
+  
 
 
 export const HandleSearch = async (searchInput, setFetching, setMessages, setTotal) => {
