@@ -48,8 +48,11 @@ const Layout = () => {
             <Alert /> : ''
           } 
 
-          <Outlet />
+          {/* <Outlet /> */}
           
+          <React.Suspense fallback={<Loader />}>
+            <MesagesList />
+          </React.Suspense>
 
         </AppContext.Provider>
       </HelmetProvider>
