@@ -32,7 +32,7 @@ const MessageComponent = ({message, refetchMessages}) => {
             setShowAlert(true)
             setAlertType('error')
             setAlertMessage('Failed to delete message')
-            setFetching(false)
+            setDeleting(false)
         }
         setDeleting(false)
         setShowPrompt(false)
