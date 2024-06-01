@@ -8,6 +8,10 @@ import { PageNotFound } from "../../../../Components/PageNotFound"
 import { AppContext } from "../../../../App"
 import { useNavigate } from "react-router-dom"
 import { ConfirmBox } from "../ConfirmBox"
+import axios from "axios"
+
+
+
 
 const EditMessage = ({message, savedFile}) => {
 
@@ -26,7 +30,7 @@ const EditMessage = ({message, savedFile}) => {
     const DeleteMessage = async () => {
         setDeleting(true)
         try{
-            await fetch(`${backendLocation}/messages.php/${message.id}`, {
+            await axios.delete(`${backendLocation}/messages.php/${encodeURIComponent(message.id)}`, {
                 method: 'DELETE',
             })
             .then(data => {
@@ -42,7 +46,6 @@ const EditMessage = ({message, savedFile}) => {
                 setShowAlert(true)
                 setAlertType('error')
                 setAlertMessage('Failed to delete message')
-                setFetching(false)
             }, 1000);
         }
         setTimeout(() => {

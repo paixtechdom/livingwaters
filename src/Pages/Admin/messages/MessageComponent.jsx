@@ -6,6 +6,9 @@ import { ConfirmBox } from "./ConfirmBox"
 import { useContext, useState } from "react"
 import { AppContext } from "../../../App"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+
+
 
 const MessageComponent = ({message, refetchMessages}) => {
     const [ deleting, setDeleting ] = useState(false)
@@ -17,9 +20,7 @@ const MessageComponent = ({message, refetchMessages}) => {
     const DeleteMessage = async () => {
         setDeleting(true)
         try{
-            await fetch(`${backendLocation}/messages.php/${message.id}`, {
-                method: 'DELETE',
-            })
+            await axios.delete(`${backendLocation}/messages.php/${encodeURIComponent(message.id)}`)
             .then(data => {
                 setTimeout(() => {
                     refetchMessages()
