@@ -117,11 +117,15 @@ const EditMessage = ({message, savedFile}) => {
                     body: formData
                 }).then(function(response) {
                     setUploading(false)
-                    alert('Message Title Update Succesfully')
+                    setShowAlert(true)
+                    setAlertType('success')
+                    setAlertMessage('Message Title Update Succesfully')  
                     document.documentElement.scrollTop = 0
                 })
             }catch(error){
-                alert('Error updating message title')
+                setShowAlert(true)
+                setAlertType('error')
+                setAlertMessage('Error updating message title')
                 document.documentElement.scrollTop = 0
                 setUploading(false)
             }

@@ -21,6 +21,7 @@ export const SelectAudioComponent = ({value, setValue, selecting, setSelecting, 
         processAudio(audioFile)
     }
     const processAudio = (audioFile) => {
+        document.documentElement.scrollTop = 0
         const reader = new FileReader()
         if(!audioFile.type.includes('audio/')){
             setShowAlert(true)

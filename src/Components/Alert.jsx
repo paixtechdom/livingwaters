@@ -23,7 +23,7 @@ export const Alert = () => {
 
                 <p className="text-sm text-center my-7">{alertMessage}</p>
 
-                <Button text={'Close'} type={''} className={'text-lg w-10/12 text-[20px] py-[15px] shadow-xl'} func={() => {
+                <Button text={'Close'} type={''} className={'text-lg w-10/12 text-[20px] py-[17px] shadow-xl'} func={() => {
                     setShow(false)
                     setTimeout(() => {
                         setShowAlert(false)

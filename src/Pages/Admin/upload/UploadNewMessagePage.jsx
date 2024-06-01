@@ -58,9 +58,10 @@ const UploadNewMessagePage = () => {
             await fetch(`${backendLocation}/messages.php`, {
                 method: 'POST',
                 body: formData
-            }).then(resp => {
-                return resp.json()
-            })            
+            })
+            // .then(resp => {
+            //     return resp.json()
+            // })            
             .then(function(response) {
                 if(response == "unable to upload file"){
                     setShowAlert(true)
