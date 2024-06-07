@@ -7,6 +7,9 @@ import { AppContext } from "../../../App"
 import Cookie from "js-cookie"
 import { Helmet } from "react-helmet-async"
 import { MessageSkeleton } from "../../../Components/MessageSkeleton"
+import { useNavigate } from "react-router-dom"
+
+
 
 const MessageComponent = lazy(() => delayLoad(import("./MessageComponent")));
 
@@ -18,8 +21,11 @@ const MessagesPage = () => {
     const [ total, setTotal ] = useState(0)
     const [ loggedIn, setLoggedIn ] = useState(false)
     const { setLoginTo } = useContext(AppContext)
+    const navigate = useNavigate()
 
     useEffect(() => {
+        document.documentElement.scrollTop = 0
+
         const cookie = Cookie.get('adminCookie')
         // const adminCookie = JSON.parse(cookie)
         setLoggedIn(cookie !== undefined)
