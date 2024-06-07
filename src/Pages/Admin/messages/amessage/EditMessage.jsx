@@ -172,7 +172,7 @@ const EditMessage = ({message, savedFile}) => {
             
                                     <div className="flex flex-col gap-5 w-full">
                                         <p className="text-sm">
-                                        Date Created: { 
+                                        Date: { 
                                         message?.title !== fileName ? 
                                         FormatDate(new Date()) :
                                         FormatDate(message?.date) 

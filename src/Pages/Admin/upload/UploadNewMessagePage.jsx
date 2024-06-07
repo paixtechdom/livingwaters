@@ -130,7 +130,7 @@ const UploadNewMessagePage = () => {
     
                                     <div className="flex flex-col gap-5 w-full">
                                     <p className="text-sm">
-                                        Date Created: { FormatDate(new Date()) }
+                                        Date: { FormatDate(new Date()) }
                                     </p>
                                 </div>
                                 </div>
