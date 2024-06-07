@@ -20,7 +20,7 @@ const MessageComponent = ({message, refetchMessages}) => {
     const DeleteMessage = async () => {
         setDeleting(true)
         try{
-            await axios.delete(`${backendLocation}/messages.php/${encodeURIComponent(message.id)}`)
+            await axios.post(`${backendLocation}/messages.php/${encodeURIComponent(message.id)}/admin/messages/delete`)
             .then(data => {
                 setTimeout(() => {
                     refetchMessages()

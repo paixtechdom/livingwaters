@@ -30,8 +30,8 @@ const EditMessage = ({message, savedFile}) => {
     const DeleteMessage = async () => {
         setDeleting(true)
         try{
-            await axios.delete(`${backendLocation}/messages.php/${encodeURIComponent(message.id)}`, {
-                method: 'DELETE',
+            await fetch(`${backendLocation}/messages.php/${encodeURIComponent(message.id)}/admin/messages/delete`, {
+                method: 'POST',
             })
             .then(data => {
                 setTimeout(() => {
