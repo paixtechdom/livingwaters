@@ -81,7 +81,7 @@ const Navbar = () => {
                 <header className="center fixed top-0 left-0 h-[10vh] w-full z-50 bg-gradient-to-r from-blue-100 to-orange-100 lg:border-0 shadow-lg">
                 <nav className="flex items-center justify-between w-11/12 lg:w-10/12 xl:w-9/12">
                 
-                    <Link to={"/"} className="flex items-center justify-start logo w-3/12 text-xl font-bold">
+                    <Link to={"/"} className="flex items-center justify-start logo w-8/12 lg:w-3/12 text-xl font-bold">
                         Living Waters
                     </Link>
 
