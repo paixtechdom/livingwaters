@@ -34,7 +34,7 @@ const Message = ({message, i}) => {
 
     
     return(
-        <div id={FormatId(message.title)} className="center w-full flex-col gap-4 bg-gradient-to-l from-blue-100 to-orange-100 p-11 rounded-xl shadow-lg  text-sm">
+        <div id={FormatId(message.title)} className="center w-full flex-col gap-4 bg-gradient-to-l from-blue-100 to-orange-100 p-7 rounded-xl shadow-lg  text-sm">
 
             <h3 className="w-full text-black text-[15px]">{message.title.replaceAll('_', ' ')}</h3>
             <div className="flex flex-wrap gap-3 justify-between items-center w-full">
