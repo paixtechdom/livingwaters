@@ -97,12 +97,15 @@ export function delayLoad(promise) {
         }, retryDelay);
       } else {
         setFetching(false);
-        alert('Error fetching messages. Kindly refresh the page.');
+        setShowAlert(true)
+        setAlertType('success')
+        setAlertMessage('Error fetching messages. Please wait')
+        location.reload(true)
       }
     }
   }
   
-
+  
 
   export const HandleSearch = async (searchInput, setFetching, setMessages, setTotal) => {
     setFetching(true);
@@ -125,14 +128,17 @@ export function delayLoad(promise) {
       const messagesData = await messagesResponse.json();
   
       document.documentElement.scrollTop = 0;
-  
+      
       setTimeout(() => {
         setFetching(false);
         setMessages(messagesData);
       }, 500);
     } catch (error) {
       setFetching(false);
-      alert('Error fetching messages. Kindly refresh the page.');
+      setShowAlert(true)
+      setAlertType('error')
+      setAlertMessage('Error fetching messages. Please wait')    
+      location.reload(true)
     }
   };
   
@@ -153,6 +159,5 @@ export function delayLoad(promise) {
       }
     }
   };
-  
 
 

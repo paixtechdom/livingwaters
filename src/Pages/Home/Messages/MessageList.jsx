@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { backendLocation } from "../../../assets/Constant";
-import { FormatId, HandleSearch, delayLoad, fetchMessages } from "../../../assets/Functions";
+import { HandleSearch, delayLoad, fetchMessages } from "../../../assets/Functions";
 import { LoadingIcon } from "../../../Components/LoadingIcon";
 import { Button } from "../../../Components/Button";
 import { MessageSkeleton } from "../../../Components/MessageSkeleton";
@@ -73,7 +73,7 @@ const MesagesList = () => {
             </div>
             {
                 fetching ? 
-                <div className="center">
+                <div className="center flex-col gap-3">
                     <LoadingIcon />
                     <p className="">
                         Fetching messages

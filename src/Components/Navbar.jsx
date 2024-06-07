@@ -78,7 +78,7 @@ const Navbar = () => {
         <>
             {
                 showNavbar ? 
-                <header className="center fixed top-0 left-0 h-[10vh] w-full z-50 bg-gradient-to-r from-blue-50 to-orange-50 lg:border-0 shadow-lg">
+                <header className="center fixed top-0 left-0 h-[10vh] w-full z-50 bg-gradient-to-r from-blue-100 to-orange-100 lg:border-0 shadow-lg">
                 <nav className="flex items-center justify-between w-11/12 lg:w-10/12 xl:w-9/12">
                 
                     <Link to={"/"} className="flex items-center justify-start logo w-3/12 text-2xl font-bold">
@@ -94,7 +94,7 @@ const Navbar = () => {
                 
 
                     {/* CENTER NAV */}
-                    <div className={`flex  items-center justify-center gap-5 ${loggedIn ? 'flex-col w-[100vw] fixed top-[8vh] md:top-[10vh] shadow-xl border-t-4 border-white lg:shadow-none bg-gradient-to-r from-blue-50 to-orange-50 h-[60vh] ' : ''} lg:from-transparent lg:to-transparent z-50  transition-all duration-1000
+                    <div className={`flex  items-center justify-center gap-5 ${loggedIn ? 'flex-col w-[100vw] fixed top-[8vh] md:top-[10vh] shadow-xl border-t-4 border-white lg:shadow-none bg-gradient-to-r from-blue-100 to-orange-100 h-[60vh] ' : ''} lg:from-transparent lg:to-transparent z-50  transition-all duration-1000
                     ${showNav ? 'left-0' : 'left-[100vw] lg:left-0'}
 
                     lg:flex-row lg:justify-center lg:gap-0 lg:h-fit lg:top-0 lg:relative w-10/12 lg:border-0`}>
