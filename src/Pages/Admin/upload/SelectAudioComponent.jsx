@@ -2,6 +2,15 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { LoadingIcon } from "../../../Components/LoadingIcon"
 import { AppContext } from "../../../App"
 
+const isAudioFile = (filename) =>{
+    const audioExtension = new Set([
+        "mp3", "wav", 'ogg', "flac", "aac", "m4a", "wma", "alac", "aiff", "pcm"
+
+    ])
+    const extension = filename.split(".").pop().toLowerCase()
+    return audioExtension.has(extension)
+}
+
 export const SelectAudioComponent = ({value, setValue, selecting, setSelecting, setAudio}) => {
     const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
     const inputRef = useRef()
@@ -23,7 +32,7 @@ export const SelectAudioComponent = ({value, setValue, selecting, setSelecting, 
     const processAudio = (audioFile) => {
         document.documentElement.scrollTop = 0
         const reader = new FileReader()
-        if(!audioFile.type.includes('audio/')){
+        if(!isAudioFile(audioFile.name)){
             setShowAlert(true)
             setAlertType('error')
             setAlertMessage('File must be an audio file')           
