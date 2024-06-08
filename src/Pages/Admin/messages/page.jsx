@@ -20,7 +20,7 @@ const MessagesPage = () => {
     const [ fetching, setFetching ] = useState(true)
     const [ total, setTotal ] = useState(0)
     const [ loggedIn, setLoggedIn ] = useState(false)
-    const { setLoginTo } = useContext(AppContext)
+    const { setLoginTo, setShowAlert, setAlertType, setAlertMessage  } = useContext(AppContext)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -40,13 +40,13 @@ const MessagesPage = () => {
     useEffect(() => {
         setFetching(true)
         const delay = setTimeout(() => {
-            HandleSearch(searchInput, setFetching, setMessages, setTotal)
+            HandleSearch(searchInput, setFetching, setMessages, setTotal, setShowAlert, setAlertType, setAlertMessage )
         }, 1000);
         return () => clearTimeout(delay)
     }, [searchInput])
     
     const refetchMessages = () => {
-        HandleSearch(searchInput, setFetching, setMessages, setTotal)
+        HandleSearch(searchInput, setFetching, setMessages, setTotal, setShowAlert, setAlertType, setAlertMessage )
     }
     
     

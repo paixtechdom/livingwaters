@@ -62,12 +62,12 @@ export function delayLoad(promise) {
   }
 
 
-  export const fetchMessages = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal) => {
+  export const fetchMessages = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal, setShowAlert, setAlertType, setAlertMessage ) => {
     setFetching(true);
-    await fetchDataWithRetry(startingPoint, searchInput, setMessages, setFetching, messages, setTotal);
+    await fetchDataWithRetry(startingPoint, searchInput, setMessages, setFetching, messages, setTotal, setShowAlert, setAlertType, setAlertMessage );
   }
   
-  const fetchDataWithRetry = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal, retryCount = 0) => {
+  const fetchDataWithRetry = async (startingPoint, searchInput, setMessages, setFetching, messages, setTotal, retryCount = 0, setShowAlert, setAlertType, setAlertMessage ) => {
     const maxRetries = 2;
     const retryDelay = 1000; // milliseconds
   
@@ -107,7 +107,7 @@ export function delayLoad(promise) {
   
   
 
-  export const HandleSearch = async (searchInput, setFetching, setMessages, setTotal) => {
+  export const HandleSearch = async (searchInput, setFetching, setMessages, setTotal, setShowAlert, setAlertType, setAlertMessage ) => {
     setFetching(true);
     setMessages([]);
   

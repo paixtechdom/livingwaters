@@ -136,8 +136,10 @@ const EditMessage = ({message, savedFile}) => {
     return(
         <>
             {
+            message?.title ? 
             message?.title == undefined ?
-                <PageNotFound /> :
+                <PageNotFound /> 
+                :
                 <>
                     <section className="flex flex-col lg:flex-row items-center justify-between gap-[50px]">
                         {
@@ -236,7 +238,7 @@ const EditMessage = ({message, savedFile}) => {
                     : ''
                 }
                 </>
-                    
+                : '' 
             }
         </>
     )

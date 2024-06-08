@@ -1,9 +1,10 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useContext, useEffect, useState } from "react";
 import { backendLocation } from "../../../assets/Constant";
 import { HandleSearch, delayLoad, fetchMessages } from "../../../assets/Functions";
 import { LoadingIcon } from "../../../Components/LoadingIcon";
 import { Button } from "../../../Components/Button";
 import { MessageSkeleton } from "../../../Components/MessageSkeleton";
+import { AppContext } from "../../../App";
 
 const Message = lazy(() => delayLoad(import("./Message")));
 
@@ -13,12 +14,12 @@ const MesagesList = () => {
     const [ searchInput, setSearchInput ] = useState('')
     const [ fetching, setFetching ] = useState(true)
     const [ total, setTotal ] = useState(0)
-
+    const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
 
     useEffect(() => {
         setFetching(true)
         const delay = setTimeout(() => {
-            HandleSearch(searchInput, setFetching, setMessages, setTotal)
+            HandleSearch(searchInput, setFetching, setMessages, setTotal, setShowAlert, setAlertType, setAlertMessage )
         }, 1000);
         return () => clearTimeout(delay)
     }, [searchInput])

@@ -1,34 +1,42 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button } from "../../../Components/Button";
 import { ConvertFileSize, FormatDate, FormatId } from "../../../assets/Functions";
 import { backendLocation } from "../../../assets/Constant";
+import { AppContext } from "../../../App";
 
 
 const Message = ({message, i}) => {
-    const [ countdown, setCountdown ] = useState(11)
     const [ clickedDownload, setClickedDownload ] = useState(false)
+    const [ failedDownload, setFailedDownload ] = useState(false)
+    const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
 
-    const handleDownload = () => {
-        setClickedDownload(true)
-        const url = `${backendLocation}/download.php?file=${encodeURIComponent(message.title)}`;
-        fetch(url)
-        .then(response => response.blob())
-        .then(blob => {
-                setClickedDownload(false)
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = message.title;
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-            })
-            .catch(error => {
-                alert('Error downloading message. Kindly try again')
-            });
-            setClickedDownload(false)
-            setCountdown(0)
+
+    const handleDownload = (e) => {
+        e.preventDefault()
+        if(!clickedDownload){
+            setClickedDownload(true)    
+            const url = `${backendLocation}/download.php?file=${encodeURIComponent(message.title)}`;
+            fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                    setClickedDownload(false)
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = message.title;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    setFailedDownload(false)
+                })
+                .catch(error => {
+                    setShowAlert(true)
+                    setAlertType('error')
+                    setAlertMessage('Error downloading message. Kindly try again')  
+                    setFailedDownload(true)
+                });
+        }
       };
 
 
@@ -56,18 +64,22 @@ const Message = ({message, i}) => {
                     />
             </div>
             {
-                clickedDownload && countdown !== 0 ? 
-                <p className="w-full text-blue-900">
-                    Please wait... <br />
-                    Download is being processed
-                </p>   
-                : ''
+                clickedDownload ?
+                    <p className="w-full text-blue-900">
+                        Please wait... <br />
+                        Download is being processed
+                    </p>   
+                : 
+                ""
             }
+            
             {
-                countdown == 0 ?
+                failedDownload ?
                 <p className="w-full text-blue-900 cursor-pointer" onClick={handleDownload}>
-                    Click here is the download hasn't started
-                </p> : ''
+                    Click here if the download hasn't started
+                </p>  
+                : 
+                ""
             }
             
         </div>
