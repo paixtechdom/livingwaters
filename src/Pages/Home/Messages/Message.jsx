@@ -64,7 +64,7 @@ const Message = ({message, i}) => {
                     />
             </div>
             {
-                clickedDownload ?
+                clickedDownload  && !failedDownload ?
                     <p className="w-full text-blue-900">
                         Please wait... <br />
                         Download is being processed
