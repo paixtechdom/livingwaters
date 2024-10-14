@@ -1,7 +1,7 @@
 import { Suspense, createContext, lazy, useContext, useEffect, useState } from "react"
 import { backendLocation } from "../../../assets/Constant"
 import { LoadingIcon } from "../../../Components/LoadingIcon"
-import { HandleSearch, delayLoad, fetchMessages } from "../../../assets/Functions"
+import { HandleSearch, fetchMessages } from "../../../assets/Functions"
 import { Button } from "../../../Components/Button"
 import { AppContext } from "../../../App"
 import Cookie from "js-cookie"
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 
 
 
-const MessageComponent = lazy(() => delayLoad(import("./MessageComponent")));
+const MessageComponent = lazy(() => import("./MessageComponent"));
 
 
 const MessagesPage = () => {

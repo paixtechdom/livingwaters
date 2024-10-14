@@ -5,33 +5,8 @@
 @tailwind utilities;
 
 
-:root{
-    
-    ---primary-color: #798CFC;
-    ---secondary-color: #000853; 
-}
 *{
     font-family: 'Poppins', Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.bg-primary{
-    background-color: var(---primary-color);
-}
-.text-primary{
-    color: var(---primary-color)
-}
-.text-secondary{
-    color: var(---secondary-color)
-}
-.bg-secondary{
-    background-color: var(---secondary-color);
-}
-.border-primary{
-    border-color: var(---primary-color)
-}
-
-.border-secondary{
-    border-color: var(---secondary-color)
 }
 
 .center{
@@ -40,6 +15,19 @@
     align-items: center;
 }
 
-.small{
-    font-size: 12px;
+.animate-zoom{
+    animation: animate-zoom 10s ease-in-out infinite;
+}
+
+
+@keyframes  animate-zoom {
+    from{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.5);
+    }
+    to{
+        transform: scale(1);
+    }
 }

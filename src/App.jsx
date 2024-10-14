@@ -12,7 +12,7 @@ export const AppContext = createContext()
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App w-full overflow-hidden'>
         <AppRouter/>
     </div>
   );

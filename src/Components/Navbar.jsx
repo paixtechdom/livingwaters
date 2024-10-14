@@ -49,6 +49,7 @@ const Navbar = () => {
     useEffect(() =>{
         document.addEventListener('scroll', handleScroll)
     }, [])
+    
     useEffect(() => {
         const cookie = Cookie.get('adminCookie')
         // const adminCookie = JSON.parse(cookie)

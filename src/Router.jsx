@@ -3,18 +3,18 @@ import React, { lazy, Suspense, useState } from 'react';
 import { Loader } from './Components/Loader';
 import { Alert } from './Components/Alert';
 import { PageNotFound } from './Components/PageNotFound';
-import { delayLoad } from './assets/Functions';
 import { AppContext } from './App';
 import { HelmetProvider } from 'react-helmet-async';
+import Home from './Pages/Home/Home';
 
 
 
-const MesagesList = lazy(() => delayLoad(import('./Pages/Home/Messages/MessageList')));
-const AMessagePage = lazy(() => delayLoad(import('./Pages/Admin/messages/amessage/page')));
-const MessagesPage = lazy(() => delayLoad(import('./Pages/Admin/messages/page')));
-const UploadNewMessagePage = lazy(() => delayLoad(import('./Pages/Admin/upload/UploadNewMessagePage')));
-const LoginPage = lazy(() => delayLoad(import('./Pages/Admin/Login/LoginPage')));
-const Navbar = lazy(() => delayLoad(import('./Components/Navbar')));
+const MesagesList = lazy(() => import('./Pages/Home/Messages/MessageList'));
+const AMessagePage = lazy(() => import('./Pages/Admin/messages/amessage/page'));
+const MessagesPage = lazy(() => import('./Pages/Admin/messages/page'));
+const UploadNewMessagePage = lazy(() => import('./Pages/Admin/upload/UploadNewMessagePage'));
+const LoginPage = lazy(() => import('./Pages/Admin/Login/LoginPage'));
+const Navbar = lazy(() => import('./Components/Navbar'));
 
 
 export const AppRouter = () => {  
@@ -34,7 +34,8 @@ export const AppRouter = () => {
                 <Suspense fallback={<Loader />}>
                     <Navbar />
                     <Routes>
-                        <Route path="/" element={<MesagesList />} />
+                        <Route path="/" element={<Home />} />
+                        {/* <Route path="/" element={<MesagesList />} /> */}
                         <Route path="/admin/upload" element={<UploadNewMessagePage />} />
                         <Route path="/admin/login" element={<LoginPage />} />
                         <Route path="/admin/messages" element={<MessagesPage />} />

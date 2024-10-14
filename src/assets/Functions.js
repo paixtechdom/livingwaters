@@ -1,11 +1,5 @@
 import { backendLocation } from "./Constant";
 
-export function delayLoad(promise) {
-    return new Promise(resolve => {
-      setTimeout(resolve, 1500);
-    }).then(() => promise);
-  }
-
 
 
   export const ConvertFileSize = (size) => {
@@ -138,7 +132,7 @@ export function delayLoad(promise) {
       setShowAlert(true)
       setAlertType('error')
       setAlertMessage('Error fetching messages. Please wait')    
-      location.reload(true)
+      // location.reload(true)
     }
   };
   

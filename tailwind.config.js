@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         "loginBg": "url(/src/assets/images/bible.jpg)"
+      },
+      colors: {
+        "base": "rgba(0,20,234)"
       }
     },
   },
