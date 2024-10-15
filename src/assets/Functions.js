@@ -1,5 +1,13 @@
 import { backendLocation } from "./Constant";
 
+export const DocscrollTop = () => {
+  scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+}
+
+
 
 
   export const ConvertFileSize = (size) => {
@@ -101,7 +109,7 @@ import { backendLocation } from "./Constant";
   
   
 
-  export const HandleSearch = async (searchInput, setFetching, setMessages, setTotal, setShowAlert, setAlertType, setAlertMessage ) => {
+  export const HandleSearch = async (searchInput, setFetching, setMessages, setTotal, setShowAlert, setAlertType, setAlertMessage, no = 10) => {
     setFetching(true);
     setMessages([]);
   
@@ -115,7 +123,7 @@ import { backendLocation } from "./Constant";
       setTotal(countData[0].total);
   
       // Fetch the messages
-      const messagesResponse = await fetchWithRetry(`${backendLocation}/messages.php/0/10/${searchInput}`, {
+      const messagesResponse = await fetchWithRetry(`${backendLocation}/messages.php/0/${no}/${searchInput}`, {
         method: 'GET'
       });
   
