@@ -55,9 +55,9 @@ const Message = ({message, i}) => {
                     >
                         <BiDownload className="text-lg"/>
                          Download
-                        <span>
-                             {ConvertFileSize(message.size)}
-                        </span> 
+                            <span>
+                                {ConvertFileSize(message.size)}
+                            </span> 
                          </span>
                          } 
                          type={''}

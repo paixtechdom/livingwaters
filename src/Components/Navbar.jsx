@@ -120,7 +120,11 @@ const Navbar = () => {
                                 ))
                             }
                         </div> 
-                        {
+                        <div className={`flex justify-end w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row ${loggedIn && 'mt-9'}`}>
+                            <Button text={'Give'} type={'primary'} className={'w-fit [150px]'} 
+                            />
+                        </div> 
+                        {/* {
                             loggedIn ?
                             <div className={`flex justify-end w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row ${loggedIn && 'mt-9'}`}>
                                 <Button text={'Logout'} type={'primary'} className={'w-[150px]'} 
@@ -137,7 +141,7 @@ const Navbar = () => {
                                     toggleShowNav(false)
                                 }}/>
                             </div> 
-                        }
+                        } */}
 
                     
 

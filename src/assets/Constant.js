@@ -1,5 +1,14 @@
 const Logo = 'logo'
 const Logo_xl = 'logoxl'
+import img1 from "../assets/images/dev/img 1.jpg"
+import img2 from "../assets/images/dev/img 2.jpg"
+import img3 from "../assets/images/dev/img 3.jpg"
+import img4 from "../assets/images/dev/img 4.jpg"
+import img5 from "../assets/images/dev/img 5.jpg"
+import img6 from "../assets/images/dev/img 6.jpg"
+import img7 from "../assets/images/dev/img 7.jpg"
+import img8 from "../assets/images/dev/img 8.jpg"
+import img9 from "../assets/images/dev/img 9.jpg"
 
 
 export const navs = [
@@ -26,20 +35,79 @@ export const navs = [
         ]
         
     },
+    {
+        title: 'Testimonies',
+        link: 'testimonies',
+        sublinks: [
+            {
+                title: "Share Testimony",
+                link: "share-testimony"
+            },
+            {
+                title: "Read Testimonies",
+                link: "read-testimonies"
+            }
+        ]
+        
+    },
     // {
     //     title: 'Upload',
     //     link: 'admin/upload'
     // },
 ]
 
-
+export const Images = [
+    {
+        img: img1,
+        // location of the image
+        program: "a",
+        // program should be picked from the db
+        date: "",
+        // date of program
+    },
+    // {
+    //     img: img2,
+    //     program: "",
+    //     date: "",
+    // },
+    {
+        img: img3,
+        program: "",
+        date: "",
+    },
+    {
+        img: img4,
+        program: "",
+        date: "",
+    },
+    {
+        img: img5,
+        program: "",
+        date: "",
+    },
+    {
+        img: img6,
+        program: "",
+        date: "",
+    },
+    {
+        img: img7,
+        program: "",
+        date: "",
+    },
+    {
+        img: img8,
+        program: "",
+        date: "",
+    },
+    {
+        img: img9,
+        program: "",
+        date: "",
+    }
+]
 
 // const backendLocation = 'http://localhost:80/livingBackend'
-
-
-// const backendLocation = 'https://livingwatersglobal.000webhostapp.com/'
-
-
 const backendLocation = 'https://livingwatersglobalministry.org/'
 
 
