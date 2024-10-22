@@ -1,6 +1,21 @@
+import { useEffect, useState } from "react"
+import { About } from "../../assets/Constant"
 import videoBg from "../../assets/videos/ocean.mp4"
 
 export const Hero = () => {
+    const [ i, setI ] = useState(0)
+
+    useEffect(() => {
+        const int = setInterval(() => {
+            slide()
+        }, 3000);
+        return () => clearInterval(int)
+    }, [i])
+
+    const slide = () => {
+        setI(i == About.core_activities.length - 1 ? 0 : prev => prev + 1 )
+    }
+
     return(
         <section className="w-full h-screen center overflow-hidden relative">
 
@@ -14,7 +29,7 @@ export const Hero = () => {
             
 
             <div className="flex flex-col gap-4 z-20 w-11/12 lg:w-10/12 text-center">
-                <p className="text-white blue-100 md:text-lg">
+                <p className="text-white blue-100">
                     Welcome to
                 </p>
 
@@ -22,8 +37,23 @@ export const Hero = () => {
                     Living Waters Global Ministry
                 </h1>
 
+                <div className="flex center flex-col mt-12">
+                    <div className="flex relative w-full">
 
-                <q className="text-white blue-100 text-lg md:text-xl">Whoever believes in me, as the scripture has said, "Streams of <strong className="font-bold"> Living Waters </strong> will flow from within him</q>
+                        {
+                            About.core_activities.map((act, j) => (
+                                <p  key={j}className={`font-bold text-white text-xl transition-all duration-1000 absolute top-0 ${i == j ? "" : "opacity-0 ml-10"} w-full `}>
+                                    {act.title}
+                                </p>
+                            ))
+                        }
+                    </div>
+
+                    <div className={`h-2 w-16 mt-9 ${About.core_activities[i].bg}`}></div>
+
+                </div>
+
+                {/* <q className="text-white blue-100 text-lg md:text-xl">Whoever believes in me, as the scripture has said, "Streams of <strong className="font-bold"> Living Waters </strong> will flow from within him</q> */}
 
             </div>
 

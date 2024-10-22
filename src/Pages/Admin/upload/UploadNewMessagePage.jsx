@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { useRef } from "react";
 import { SelectAudioComponent } from "./SelectAudioComponent";
 import { ConvertFileSize, FormatDate } from "../../../assets/Functions";
-import { Button } from "../../../Components/Button";
+import { Button } from "../../../Components/Utils/Button";
 import { backendLocation } from "../../../assets/Constant";
-import { LoadingIcon } from "../../../Components/LoadingIcon";
+import { LoadingIcon } from "../../../Components/Utils/LoadingIcon";
 import { AppContext } from "../../../App";
 import { useNavigate } from "react-router-dom"
 import Cookie from "js-cookie"

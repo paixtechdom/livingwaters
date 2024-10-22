@@ -1,14 +1,17 @@
-const Logo = 'logo'
-const Logo_xl = 'logoxl'
-import img1 from "../assets/images/dev/img 1.jpg"
-import img2 from "../assets/images/dev/img 2.jpg"
-import img3 from "../assets/images/dev/img 3.jpg"
-import img4 from "../assets/images/dev/img 4.jpg"
-import img5 from "../assets/images/dev/img 5.jpg"
-import img6 from "../assets/images/dev/img 6.jpg"
-import img7 from "../assets/images/dev/img 7.jpg"
-import img8 from "../assets/images/dev/img 8.jpg"
-import img9 from "../assets/images/dev/img 9.jpg"
+import logo from "../assets/images/logo.png"
+
+
+import prayers from "../assets/images/dev/prayers.jpg"
+import teaching from "../assets/images/dev/teaching.jpg"
+import evangelism from "../assets/images/dev/evangelism.jpg"
+import worship from "../assets/images/dev/worship.jpg"
+import { FaFacebook } from "react-icons/fa"
+import { BsInstagram, BsTwitter, BsYoutube } from "react-icons/bs"
+
+
+
+export const Logo = logo
+export const Logo_xl = 'logoxl'
 
 
 export const navs = [
@@ -17,16 +20,16 @@ export const navs = [
         link: ''
     },
     {
-        title: 'About',
-        link: 'about',
+        title: 'Who we are',
+        link: 'who-we-are',
     },
     {
         title: 'Media',
         link: 'media',
         sublinks: [
             {
-                title: "Images",
-                link: "images"
+                title: "Pictures",
+                link: "pictures"
             },
             {
                 title: "Messages",
@@ -35,112 +38,89 @@ export const navs = [
         ]
         
     },
-    {
-        title: 'Testimonies',
-        link: 'testimonies',
-        sublinks: [
-            {
-                title: "Share Testimony",
-                link: "share-testimony"
-            },
-            {
-                title: "Read Testimonies",
-                link: "read-testimonies"
-            }
-        ]
+    // {
+    //     title: 'Testimonies',
+    //     link: 'testimonies',
+    //     sublinks: [
+    //         {
+    //             title: "Share Testimony",
+    //             link: "share-testimony"
+    //         },
+    //         {
+    //             title: "Read Testimonies",
+    //             link: "read-testimonies"
+    //         }
+    //     ]
         
-    },
+    // },
     // {
     //     title: 'Upload',
     //     link: 'admin/upload'
     // },
 ]
 
-export const Images = [
-    {
-        img: img1,
-        // location of the image
-        program: "a",
-        // program should be picked from the db
-        date: "",
-        // date of program
-    },
-    // {
-    //     img: img2,
-    //     program: "",
-    //     date: "",
-    // },
-    {
-        img: img3,
-        program: "",
-        date: "",
-    },
-    {
-        img: img4,
-        program: "",
-        date: "",
-    },
-    {
-        img: img5,
-        program: "",
-        date: "",
-    },
-    {
-        img: img6,
-        program: "",
-        date: "",
-    },
-    {
-        img: img7,
-        program: "",
-        date: "",
-    },
-    {
-        img: img8,
-        program: "",
-        date: "",
-    },
-    {
-        img: img9,
-        program: "",
-        date: "",
-    }
-]
 
-// const backendLocation = 'http://localhost:80/livingBackend'
-const backendLocation = 'https://livingwatersglobalministry.org/'
+
+// export const backendLocation = 'http://localhost:80/livingBackend'
+export const backendLocation = 'https://livingwatersglobalministry.org/'
 
 
 
 export const About = {
+    who_we_are: [
+        "We are sure of who we are and what we represent in Christ Jesus, and we are certain through faith in our Lord Jesus Christ that within the space of time your life will be transformed positively to the Glory of our Lord Jesus Christ, and through you more lives wlll be transformed too.",
+
+        "We trust and believe that we shall all come to the unity and oneness of Christ and His body",
+
+        "John. 7:38 - Whoever believes in me, as the Scripture has said, streams of living water will flow from within him",
+    ],
     vision: {
-        title: "",
-        desc: "We are based solely on the purpose of raising men who are totally sold out to God (in spirit and in truth) and their reality will be a source of Life to men all over the earth."
+        desc: [
+            {
+                desc: "Living Waters Fellowship based solely on the purpose of raising men who are totally sold out to God (in spirit and in truth) and their reality will be a source of Life to men all over the earth."
+            }
+        ],
+        more: [
+            `John 7:3S speaks about believing which is Faith and we're made to understand in Hebrews 11:1, "Now faith is being sure of what we hope for and certain of what we do not see." This means we must come to the state where all that is produced from our life GIVES LIFE, and that must be our reality`
+        ]
+
     },
 
     mission: {
-        title: "",
-        desc: "We are to flow to all men in all seasons carrying the banner of Jeus bodly, affecting men positively whenever we find ourselves to the glory of God"
+        pre: "Zechariah 14:8 - And it shall be in that day that living waters shall go out from Jemsalem, half of them to the Eastern [Dead] Sea and half of them to the Western [Mediterranean] Sea; m summer and in winter shall it be [AMP]",
+        desc: [
+            {
+                desc: "We are to flow to all men in all seasons, carrying the banner of Jeus bodly, affecting men positively where ever we find, ourselves to the glory of God."
+            }
+        ],
+        more: [
+            // "Zechariah 14:9 - The LORD will be King over the whole earth. On that day there will be one LORD, and his name the only name. - And the purpose of that is that all tongues, all nations will cry out Jesus IS Lord over all",
+            "We are called to come to the state whereby each and everyone of us are representatives of God's Kingdom, bodily channels through which the life of God flows, and portals through which the Kingdom of God will come to our home, neighbourhood, churches, schools, street, states, countries and the world at large, that the Kingdom of the Father come, His will be done all over the face of the Earth and all men confess that Jesus is Lord"
+        ]
     },
 
     core_activities:
     [
         {
-            title: "Intercession (Consistent Prayers)",
-            image: ""
-        },
-        {
-            title: "Accurate Teaching of The Word",
-            image: ""
-        },
-        {
-            title: "Evangelism",
-            image: ""
+            title: "Intercession",
+            img: prayers,
+            bg: "bg-red-500"
         },
         {
             title: "Intense Worship",
-            image: ""
-        }
+            img: worship,
+            bg: "bg-blue-500"
+        },
+        {
+            title: "Teaching of The Word",
+            img: teaching,
+            bg: "bg-green-500"
+        },
+        {
+            title: "Evangelism",
+            img: evangelism,
+            bg: "bg-yellow-500"
+        },
 
     ]
 
@@ -152,13 +132,8 @@ export const Locations = [
         country: "Nigeria",
         centers: [
             {
-                name: "Lagos Center",
+                name: "Lagos Chapter",
                 address: "33, Fadunsin Avenue, Ogba, Lagos",
-                time: "5:00pm - 7:00pm"
-            },
-            {
-                name: "Ibadan Center",
-                address: "Ibadan, Ibadan, Ibadan",
                 time: "5:00pm - 7:00pm"
             },
         ]
@@ -167,8 +142,8 @@ export const Locations = [
         country: "Benin Republic",
         centers: [
             {
-                name: "Agatha",
-                address: "Benin, Agatha, Benin",
+                name: "Porto-Novo Chapter",
+                address: "RCCG, Agatha, Porto-Novo",
                 time: "5:00pm - 7:00pm"
             }
         ]
@@ -178,12 +153,12 @@ export const Locations = [
         centers: [
             {
                 name: "Online Prayer Meeting", 
-                address: "Link to the Whatsapp Group",
+                address: "https://chat.whatsapp.com/HqGToFhXIkY7NIVhHkAqiY",
                 time: "9:00pm - 10:00pm",
             },
             {
                 name: "Online Bible Study", 
-                address: "Link to the Whatsapp Group",
+                address: "https://chat.whatsapp.com/HqGToFhXIkY7NIVhHkAqiY",
                 time: "9:00pm - 10:00pm",
             },
         ]
@@ -191,6 +166,41 @@ export const Locations = [
 ]
 
 
+export const Contacts = {
+    social_media: [
+        {
+            title: "Facebook",
+            link: "",
+            icon: "facebook text-blue-700"
+        },
+        {
+            title: "X - (Twitter)",
+            link: "",
+            icon: "twitter"
+        },
+        {
+            title: "Instagram",
+            link: "",
+            icon: "instagram "
+        },
+        {
+            title: "Youtube",
+            link: "",
+            icon: "youtube text-red-700"
+        }
+    ],
+    contacts: [
+        {
+            title: "",
+            link: "",
+            icon: ""
+        },
+        {
+            title: "",
+            link: "",
+            icon: ""
+        },
+    ]
+}
 
 
-export { Logo, Logo_xl, backendLocation }

@@ -1,12 +1,12 @@
 import { Suspense, createContext, lazy, useContext, useEffect, useState } from "react"
 import { backendLocation } from "../../../assets/Constant"
-import { LoadingIcon } from "../../../Components/LoadingIcon"
+import { LoadingIcon } from "../../../Components/Utils/LoadingIcon"
 import { HandleSearch, fetchMessages } from "../../../assets/Functions"
-import { Button } from "../../../Components/Button"
+import { Button } from "../../../Components/Utils/Button"
 import { AppContext } from "../../../App"
 import Cookie from "js-cookie"
 import { Helmet } from "react-helmet-async"
-import { MessageSkeleton } from "../../../Components/MessageSkeleton"
+import { MessageSkeleton } from "../../../Components/Utils/MessageSkeleton"
 import { useNavigate } from "react-router-dom"
 
 

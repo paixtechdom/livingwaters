@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import { LoadingIcon } from "../../../Components/LoadingIcon"
+import { LoadingIcon } from "../../../Components/Utils/LoadingIcon"
 import { AppContext } from "../../../App"
 
 const isAudioFile = (filename) =>{

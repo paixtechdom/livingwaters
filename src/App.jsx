@@ -30,7 +30,7 @@ function App() {
 
 
   return (
-    <div className='App w-full overflow-hidden'>
+    <div className='App w-full overflow-hidden bg-zinc-100  text-zinc-700'>
         <AppRouter/>
     </div>
   );

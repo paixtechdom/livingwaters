@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { FormatDate, ConvertFileSize } from '../../../assets/Functions'
-import { Button } from "../../../Components/Button"
+import { Button } from "../../../Components/Utils/Button"
 import { backendLocation } from "../../../assets/Constant"
 import { ConfirmBox } from "./ConfirmBox"
 import { useContext, useState } from "react"

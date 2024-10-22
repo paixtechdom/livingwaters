@@ -1,38 +1,39 @@
-import { Suspense, lazy, useContext, useEffect, useState } from "react";
-import { Button } from "../../Components/Button"
-import { InfoCard } from "../../Components/InfoCard";
-import { About, Images, Locations } from "../../assets/Constant";
-import upcoming_program from "../../assets/images/dev/hunger and thirst.jpg";
+import { Suspense, useContext, useEffect, useState } from "react";
+import { Button } from "../../Components/Utils/Button"
+import { InfoCard } from "../../Components/Utils/InfoCard";
+import { About, Locations } from "../../assets/Constant";
+import upcoming_program from "../../assets/images/programmes/LUP 2025 eng.jpg";
 import { Hero } from "./Hero";
 import { useNavigate } from "react-router-dom";
-import { BsHeadset } from "react-icons/bs";
-import { MessageSkeleton } from "../../Components/MessageSkeleton";
-import Message from "./Messages/Message";
+import { BsClockFill, BsGeoAltFill, BsHeadset, BsPeopleFill } from "react-icons/bs";
+import { MessageSkeleton } from "../../Components/Utils/MessageSkeleton";
+import Message from "../../Components/Message";
 import { AppContext } from "../../App";
-import { LoadingIcon } from "../../Components/LoadingIcon";
-import { HandleSearch } from "../../assets/Functions";
+import { LoadingIcon } from "../../Components/Utils/LoadingIcon";
+import { FetchImages, HandleSearch } from "../../assets/Functions";
 import { SlCalender } from "react-icons/sl";
 import { FcGallery } from "react-icons/fc";
 import { GrGallery } from "react-icons/gr";
+import GalleryComponent from "../../Components/Gallery/GalleryComponent";
 
-
-
-const MesagesList = lazy(() => import("./Messages/MessageList"));
 
 
 
 const Home = () => {
-    const [ currentLocation, setCurrentLocation ] = useState(0)
     const navigate = useNavigate()
 
+    const [ currentLocation, setCurrentLocation ] = useState(0)
     const [ messages, setMessages ] = useState([])
     const [ fetching, setFetching ] = useState(true)
     const [ total, setTotal ] = useState(0)
-    const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
+    const { setShowAlert, setAlertType, setAlertMessage, images, setImages } = useContext(AppContext)
 
+
+        
     useEffect(() => {
-        
-        
+        if(images.length < 1){
+            FetchImages(setImages, 6)
+        }
 
         setFetching(true)
         const delay = setTimeout(() => {
@@ -45,7 +46,7 @@ const Home = () => {
 
 
     return(
-        <main className="center w-full flex-col overflow-hidden bg-zinc-100 text-zinc-700">
+        <main className="center w-full flex-col overflow-hidden pb-[15vh]">
 
             <Hero /> 
 
@@ -53,14 +54,14 @@ const Home = () => {
 
             <section className="flex flex-col w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 my-[15vh] text-center gap-8">
                 <h2 className="text-4xl">
-                    Who we are in <br /> <strong> Living Waters Global Ministry</strong>
+                    Who we are
                 </h2>
-                <p className="text-zinc-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt recusandae eum non nobis natus tempora alias illo mollitia corrupti maiores inventore cumque blanditiis saepe, sit atque magni tempore. Esse, accusantium.</p>
+                <p className="text-zinc-500 tracking-wide leading-relaxed">{About.mission.more}</p>
                 <div className="w-full center">    
                     <Button 
-                        type="p rimary" 
+                        type="" 
                         text="Read More" 
-                        func={() => navigate("/about")}
+                        func={() => navigate("/who-we-are")}
                         className="w-fit min-w-[200px] shadow-xl font-bold"
                         icon=""
                         btnType=""
@@ -70,16 +71,34 @@ const Home = () => {
 
             </section>
 
-            <section className="w-full flex flex-col gap-4">
+            <section className="flex flex-col gap-9 w-full bg-white p-9 py-16 rounded-2xl">
+                <div className="flex flex-col gap-4 center">
+                    <div className="flex gap-3 items-center">
+                        <SlCalender />
+                        <h2 className="font-bold text-2xl">
+                            Upcoming Program
+                        </h2>
+                    </div>
+                </div>
+               
+                <div className="flex flex-col lg:flex-row gap-9 w-full ">
+                    <div className="center overflow-hidden">
+                        <img src={upcoming_program} alt="Upcoming Program" className="lg:w-9/12 rounded-xl shadow-xl"/>
+                    </div>
+
+                </div>
+            </section> 
+
+            <section className="w-full flex flex-col gap-4 bg-fellowship">
                 <h2 className="font-bold text-3xl">
                     Fellowship With Us
                 </h2>
-                <p>Join us <strong>Onsite</strong> or <strong>Online</strong> for a powerful, life transforming moment with God</p>
+                <p>Join us Onsite or Online for a powerful, life transforming moment with God</p>
 
                 <div className="flex gap-3 my-6">
                     {
-                        Locations.map((location, i) => (
-                            <div key={i} className={`center p-2 px-6 rounded-lg 
+                        Locations?.map((location, i) => (
+                            <div key={i} className={`center p-2 px-6 rounded-lg text-sm md:font-bold 
                             ${currentLocation === i ? "shadow-xl bg-gradient-to-l from-blue-100 to-orange-100" : ""} cursor-pointer hover:bg-white transition-all duration-500`} 
                             onClick={() => {
                                 setCurrentLocation(i)
@@ -91,7 +110,7 @@ const Home = () => {
                 </div>
 
                 {
-                    Locations.map((location, i) => (
+                    Locations?.map((location, i) => (
                         currentLocation == i &&
                         <div key={i} className="grid grid-cols-1 md:grid-cols-2 w-full  lg:flex-row justify-between gap-9">
                             {
@@ -100,15 +119,27 @@ const Home = () => {
                                         <h3 className="font-bold">{center.name}</h3>
                                         {
                                             location.country == "Online Meetings" ? 
-                                            <a href={center.address} className="underline text-blue-900">Link to whatsapp group</a> 
+                                            <div className="flex items-center gap-2">
+                                                <BsPeopleFill className="text-lg"/>
+                                                <a href={center.address} className="underline text-blue-900">Join platform</a> 
+                                            </div>
+
                                             :
-                                            <p>
-                                                {center?.address}
-                                            </p>
+
+                                            <div className="flex items-center gap-2">
+                                                <BsGeoAltFill className="text-lg"/>
+                                                <p>
+                                                    {center.address}
+                                                </p>
+                                            </div>
+
                                         }
-                                            <p>
-                                                {center.time}
-                                            </p>
+                                            <div className="flex items-center gap-2">
+                                                <BsClockFill className="text-lg"/>
+                                                <p className="text-sm">
+                                                    {center.time}
+                                                </p>
+                                            </div>
                                     </div>
                                 ))
                             }
@@ -116,35 +147,6 @@ const Home = () => {
                     ))
                 }
             </section>
-
-
-            <section className="flex flex-col gap-9 w-full bg-white p-9 py-16 rounded-2xl">
-                <div className="flex flex-col gap-4 center">
-                    <div className="flex gap-3 items-center">
-                        <SlCalender />
-                        <h2 className="font-bold text-2xl">
-                            Upcoming Program
-                        </h2>
-                    </div>
-                    <Button 
-                        type="" 
-                        text="Register Now" 
-                        func={() => navigate("/register")}
-                        className="w-fit min-w-[150px] shadow-xl font-bold"
-                        icon=""
-                        btnType=""
-                        isDisabled={false}
-                    />
-                </div>
-               
-                <div className="flex flex-col lg:flex-row gap-9 w-full ">
-                    <div className="center overflow-hidden rounded-xl  shadow-xl">
-                        <img src={upcoming_program} alt="Upcoming Program" />
-                    </div>
-
-                </div>
-            </section> 
-
 
             <section className="flex flex-col gap-9 w-full ">
                 <div className="flex flex-col gap-4">
@@ -190,14 +192,14 @@ const Home = () => {
                         </div>
                     }
                 </div>
-            </section> 
+            </section>
 
-            <section className="flex flex-col gap-9 w-full mt-[10vh] md:mt-[15vh] pb-[50vh]">
+            <section className="flex flex-col gap-9 w-full">
                 <div className="flex flex-col gap-4">
                     <div className="flex gap-3 items-center">
                         <GrGallery  className="text-xl"/>
                         <h2 className="font-bold text-2xl">
-                            Picture Gallery
+                            Media
                         </h2>
                     </div>
                     <Button 
@@ -210,24 +212,9 @@ const Home = () => {
                         isDisabled={false}
                     />
                 </div>
-
-                <div className="flex flex-col lg:grid md:grid-cols-2 xl:grid-cols-3 w-full gap-[25px]">
-                    {
-                        Images.map((image, i) => (
-                            i < 6 &&
-                            <div key={i} className="flex">
-                                <img src={image.img} alt={image.img} />
-                            </div>
-                        ))
-                    }             
-                </div>
+                <GalleryComponent images={images} />
             </section>
 
-
-            
-
-            {/* <InfoCard data={About.mission} title={["Our", "Mission"]}/>
-            <InfoCard data={About.vision} title={["Our", "Vision"]}/> */}
             </div>
         </main>
     )
