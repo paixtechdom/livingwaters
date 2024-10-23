@@ -33,7 +33,7 @@ export const navs = [
             },
             {
                 title: "Messages",
-                link: "Messages"
+                link: "audio-messages"
             }
         ]
         
@@ -87,7 +87,7 @@ export const About = {
     },
 
     mission: {
-        pre: "Zechariah 14:8 - And it shall be in that day that living waters shall go out from Jemsalem, half of them to the Eastern [Dead] Sea and half of them to the Western [Mediterranean] Sea; m summer and in winter shall it be [AMP]",
+        pre: "Zechariah 14:8 - And it shall be in that day that living waters shall go out from Jemsalem, half of them to the Eastern [Dead] Sea and half of them to the Western [Mediterranean] Sea; in summer and in winter shall it be [AMP]",
         desc: [
             {
                 desc: "We are to flow to all men in all seasons, carrying the banner of Jeus bodly, affecting men positively where ever we find, ourselves to the glory of God."

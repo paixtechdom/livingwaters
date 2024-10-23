@@ -34,12 +34,12 @@ const WhoWeAre = () => {
           </div>
           
           <div className="flex flex-col w-full lg:w-6/12 center gap-4">
-            <div className="center w-full h-[60vh] overflow-hidden">
+            <div className="center w-full h-[70vh] overflow-hidden">
                 <img src={lead_minister} alt="Lead Minister" className="h-full w-full object-cover rounded-xl"/>
             </div>
             <div className="flex flex-col text-center">
               <strong>Lead Minister</strong>
-              <p>Prophet Onido Innocent</p>
+              <p className="uppercase">Prophet Onido Innocent Anomi</p>
             </div>
           </div>
         </section>

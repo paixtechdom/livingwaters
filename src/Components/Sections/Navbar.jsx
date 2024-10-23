@@ -171,7 +171,7 @@ const Navbar = () => {
         
                                                 {   
                                                     nav?.sublinks?.map((sublink, j) => (
-                                                        <Link to={`/${sublink.link == "" ? "" : sublink.title.replaceAll(" ", "-")?.toLowerCase()}`} key={j} className={`flex gap-5 py-4 bg-white bg-opacity-[0.35] lg:bg-opacity-[1] hover:bg-opacity-[0] lg:hover:bg-opacity-[0.95] text-white lg:text-black
+                                                        <Link to={`/${sublink.link?.replaceAll(" ", "-")?.toLowerCase()}`} key={j} className={`flex gap-5 py-4 bg-white bg-opacity-[0.35] lg:bg-opacity-[1] hover:bg-opacity-[0] lg:hover:bg-opacity-[0.95] text-white lg:text-black
                                                         w-[200px] px-8 lg:px-5 text-sm transition-all duration-500
                                                         ${
                                                             currentNav == i && 

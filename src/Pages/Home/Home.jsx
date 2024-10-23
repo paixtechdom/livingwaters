@@ -159,7 +159,7 @@ const Home = () => {
                     <Button 
                         type="p rimary" 
                         text="View All" 
-                        func={() => navigate("/messages")}
+                        func={() => navigate("/audio-messages")}
                         className="w-fit min-w-[150px] shadow-xl font-bold"
                         icon=""
                         btnType=""
@@ -205,14 +205,17 @@ const Home = () => {
                     <Button 
                         type="" 
                         text="View More" 
-                        func={() => navigate("/messages")}
+                        func={() => navigate("/pictures")}
                         className="w-fit min-w-[150px] shadow-xl font-bold"
                         icon=""
                         btnType=""
                         isDisabled={false}
                     />
                 </div>
-                <GalleryComponent images={images} />
+                {
+                    images.length > 0 &&
+                    <GalleryComponent images={images} />
+                }
             </section>
 
             </div>

@@ -41,7 +41,7 @@ export const AppRouter = () => {
                         <Route path="/" element={<Home />} />
                         <Route path="/who-we-are" element={<WhoWeAre />} />
                         <Route path="/media" element={<MediaPage />} />
-                        <Route path="/messages" element={<MessagesPage />} />
+                        <Route path="/audio-messages" element={<MessagesPage />} />
                         <Route path="/pictures" element={<PicturesPage />} />
                         {/* <Route path="/" element={<MesagesList />} /> */}
                         <Route path="/admin/upload" element={<UploadNewMessagePage />} />
