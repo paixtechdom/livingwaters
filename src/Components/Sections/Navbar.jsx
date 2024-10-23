@@ -91,7 +91,7 @@ const Navbar = () => {
                 
                     {/* NAVBAR TOGGLER */}
                     <div onClick={() => dispatch(toggleShowNav(!showNav))}
-                        className={`relative lg:hidden cursor-pointer  ${!scrolledDown && currentNav === 0 ? "text-white" : "text-black"} z-50`}>
+                        className={`relative lg:hidden cursor-pointer  ${!scrolledDown ? "text-white" : "text-black"} z-50`}>
                         {
                             showNav ? 
                             <BiX className="text-5xl"/> :

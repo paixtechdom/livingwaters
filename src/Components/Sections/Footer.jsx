@@ -31,6 +31,14 @@ export const Footer = () => {
                         <div className="flex flex-col gap-3">
                             {
                                 navs.map((nav, i) => (
+                                    nav.sublinks ? 
+
+                                    nav.sublinks.map((subnav, j) => (
+                                        <Link key={j}>
+                                            {subnav.title}
+                                        </Link>
+
+                                    )) :
                                     <Link key={i}>
                                         {nav.title}
                                     </Link>
