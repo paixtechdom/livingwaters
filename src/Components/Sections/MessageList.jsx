@@ -5,6 +5,7 @@ import { Button } from "../Utils/Button";
 import Message from "../Message";
 import { MessageSkeleton } from "../Utils/MessageSkeleton";
 import { AppContext } from "../../App";
+import { useSelector } from "react-redux"
 
 
 
@@ -14,6 +15,9 @@ const MessagesList = () => {
     const [ fetching, setFetching ] = useState(true)
     const [ total, setTotal ] = useState(0)
     const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
+
+    const appslice = useSelector((state) => state.appslice)  
+    const language = appslice.language
 
     useEffect(() => {
         setFetching(true)
@@ -36,7 +40,7 @@ const MessagesList = () => {
                 <div className="flex shadow-lg p-3 w-11/12 md:w-10/12 lg:w-9/12 gap-3 items-center rounded-full sticky top-[12vh] lg:top-[15vh] left-0 bg-white bg-opacity-90 mb-9">
                     <i className="bi bi-search p-1 px-2 lg:p-2"></i>
                     <input type="text" value={searchInput} onChange={(e) => {setSearchInput(e.target.value)}} 
-                        placeholder="Search for a Message"
+                        placeholder={language === "eng" ? "Search for a Message" : "Rechercher un message"}
                         className="w-full outline-none bg-transparent p-1 lg:p-2"
                         />
                 </div>
@@ -44,11 +48,19 @@ const MessagesList = () => {
                 {
                     searchInput !== '' && !fetching && !messages.length < 1 ?
                     <div className="w-full text-xl">
-                        Showing results for <strong>{searchInput}</strong>
+                        {language === "eng" ? "Showing results for" : "Affichage des résultats pour"} <strong>{searchInput}</strong>
                     </div> 
                     :  total == messages.length && !fetching && searchInput != '' ? 
                     <div className="w-full text-xl">
-                        Results for <strong>{searchInput}</strong> not found
+                        {
+                        language === "eng" ?
+                        <> 
+                            Results for <strong>{searchInput}</strong> not found
+                        </> :
+                        <> 
+                            Résultats pour <strong>{searchInput}</strong> non trouvés
+                        </> 
+                        }
                     </div> : ''
 
                 }
@@ -73,15 +85,18 @@ const MessagesList = () => {
                     <div className="center flex-col gap-3">
                         <LoadingIcon />
                         <p className="">
-                            Fetching messages
+                            {
+                                language === "eng" ? 
+                                "Fetching messages" : "Récupération des messages"
+                            }                       
                         </p>
                     </div> : 
                     total == messages.length && !messages.length < 1 ? 
                         <p className="mt-4 text-sm font-bold">
-                            You are all caught up
+                            {language==="eng" ?"You are all caught up!" : "Vous avez tout vu!"}
                         </p>
                     : messages.length > 1 && total !== messages.length ?
-                        <Button type={''} text={'Load More'} 
+                        <Button type={''} text={language === "eng" ? 'Load More' : "Charger plus"} 
                         className={'min-w-[250px] mt-9 min-h-[50px] text-xl shadow-xl'}
                         func={() => fetchMessages(messages.length, searchInput, setMessages, setFetching, messages, setTotal)}/> : ''
 

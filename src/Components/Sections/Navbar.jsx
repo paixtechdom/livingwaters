@@ -1,21 +1,19 @@
-import { useContext, useState, useEffect } from "react"
-import { AppContext } from "../../App"
+import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Logo, navs } from '../../assets/Constant'
+import { Logo, Navigation } from '../../assets/Constant'
 import { Button } from "../Utils/Button"
 import Cookie from "js-cookie"
 import { ConfirmLogout } from "../Utils/ConfirmLogout"
 import { useDispatch, useSelector } from "react-redux"
 import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, toggleShowNav } from "../../assets/store/navigation/navigationSlice"
+import { setLanguage } from "../../assets/store/AppSlice/AppSlice"
 import { BiMenu, BiX } from "react-icons/bi"
 import { RiArrowDropDownFill, RiArrowDropUpFill } from "react-icons/ri"
 // import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, toggleShowNav } from "../store/navigation/navigationSlice.jsx"
 
 
 const Navbar = () => {
-    // const {  currentNav, setCurrentNav } =useContext(AppContext)
-    // const [ showNav, toggleShowNav ] = useState(false)
-    const navigate = useNavigate()
+    const navigate = useNavigate()  
     const [ showNavbar, setShowNavbar ] = useState(false)
     // to hide the navbar e.g in case of login
     const [ loggedIn, setLoggedIn ] = useState(false)
@@ -24,12 +22,15 @@ const Navbar = () => {
 
 
     const navigation = useSelector((state) => state.navigation)
+    const appslice = useSelector((state) => state.appslice)
     const dispatch = useDispatch()
     const showNav = navigation.showNavbar
     const currentNav = navigation.currentNav
     const currentDropDownIndex = navigation.currentDropDownIndex
     const scrolledDown = navigation.scrolledDown
     const currentDropDown = navigation.currentDropDown
+
+    const language = appslice.language
 
 
 
@@ -56,7 +57,7 @@ const Navbar = () => {
         setLoggedIn(cookie !== undefined)
         setShowNavbar(document.URL.toLocaleLowerCase().includes('login') ? false : true)
         
-        navs.forEach((nav, i) =>{
+        Navigation[language].forEach((nav, i) =>{
             if(document.URL.includes(nav.link)){
                 dispatch(setCurrentNav(i))
             }
@@ -84,20 +85,40 @@ const Navbar = () => {
                 ${!scrolledDown ? "bg-transparent" : "bg-gradient-to-l from-blue-200 via-white to-white shadow-lg"}`}>
                 <nav className="flex items-center justify-between w-11/12 lg:w-10/12">
                 
-                    <Link to={"/"} className={`${!scrolledDown ? "mt-[12vh] md:mt-[15vh] lg:mt-[7%] w-4/12 md:w-2/12 lg:w-2/12" : "w-2/12 md:w-1/12"} flex items-center justify-start transition-all duration-1000`}>
+                    <Link to={"/"} className={`${!scrolledDown ? "mt-[12vh] md:mt-[15vh] lg:mt-[7%] w-4/12 md:w-2/12 lg:w-2/12" : "w-2/12 md:w-1/12"} flex items-center justify-start transition-all duration-1000 text-white`}>
                         <img src={Logo} alt="Living Waters Logo" className="w-9/12 z-50"/>
                     </Link>
 
                 
                     {/* NAVBAR TOGGLER */}
-                    <div onClick={() => dispatch(toggleShowNav(!showNav))}
-                        className={`relative lg:hidden cursor-pointer  ${!scrolledDown ? "text-white" : "text-black"} z-50`}>
+                    <div className="flex gap-3 items-center ">
                         {
-                            showNav ? 
-                            <BiX className="text-5xl"/> :
-                            <BiMenu className="text-3xl"/> 
+                            scrolledDown &&
+                            <div className={`flex justify-end w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row lg:hidden`}>
+                                <Button 
+                                    text={language==="eng" ? "Francais" : "English"} 
+                                    type={'primary'} 
+                                    className={'w-fit py-[6px]'} 
+                                    func={() => {
+                                        if(language === "eng"){
+                                            dispatch(setLanguage('fr'))
+                                        }else{
+                                            dispatch(setLanguage('eng'))
+                                        }
+                                    }}
+                                />
+                            </div> 
                         }
 
+                        <div onClick={() => dispatch(toggleShowNav(!showNav))}
+                            className={`relative lg:hidden cursor-pointer  ${!scrolledDown ? "text-white" : "text-black"} z-50`}>
+                            {
+                                showNav ? 
+                                <BiX className="text-5xl"/> :
+                                <BiMenu className="text-3xl"/> 
+                            }
+
+                        </div>
                     </div>
                     
                 
@@ -111,26 +132,8 @@ const Navbar = () => {
                         <div className={`flex flex-col w-11/12 gap-9 items-center lg:justify-end xl:ju stify-center lg:top-0 lg:flex-row  text-sm lg:gap-12 xl:gap-14 lg:w-full text-[#000000] lg:mt-0`}>
 
 
-                            {/* {
-                                navs?.map((nav, i) => (
-                                    <Link key={i} to={`/${nav.link}`} className={`cursor-pointer w-fit ${currentNav == i ? 'bg-white p-2 px-4 rounded-xl' : !scrolledDown ? "lg:text-blue-100" : ''}`}
-                                    onClick={() => {
-                                        dispatch(toggleShowNav(false))
-                                        dispatch(setCurrentNav(i))
-                                    }}
-                                >
-                                        {nav.title}
-                                    </Link>
-                                ))
-                            } */}
-
-
-
-
-
-
-                                {
-                                navs?.map((nav, i) => (
+                            {
+                                Navigation[language].map((nav, i) => (
                                     <div key={i} className={`flex flex-col transition-all duration-1000 justify-between w-[200px] text-blue lg:border-0 relative lg:w-fit`}>
 
                                         <div className={`flex w-[200px] lg:w-fit py-4 px-[5%] lg:p-0 justify-between lg:justify-end lg:items-center cursor-pointer text-black bg-transparent
@@ -163,7 +166,10 @@ const Navbar = () => {
                                             }
         
                                         </div>
-                                        {/**** NAVS WITH SUBLINKS */}
+
+
+                                        
+
                                         {
                                             nav.sublinks ?
                                             <div className={`center flex-col gap-[1px] w-full overflow-hidden transition-all duration-200 lg:duration-1000 lg:absolute lg:min-w-[250px] bg-opacity-10 lg:bg-opacity-100 bg-primary
@@ -195,19 +201,25 @@ const Navbar = () => {
                                     </div>
                                 ))
                             }
-
-
                         </div> 
-                        {/* <div className={`flex justify-end w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row ${loggedIn && 'mt-9'}`}>
-                            <Link to={'/pictures'}>
-                                <Button 
-                                    text={'Media'} 
-                                    type={'primary'} 
-                                    className={'w-fit [150px]'} 
-                                    func={() => {}}
-                                />
-                            </Link>
-                        </div>  */}
+
+                        <div className={`lg:ml-5 w-fit hidden lg:flex`}>
+                            <Button 
+                                text={language==="eng" ? "Francais" : "English"} 
+                                type={'primary'} 
+                                className={'w-fit py-[6px]'} 
+                                func={() => {
+                                    if(language === "eng"){
+                                        dispatch(setLanguage('fr'))
+                                    }else{
+                                        dispatch(setLanguage('eng'))
+                                    }
+                                }}
+                            />
+                        </div> 
+
+
+                        
                         {/* {
                             loggedIn ?
                             <div className={`flex justify-end w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row ${loggedIn && 'mt-9'}`}>

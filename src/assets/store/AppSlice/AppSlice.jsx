@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    language: "eng"
+    language: "fr"
 }
 
 const AppSlice = createSlice({
@@ -16,8 +16,8 @@ const AppSlice = createSlice({
 })
 
 
-export const { setLanguage } = navigationSlice.actions
+export const { setLanguage } = AppSlice.actions
 
 
 
-export default navigationSlice.reducer
+export default AppSlice.reducer

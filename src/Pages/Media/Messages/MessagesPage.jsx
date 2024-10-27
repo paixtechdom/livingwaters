@@ -1,23 +1,19 @@
 import React from 'react'
-import { Button } from '../../../Components/Utils/Button'
-import GalleryComponent from '../../../Components/Gallery/GalleryComponent'
-import { GrGallery } from 'react-icons/gr'
-import { useNavigate } from 'react-router-dom'
 import MessagesList from '../../../Components/Sections/MessageList'
+import { useSelector } from "react-redux"
 
 
 const MessagesPage = () => {
-    const navigate = useNavigate()
 
-
-
+    const appslice = useSelector((state) => state.appslice)  
+    const language = appslice.language
 
   return (
     <main className="w-full center flex-col min-h-screen mb-[10vh]">
         <section className="w-full center text-center h-[50vh] bg-no-repeat bg-fixed bg-cover bg-messagesBg relative">
             <div className="absolute top-0 left-0 h-full w-full opacity-90 bg-black center flex-col">
                 <h1 className="font-bold text-4xl md:text-5xl w-full center text-blue-200 white tracking-wide leading-snug">
-                    Audio Messages
+                    {language === "eng" ? "Audio Messages" : "Messages audio"}
                 </h1>
             </div>
         </section>

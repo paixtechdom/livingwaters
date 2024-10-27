@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react"
 import { About } from "../../assets/Constant"
 import videoBg from "../../assets/videos/ocean.mp4"
+import { useSelector } from "react-redux"
+
+
 
 export const Hero = () => {
     const [ i, setI ] = useState(0)
+    const appslice = useSelector((state) => state.appslice)  
+    const language = appslice.language
 
     useEffect(() => {
         const int = setInterval(() => {
@@ -13,8 +18,9 @@ export const Hero = () => {
     }, [i])
 
     const slide = () => {
-        setI(i == About.core_activities.length - 1 ? 0 : prev => prev + 1 )
+        setI(i == About[language].core_activities.length - 1 ? 0 : prev => prev + 1 )
     }
+
 
     return(
         <section className="w-full h-screen center overflow-hidden relative">
@@ -30,7 +36,7 @@ export const Hero = () => {
 
             <div className="flex flex-col gap-4 z-20 w-11/12 lg:w-10/12 text-center">
                 <p className="text-white blue-100">
-                    Welcome to
+                    {language === "eng" ? "Welcome to" : "Bienvenue à"}
                 </p>
 
                 <h1 className="font-bold text-4xl md:text-5xl w-full center text-blue-200 white tracking-wide leading-snug">
@@ -41,7 +47,7 @@ export const Hero = () => {
                     <div className="flex relative w-full">
 
                         {
-                            About.core_activities.map((act, j) => (
+                            About[language].core_activities.map((act, j) => (
                                 <p  key={j}className={`font-bold text-white text-xl transition-all duration-1000 absolute top-0 ${i == j ? "" : "opacity-0 ml-10"} w-full `}>
                                     {act.title}
                                 </p>
@@ -49,7 +55,7 @@ export const Hero = () => {
                         }
                     </div>
 
-                    <div className={`h-2 w-16 mt-9 ${About.core_activities[i].bg}`}></div>
+                    <div className={`h-2 w-16 mt-9 ${About[language].core_activities[i].bg}`}></div>
 
                 </div>
 

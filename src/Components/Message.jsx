@@ -4,13 +4,15 @@ import { ConvertFileSize, FormatDate, FormatId } from "../assets/Functions";
 import { backendLocation } from "../assets/Constant";
 import { AppContext } from "../App";
 import { BiDownload } from "react-icons/bi";
+import { useSelector } from "react-redux"
 
 
 const Message = ({message, i}) => {
     const [ clickedDownload, setClickedDownload ] = useState(false)
     const [ failedDownload, setFailedDownload ] = useState(false)
     const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
-
+    const appslice = useSelector((state) => state.appslice)  
+    const language = appslice.language
 
     const handleDownload = (e) => {
         e.preventDefault()
@@ -59,7 +61,7 @@ const Message = ({message, i}) => {
                             {/* <span>
                                 {ConvertFileSize(message.size)}
                             </span>  */}
-                            Download
+                            {language === "eng" ? "Download" : "Télécharger"}
                          </span>
                     } 
                     type={''}

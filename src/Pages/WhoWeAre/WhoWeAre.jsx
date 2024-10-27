@@ -2,15 +2,22 @@ import { About } from "../../assets/Constant"
 import { Button } from "../../Components/Utils/Button"
 import lead_minister from "../../assets/images/dev/papa.jpg"
 import { InfoCard } from "../../Components/Utils/InfoCard"
+import { useSelector } from "react-redux"
+
+
 
 const WhoWeAre = () => {
+    const appslice = useSelector((state) => state.appslice)  
+    const language = appslice.language
+
+
   return (
     <main className="w-full relative center flex-col min-h-screen pb-[10vh]">
 
       <section className="w-full center text-center h-[50vh] bg-no-repeat bg-fixed bg-cover bg-aboutBg relative">
         <div className="absolute top-0 left-0 h-full w-full opacity-90 bg-black center flex-col">
             <h1 className="font-bold text-4xl md:text-5xl w-full center text-blue-200 white tracking-wide leading-snug">
-                Who We Are
+                {language === "eng" ? "Who We Are" : "Qui nous sommes"}
             </h1>
         </div>
       </section>
@@ -23,7 +30,7 @@ const WhoWeAre = () => {
             </h2>
             <div className="flex flex-col gap-2 text-zinc-500">
               {
-                About.who_we_are.map((j, i) => (
+                About[language].who_we_are.map((j, i) => (
                   <p key={i}>
                     {j}
                   </p>
@@ -38,19 +45,19 @@ const WhoWeAre = () => {
                 <img src={lead_minister} alt="Lead Minister" className="h-full w-full object-cover rounded-xl"/>
             </div>
             <div className="flex flex-col text-center">
-              <strong>Lead Minister</strong>
+              <strong>{language === "eng" ? "Lead Minister" : ""}</strong>
               <p className="uppercase">Prophet Onido Innocent Anomi</p>
             </div>
           </div>
         </section>
         
         <div className="flex flex-col gap-9">
-          <InfoCard data={About.vision.desc} title={["Our", "Vision"]}/>
+          <InfoCard data={About[language].vision.desc} title={language === "eng" ?["Our", "Vision"] : ["Notre", "Vision"]}/>
         </div>
 
           <div className="flex flex-col gap-3 text-center w-11/12 lg:w-10/12 text-zinc-700">
           {
-            About.mission.more.map((j, i) => (
+            About[language].mission.more.map((j, i) => (
               <p key={i}>
                 {j}
               </p>
@@ -59,17 +66,17 @@ const WhoWeAre = () => {
           </div>
 
         <div className="flex flex-col gap-9">
-          <InfoCard data={About.mission.desc} title={["Our", "Mission"]}/>
+          <InfoCard data={About[language].mission.desc} title={language === "eng" ? ["Our", "Mission"] : ["Notre", "Mission"]}/>
           <p></p>
         </div>
 
         <div className="flex flex-col gap-7 my-[10vh]">
           <h3 className="font-bold text-center text-4xl">
-            Our Core Activities
+            {language === "eng" ? "Our Core Activities" : ""}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-full">
             {
-              About.core_activities.map((act, i) =>(
+              About[language].core_activities.map((act, i) =>(
                 <div key={i} className="flex relative shadow-2xl rounded-xl overflow-hidden w-full">
                     <img src={act.img} alt={act.title} className="object-cover h-[50vh] md:h-[40vh] w-full"/>
 

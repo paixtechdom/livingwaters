@@ -11,7 +11,7 @@ export const InfoCard = ({data, title}) => {
    
     return(
         <section id={title[1]} className="w-full center">
-            <div className="flex flex-col lg:flex-row justify-between w-11/12  h-full lg:gap-0  bg-white p-4 py-9 lg:p-9 rounded-3xl shadow-sm">
+            <div className="flex flex-col lg:flex-row justify-between w-11/12  h-full lg:gap-0  bg-white p-4 py-9 lg:p-9 rounded-3xl shadow-xl">
                 <div className="flex flex-col w-full lg:w-4/12 justify-center items-end text-3xl lg:text-4xl pr-3 text-zinc-600 font-bold border-r border-orange gap-3">
                     {
                         title.map((t, i) => (

@@ -4,10 +4,15 @@ import GalleryComponent from '../../../Components/Gallery/GalleryComponent'
 import { GrGallery } from 'react-icons/gr'
 import { FetchImages } from '../../../assets/Functions'
 import { AppContext } from '../../../App'
+import { useSelector } from "react-redux"
 
 const PicturesPage = () => {
   const { images, setImages } = useContext(AppContext)
   const [ page, setPage ] = useState(0)
+  
+  const appslice = useSelector((state) => state.appslice)  
+  const language = appslice.language
+
 
   useEffect(() => {
     FetchImages(setImages, 20, page)
@@ -18,7 +23,7 @@ const PicturesPage = () => {
         <section className="w-full center text-center h-[50vh] bg-no-repeat bg-fixed bg-cover bg-messagesBg relative">
             <div className="absolute top-0 left-0 h-full w-full opacity-90 bg-black center flex-col">
                 <h1 className="font-bold text-4xl md:text-5xl w-full center text-blue-200 white tracking-wide leading-snug">
-                    Pictures
+                    {language === "eng" ? "Pictures" : "Photos"}
                 </h1>
             </div>
         </section>
