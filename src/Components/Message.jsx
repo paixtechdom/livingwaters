@@ -47,7 +47,7 @@ const Message = ({message, i}) => {
     return(
         <div id={FormatId(message.title)} className="center w-full flex-col gap-4 bg-white p-7 rounded-xl border border-zinc-300 text-sm">
 
-            <h3 className="w-full text-black text-[15px]">{message.title.replaceAll('_', ' ')}</h3>
+            <p className="w-full text-black text-[15px]">{message.title.replaceAll('_', ' ')}</p>
 
             <div className="flex flex-wrap gap-3 justify-between items-center w-full">
                 {/* <p className="text-gray-700">{FormatDate(message.date)}</p> */}

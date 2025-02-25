@@ -12,7 +12,7 @@ import WhoWeAre from './Pages/WhoWeAre/WhoWeAre';
 import MediaPage from './Pages/Media/MediaPage';
 import MessagesPage from './Pages/Media/Messages/MessagesPage';
 import PicturesPage from './Pages/Media/Pictures/PicturesPage';
-
+import { ZoomedImage } from './Components/Utils/ZoomedImage';
 
 
 const AMessagePage = lazy(() => import('./Pages/Admin/messages/amessage/page'));
@@ -37,16 +37,15 @@ export const AppRouter = () => {
             <Router>
                 <Suspense fallback={<Loader />}>
                     <Navbar />
+                    <ZoomedImage />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/who-we-are" element={<WhoWeAre />} />
                         <Route path="/media" element={<MediaPage />} />
                         <Route path="/audio-messages" element={<MessagesPage />} />
                         <Route path="/pictures" element={<PicturesPage />} />
-                        {/* <Route path="/" element={<MesagesList />} /> */}
                         <Route path="/admin/upload" element={<UploadNewMessagePage />} />
                         <Route path="/admin/login" element={<LoginPage />} />
-                        {/* <Route path="/admin/messages" element={<MessagesPage />} /> */}
                         <Route path="/admin/messages/:id" element={<AMessagePage />} />
                         <Route path="/*" element={<PageNotFound />} />
                     </Routes>

@@ -93,8 +93,7 @@ const Navbar = () => {
                     {/* NAVBAR TOGGLER */}
                     <div className="flex gap-3 items-center ">
                         {
-                            scrolledDown &&
-                            <div className={`flex justify-end w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row lg:hidden`}>
+                            <div className={`flex justify-end w-fit gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row lg:hidden`}>
                                 <Button 
                                     text={language==="eng" ? "Francais" : "English"} 
                                     type={'primary'} 
@@ -111,7 +110,7 @@ const Navbar = () => {
                         }
 
                         <div onClick={() => dispatch(toggleShowNav(!showNav))}
-                            className={`relative lg:hidden cursor-pointer  ${!scrolledDown ? "text-white" : "text-black"} z-50`}>
+                            className={`relative lg:hidden cursor-pointer  ${scrolledDown && !showNav ? "text-black" : "text-white"} z-50`}>
                             {
                                 showNav ? 
                                 <BiX className="text-5xl"/> :

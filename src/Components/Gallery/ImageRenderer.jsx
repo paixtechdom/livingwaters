@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react"
-// import ""
+import { LazyLoadImage } from "react-lazy-load-image-component"
+import  "react-lazy-load-image-component/src/effects/blur.css"
+import  "react-lazy-load-image-component/src/effects/opacity.css"
+import { useDispatch } from "react-redux";
+import { setImageSrc, toggleShowImageSlide } from "../../assets/store/ImageSlice";
+
 
 const ImageRenderer = ({ src, alt }) => {
   const [spanClass, setSpanClass] = useState("");
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const img = new Image();
@@ -29,7 +35,19 @@ const ImageRenderer = ({ src, alt }) => {
   }, [src]);
 
   return (
-    <div className={`${spanClass} relative w-full rounded-lg overflow-hidden`}> 
+    <div className={`${spanClass} bg-red-500  relative w-full rounded-lg overflow-hidden object-cover cursor-pointer h-[30vh]`} onClick={() => {
+      
+      dispatch(toggleShowImageSlide(true))
+      dispatch(setImageSrc(src))
+      
+    }}> 
+      {/* <LazyLoadImage 
+        src={src} 
+         height={'100%'}
+        placeholderSrc={alt} 
+        effect='blur'
+        className="h-f ull w-full object-cover"  
+      /> */}
       <img src={src} alt={alt} className="w-full h-full object-cover" />
     </div>
   );

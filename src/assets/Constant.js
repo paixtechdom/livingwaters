@@ -7,9 +7,10 @@ import evangelism from "../assets/images/dev/evangelism.jpg"
 import worship from "../assets/images/dev/worship.jpg"
 import upcoming_program_eng from "./images/programmes/LUP 2025 eng.jpg";
 import upcoming_program_fr from "./images/programmes/LUP 2025 fr.jpg";
+import event_eng from "./images/events/prophet wedding anniversary eng.jpg";
+import event_fr from "./images/events/prophet wedding anniversary fr.jpg";
 
-import { FaFacebook } from "react-icons/fa"
-import { BsInstagram, BsTwitter, BsYoutube } from "react-icons/bs"
+
 
 
 
@@ -114,6 +115,17 @@ export const Navigation =
 
 
 
+export const Event = {
+    eng: {
+        header: "We celebrate our Father",
+        img: event_eng
+    },
+    fr: {
+        header: "Nous célébrons notre Père",
+        img: event_fr
+    }
+}
+
 export const Upcoming_program_content = {
     eng: {
         header: "Upcoming Program",
@@ -123,6 +135,7 @@ export const Upcoming_program_content = {
         header: "Programme à venir",
         img: upcoming_program_fr
     },
+
 }
 
 
@@ -140,11 +153,11 @@ export const About =  {
         vision: {
             desc: [
                 {
-                    desc: "Living Waters Fellowship based solely on the purpose of raising men who are totally sold out to God (in spirit and in truth) and their reality will be a source of Life to men all over the earth."
+                    desc: "Living Waters Fellowship is based solely on the purpose of raising men who are totally sold out to God (in spirit and in truth) and their reality will be a source of Life to men all over the earth."
                 }
             ],
             more: [
-                `John 7:3S speaks about believing which is Faith and we're made to understand in Hebrews 11:1, "Now faith is being sure of what we hope for and certain of what we do not see." This means we must come to the state where all that is produced from our life GIVES LIFE, and that must be our reality`
+                `John 7:38 speaks about believing which is Faith and we're made to understand in Hebrews 11:1, "Now faith is being sure of what we hope for and certain of what we do not see." This means we must come to the state where all that is produced from our life GIVES LIFE, and that must be our reality`
             ]
     
         },
@@ -153,7 +166,7 @@ export const About =  {
             pre: "Zechariah 14:8 - And it shall be in that day that living waters shall go out from Jemsalem, half of them to the Eastern [Dead] Sea and half of them to the Western [Mediterranean] Sea; in summer and in winter shall it be [AMP]",
             desc: [
                 {
-                    desc: "We are to flow to all men in all seasons, carrying the banner of Jeus bodly, affecting men positively where ever we find, ourselves to the glory of God."
+                    desc: "We are to flow to all men in all seasons, carrying the banner of Jesus boldly, affecting men positively where ever we find, ourselves to the glory of God."
                 }
             ],
             more: [
@@ -261,16 +274,16 @@ export const Locations = {
                     },
                 ]
             },
-            {
-                country: "Benin Republic",
-                centers: [
-                    {
-                        name: "Porto-Novo Chapter",
-                        address: "RCCG, Agatha, Porto-Novo",
-                        time: "5:00pm - 7:00pm"
-                    }
-                ]
-            },
+            // {
+            //     country: "Benin Republic",
+            //     centers: [
+            //         {
+            //             name: "Porto-Novo Chapter",
+            //             address: "RCCG, Agatha, Porto-Novo",
+            //             time: "5:00pm - 7:00pm"
+            //         }
+            //     ]
+            // },
             {
                 country: "Online Meetings",
                 centers: [
@@ -298,16 +311,16 @@ export const Locations = {
                     }
                 ]
             },
-            {
-                country: "Republic du Bénin",
-                centers: [
-                    {
-                        name: "Chapitre de Porto-Novo",
-                        address: "RCCG, Agatha, Porto-Novo",
-                        time: "17h00 - 19h00"
-                    }
-                ]
-            },
+            // {
+            //     country: "Republic du Bénin",
+            //     centers: [
+            //         {
+            //             name: "Chapitre de Porto-Novo",
+            //             address: "RCCG, Agatha, Porto-Novo",
+            //             time: "17h00 - 19h00"
+            //         }
+            //     ]
+            // },
             {
                 country: "Réunions en ligne",
                 centers: [
@@ -329,67 +342,56 @@ export const Locations = {
     }
 
 export const Contacts = {
-    eng: {
-        social_media: [
-            {
-                title: "Facebook",
-                link: "",
-                icon: "facebook text-blue-700"
-            },
-            {
-                title: "X - (Twitter)",
-                link: "",
-                icon: "twitter"
-            },
-            {
-                title: "Instagram",
-                link: "",
-                icon: "instagram "
-            },
-            {
-                title: "Youtube",
-                link: "",
-                icon: "youtube text-red-700"
-            }
-        ],
-        contacts: [
-            {
-                title: "",
-                link: "",
-                icon: ""
-            },
-            {
-                title: "",
-                link: "",
-                icon: ""
-            },
-        ]
-    },
-    fr: {
-        social_media: [
-            {
-                title: "Facebook",
-                link: "",
-                icon: "facebook text-blue-700"
-            },
-            {
-                title: "X - (Twitter)",
-                link: "",
-                icon: "twitter"
-            },
-            {
-                title: "Instagram",
-                link: "",
-                icon: "instagram"
-            },
-            {
-                title: "YouTube",
-                link: "",
-                icon: "youtube text-red-700"
-            }
-        ],
-        contacts: []
-    }
+    social_media: [
+        {
+            title: "Living Waters",
+            link: "https://www.facebook.com/profile.php?id=100094922293903",
+            icon: "facebook"
+        },
+        {
+            title: "Livingwatersg",
+            link: "https://x.com/livingwatersg",
+            icon: "twitter"
+        },
+        {
+            title: "Living_waters_global_ministry",
+            link: "https://www.instagram.com/living_waters_global_ministry/profilecard/?igsh=dDg5N3gyYm80eGc1",
+            icon: "instagram"
+        },
+        {
+            title: "Living_waters_global",
+            link: "https://vm.tiktok.com/ZMhSkGqQ5/",
+            icon: "tiktok"
+        }
+    ],
+    numbers: [
+        {
+            title: "+229 577 969 63",
+            link: "tel:+229 577 969 63"
+        },
+        {
+            title: "+229 481 294 56",
+            link: "tel:+229 481 294 56"
+        },
+        {
+            title: "+234 912 939 7179",
+            link: "tel:+234 912 939 7179"
+        },
+        {
+            title: "+234 706 373 0930",
+            link: "tel:+234 706 373 0930"
+        },
+    ],
+    email: [
+        {
+            title: "livingwatersglobalministry4@gmail.com",
+            link: "mailto:livingwatersglobalministry4@gmail.com"
+        },
+        {
+            title: "admin@livingwatersglobalministry.org",
+            link: "mailto:admin@livingwatersglobalministry.org"
+        }
+    ]
 }
 
 

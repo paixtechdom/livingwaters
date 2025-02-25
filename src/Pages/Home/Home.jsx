@@ -31,7 +31,7 @@ const Home = () => {
         
     useEffect(() => {
         if(images.length < 1){
-            FetchImages(setImages, 6)
+            FetchImages(setImages, 8)
         }
 
         setFetching(true)
@@ -69,6 +69,7 @@ const Home = () => {
                 </div>
 
             </section>
+
 
             <section className="flex flex-col gap-9 w-full bg-white p-9 py-16 rounded-2xl">
                 <div className="flex flex-col gap-4 center">
