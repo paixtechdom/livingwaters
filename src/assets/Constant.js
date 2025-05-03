@@ -5,8 +5,8 @@ import prayers from "../assets/images/dev/prayers.jpg"
 import teaching from "../assets/images/dev/teaching.jpg"
 import evangelism from "../assets/images/dev/evangelism.jpg"
 import worship from "../assets/images/dev/worship.jpg"
-import upcoming_program_eng from "./images/programmes/LUP 2025 eng.jpg";
-import upcoming_program_fr from "./images/programmes/LUP 2025 fr.jpg";
+import upcoming_program_eng from "/next eng.jpg";
+import upcoming_program_fr from "/next fr.jpg";
 import event_eng from "./images/events/prophet wedding anniversary eng.jpg";
 import event_fr from "./images/events/prophet wedding anniversary fr.jpg";
 
