@@ -12,7 +12,7 @@ import WhoWeAre from './Pages/WhoWeAre/WhoWeAre';
 import MediaPage from './Pages/Media/MediaPage';
 import MessagesPage from './Pages/Media/Messages/MessagesPage';
 import PicturesPage from './Pages/Media/Pictures/PicturesPage';
-import { ZoomedImage } from './Components/Utils/ZoomedImage';
+import { ZoomedImage } from './Components/Gallery/ZoomedImage';
 
 
 const AMessagePage = lazy(() => import('./Pages/Admin/messages/amessage/page'));

@@ -9,6 +9,9 @@ import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, toggleShowN
 import { setLanguage } from "../../assets/store/AppSlice/AppSlice"
 import { BiMenu, BiX } from "react-icons/bi"
 import { RiArrowDropDownFill, RiArrowDropUpFill } from "react-icons/ri"
+import { TbSwitch, TbSwitch2, TbSwitch3 } from "react-icons/tb"
+import { BsNintendoSwitch } from "react-icons/bs"
+import { AiOutlineSwitcher } from "react-icons/ai"
 // import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, toggleShowNav } from "../store/navigation/navigationSlice.jsx"
 
 

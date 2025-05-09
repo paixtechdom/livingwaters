@@ -16,6 +16,9 @@ const imageSlice = createSlice({
         setImageSrc: (state, action) => {
             state.imageSrc = action.payload
         },
+        setImages: (state, action) => {
+            state.images = action.payload
+        },
         addImage: (state, action) => {
             state.images.push(action.payload)
         },
@@ -26,7 +29,7 @@ const imageSlice = createSlice({
 })
 
 
-export const { toggleShowImageSlide, setImageSrc, addImage, clearImage } = imageSlice.actions
+export const { toggleShowImageSlide, setImageSrc, setImages, addImage, clearImage } = imageSlice.actions
 
 
 export default imageSlice.reducer

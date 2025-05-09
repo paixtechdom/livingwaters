@@ -46,7 +46,7 @@ const WhoWeAre = () => {
             </div>
             <div className="flex flex-col text-center">
               <strong>{language === "eng" ? "Lead Minister" : ""}</strong>
-              <p className="uppercase">Prophet Onido Innocent Anomi</p>
+              <p className="uppercase">Onido Innocent A.</p>
             </div>
           </div>
         </section>

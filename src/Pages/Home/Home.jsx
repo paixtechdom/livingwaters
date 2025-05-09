@@ -237,7 +237,7 @@ const Home = () => {
                 </div>
                 {
                     images.length > 0 &&
-                    <GalleryComponent images={images} />
+                    <GalleryComponent images={images.filter((img, i) => i < 5 && img)} />
                 }
             </section>
 

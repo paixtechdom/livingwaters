@@ -1,5 +1,5 @@
 import React, { createContext, useEffect } from 'react'
-import { AppRouter } from './Router';
+import { AppRouter } from './AppRouter';
 import './assets/Styles/index.css';
 import { useDispatch } from "react-redux";
 import { DocscrollTop } from "./assets/Functions"

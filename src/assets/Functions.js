@@ -162,10 +162,11 @@ const fetchWithRetry = async (url, options, retries = 2) => {
 
 
 
-export const FetchImages = async (setImages, lim, page, images) => {
+export const FetchImages = async (setImages, lim, page) => {
   await axios.get(`${backendLocation}/images.php/${lim}/${page}`)
     .then((res) => {
-      setImages(res.data)
+      // console.log(res.data)
+      setImages(prev => [...prev, res.data])
       // if(page){
       //   setImages(...images, res.data)
       // }else{
