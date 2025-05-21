@@ -17,8 +17,8 @@ import event_fr from "./images/events/prophet wedding anniversary fr.jpg";
 export const Logo = logo
 
 
-export const backendLocation = 'http://localhost:80/livingBackend'
-// export const backendLocation = 'https://livingwatersglobalministry.org/'
+// export const backendLocation = 'http://localhost:80/livingBackend'
+export const backendLocation = 'https://livingwatersglobalministry.org/'
 
 export const Navigation =
     {

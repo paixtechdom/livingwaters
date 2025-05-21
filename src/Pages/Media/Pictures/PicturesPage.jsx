@@ -45,30 +45,30 @@ const PicturesPage = () => {
 
   }
 
-  const HandleScroll = () => {
-    const pos = LoadMorePositionRef.current.getBoundingClientRect()
-    console.log(pos.top)
-    console.log(pos.top < 600 && pos.top > 400)
-    setPositionSetToLoadMore(pos.top < 600 && pos.top > 400)
-  }
+  // const HandleScroll = () => {
+  //   const pos = LoadMorePositionRef.current.getBoundingClientRect()
+  //   console.log(pos.top)
+  //   console.log(pos.top < 600 && pos.top > 400)
+  //   setPositionSetToLoadMore(pos.top < 600 && pos.top > 400)
+  // }
 
-  useEffect(() => {
+  // useEffect(() => {
     
   
    
-  }, [setPositionSetToLoadMore])
+  // }, [setPositionSetToLoadMore])
   
 
   useEffect(() => {
     getTotalNoOfImages()
 
-    FetchImages(setImages, 10, startingPoint)
-    setStartingPoint(10)
+    FetchImages(setImages, 20, startingPoint)
+    setStartingPoint(20)
     // console.log(images)
     
-    document.addEventListener('scroll', HandleScroll)
+    // document.addEventListener('scroll', HandleScroll)
 
-    return () => document.removeEventListener('scroll', HandleScroll)
+    // return () => document.removeEventListener('scroll', HandleScroll)
 
   }, [])
 
@@ -85,7 +85,7 @@ const PicturesPage = () => {
       <div className="center flex-col gap-9 w-11/12 lg:w-10/12 min-h-screen">
         {
           images.length > 0 ?
-          <section className="flex flex-col gap-9 w-full md:mt-[15vh]">
+          <section className="flex flex-col gap-9 w-full mt-[10vh] md:mt-[15vh]">
             <GalleryComponent images={images} loading={loading} />
           </section> :
           <>
@@ -105,8 +105,8 @@ const PicturesPage = () => {
           <div ref={LoadMorePositionRef}>
             <Button
               func={() => {
-                setStartingPoint(prev => prev + 10)
-                FetchImages(setImages, 10, startingPoint)
+                setStartingPoint(prev => prev + 20)
+                FetchImages(setImages, 20, startingPoint)
               }}
               text={"View More"}
               className={"w-fit shadow-xl font-bold "}
