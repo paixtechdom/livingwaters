@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Button } from "./Utils/Button";
 import { ConvertFileSize, FormatDate, FormatId } from "../assets/Functions";
-import { backendLocation } from "../assets/Constant";
+import { backendLocation } from "../../public/Constant";
 import { AppContext } from "../App";
 import { BiDownload } from "react-icons/bi";
 import { useSelector } from "react-redux"
 
 
-const Message = ({message, i}) => {
+const 
+Message = ({message, i}) => {
     const [ clickedDownload, setClickedDownload ] = useState(false)
     const [ failedDownload, setFailedDownload ] = useState(false)
     const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
@@ -18,7 +19,7 @@ const Message = ({message, i}) => {
         e.preventDefault()
         if(!clickedDownload){
             setClickedDownload(true)    
-            const url = `${backendLocation}/download.php?file=${encodeURIComponent(message.title)}`;
+            const url = `${backendLocation}/download.php?file=${encodeURIComponent((message.title).replaceAll(" ", "~"))}`;
             fetch(url)
             .then(response => response.blob())
             .then(blob => {

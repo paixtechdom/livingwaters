@@ -1,4 +1,3 @@
-import { backendLocation } from "./Constant";
 import axios from "axios";
 
 export const DocscrollTop = () => {

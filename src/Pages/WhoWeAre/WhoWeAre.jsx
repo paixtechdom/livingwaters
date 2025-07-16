@@ -1,6 +1,6 @@
-import { About } from "../../assets/Constant"
+import { About } from "../../../public/Constant"
 import { Button } from "../../Components/Utils/Button"
-import lead_minister from "../../assets/images/dev/papa.jpg"
+import lead_minister from "../../assets/images/dev/papa 1.jpg"
 import { InfoCard } from "../../Components/Utils/InfoCard"
 import { useSelector } from "react-redux"
 
@@ -74,11 +74,11 @@ const WhoWeAre = () => {
           <h3 className="font-bold text-center text-4xl">
             {language === "eng" ? "Our Core Activities" : ""}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 w-full">
             {
               About[language].core_activities.map((act, i) =>(
                 <div key={i} className="flex relative shadow-2xl rounded-xl overflow-hidden w-full">
-                    <img src={act.img} alt={act.title} className="object-cover h-[50vh] md:h-[40vh] w-full"/>
+                    <img src={act.img} alt={act.title} className="object-cover h-[50vh] md:h-[40vh] lg:h-[30vh] w-full"/>
 
                     <div className="absolute bottom-0 [5 0%] top -[50%] left-0 bg-black w-full text-center h-[10vh] md:h-[7vh] center bg-opacity-80 text-white">
                       {act.title}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Logo, Navigation } from '../../assets/Constant'
+import { Logo, Navigation } from '../../../public/Constant'
 import { Button } from "../Utils/Button"
 import Cookie from "js-cookie"
 import { ConfirmLogout } from "../Utils/ConfirmLogout"

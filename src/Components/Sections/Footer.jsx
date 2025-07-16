@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { About, Contacts, Navigation } from "../../assets/Constant"
+import { About, Contacts, Navigation } from "../../../public/Constant"
 import { Button } from "../Utils/Button"
 import { useDispatch, useSelector } from "react-redux"
 import { setLanguage } from "../../assets/store/AppSlice/AppSlice"

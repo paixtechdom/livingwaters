@@ -1,15 +1,14 @@
-import logo from "../assets/images/logo.png"
-
-
-import prayers from "../assets/images/dev/prayers.jpg"
-import teaching from "../assets/images/dev/teaching.jpg"
-import evangelism from "../assets/images/dev/evangelism.jpg"
-import worship from "../assets/images/dev/worship.jpg"
+// import logo from "../assets/images/logo.png"
+import logo from "../src/assets/images/logo.png"
+import prayers from "../src/assets/images/dev/prayers.jpg"
+import teaching from "../src/assets/images/dev/teaching.jpg"
+import evangelism from "../src/assets/images/dev/evangelism.jpg"
+import prophetic from "../src/assets/images/dev/prophetic.jpg"
+import worship from "../src/assets/images/dev/worship.jpg"
 import upcoming_program_eng from "/next eng.jpg";
 import upcoming_program_fr from "/next fr.jpg";
-import event_eng from "./images/events/prophet wedding anniversary eng.jpg";
-import event_fr from "./images/events/prophet wedding anniversary fr.jpg";
-
+import event_eng from "../src/assets/images/events/prophet wedding anniversary eng.jpg";
+import event_fr from "../src/assets/images/events/prophet wedding anniversary fr.jpg";
 
 
 
@@ -39,10 +38,10 @@ export const Navigation =
                         title: "Pictures",
                         link: "pictures"
                     },
-                    {
-                        title: "Messages",
-                        link: "audio-messages"
-                    }
+                    // {
+                    //     title: "Messages",
+                    //     link: "audio-messages"
+                    // }
                 ]
                 
             },
@@ -109,10 +108,7 @@ export const Navigation =
             // },
         ]
         
-    }
-
-
-
+}
 
 
 export const Event = {
@@ -139,7 +135,6 @@ export const Upcoming_program_content = {
 }
 
 
-
 export const About =  {
     eng:
     {
@@ -153,7 +148,7 @@ export const About =  {
         vision: {
             desc: [
                 {
-                    desc: "Living Waters Fellowship is based solely on the purpose of raising men who are totally sold out to God (in spirit and in truth) and their reality will be a source of Life to men all over the earth."
+                    desc: "Living Waters Global Ministry is called to save, raise and equip men who are totally sold out to God, and their reality will be a source of light and life to all men all over the earth."
                 }
             ],
             more: [
@@ -163,7 +158,7 @@ export const About =  {
         },
     
         mission: {
-            pre: "Zechariah 14:8 - And it shall be in that day that living waters shall go out from Jemsalem, half of them to the Eastern [Dead] Sea and half of them to the Western [Mediterranean] Sea; in summer and in winter shall it be [AMP]",
+            pre: "Zechariah 14:8 - And it shall be in that day, that living waters shall go out from Jemsalem, half of them to the Eastern [Dead] Sea and half of them to the Western [Mediterranean] Sea; in summer and in winter shall it be [AMP]",
             desc: [
                 {
                     desc: "We are to flow to all men in all seasons, carrying the banner of Jesus boldly, affecting men positively where ever we find, ourselves to the glory of God."
@@ -197,6 +192,11 @@ export const About =  {
                 img: evangelism,
                 bg: "bg-yellow-500"
             },
+            {
+                title: "The Prophetic",
+                img: prophetic,
+                bg: "bg-purple-500"
+            },
     
         ]
     
@@ -212,7 +212,7 @@ export const About =  {
         vision: {
             desc: [
                 {
-                    desc: "La Fellowship des Eaux Vives est basée uniquement sur le but de former des hommes totalement consacrés à Dieu (en esprit et en vérité) et leur réalité sera une source de Vie pour les hommes sur toute la terre."
+                    desc: "Living Waters Global Ministry est appelée à sauver, former et équiper des hommes entièrement dévoués à Dieu, dont la réalité sera une source de lumière et de vie pour tous les hommes à travers le monde."
                 }
             ],
             more: [
@@ -253,12 +253,16 @@ export const About =  {
                 title: "Évangélisation",
                 img: evangelism,
                 bg: "bg-yellow-500"
+            },
+            {
+                title: "The Prophetic",
+                img: prophetic,
+                bg: "bg-purple-500"
             }
         ]
     }
     
 }
-
 
 
 export const Locations = {
@@ -272,28 +276,33 @@ export const Locations = {
                         address: "33, Fadunsin Avenue, Ogba, Lagos",
                         time: "5:00pm - 7:00pm"
                     },
+                    {
+                        name: "Ibadan Chapter",
+                        address: "Coming Soon",
+                        // time: ""
+                    },
                 ]
             },
-            // {
-            //     country: "Benin Republic",
-            //     centers: [
-            //         {
-            //             name: "Porto-Novo Chapter",
-            //             address: "RCCG, Agatha, Porto-Novo",
-            //             time: "5:00pm - 7:00pm"
-            //         }
-            //     ]
-            // },
+            {
+                country: "Benin Republic",
+                centers: [
+                    {
+                        name: "Benin Republic Chapter",
+                        address: "Coming Soon",
+                        // time: ""
+                    }
+                ]
+            },
             {
                 country: "Online Meetings",
                 centers: [
                     {
-                        name: "Online Prayer Meeting", 
+                        name: "Online Prayer Meeting (Wednesdays)", 
                         address: "https://chat.whatsapp.com/HqGToFhXIkY7NIVhHkAqiY",
                         time: "9:00pm - 10:00pm",
                     },
                     {
-                        name: "Online Bible Study", 
+                        name: "Online Bible Study (Fridays)", 
                         address: "https://chat.whatsapp.com/HqGToFhXIkY7NIVhHkAqiY",
                         time: "9:00pm - 10:00pm",
                     },
@@ -308,29 +317,34 @@ export const Locations = {
                         name: "Chapitre de Lagos",
                         address: "33, Fadunsin Avenue, Ogba, Lagos",
                         time: "17h00 - 19h00"
+                    },
+                    {
+                        name: "Chapitre d’Ibadan",
+                        address: "À venir bientôt",
+                        // time: ""
+                    },
+                ]
+            },
+            {
+                country: "Republic du Bénin",
+                centers: [
+                    {
+                        name: "Chapitre de la République du Bénin",
+                        address: "À venir bientôt",
+                        // time: ""
                     }
                 ]
             },
-            // {
-            //     country: "Republic du Bénin",
-            //     centers: [
-            //         {
-            //             name: "Chapitre de Porto-Novo",
-            //             address: "RCCG, Agatha, Porto-Novo",
-            //             time: "17h00 - 19h00"
-            //         }
-            //     ]
-            // },
             {
                 country: "Réunions en ligne",
                 centers: [
                     {
-                        name: "Réunion de prière en ligne", 
+                        name: "Réunion de prière en ligne (Les Mercredis)", 
                         address: "https://chat.whatsapp.com/HqGToFhXIkY7NIVhHkAqiY",
                         time: "21h00 - 22h00"
                     },
                     {
-                        name: "Étude biblique en ligne", 
+                        name: "Étude biblique en ligne (Les Vendredis)", 
                         address: "https://chat.whatsapp.com/HqGToFhXIkY7NIVhHkAqiY",
                         time: "21h00 - 22h00"
                     }
@@ -340,6 +354,59 @@ export const Locations = {
         
 
     }
+
+
+export const ImageFolders = [
+    {
+        title: ["let us pray, ibadan", "Prions, Ibadan"],
+        folderName: "2025-let-us-pray-ibadan",   
+        year: 2025,
+        tag: 'letuspray ibadan',
+    },
+    {
+        title: ["Anazao (benin republic retreat)", "Anazao (Retraite de la Republic du Bénin)"],
+        folderName: "2025-benin-retreat",   
+        year: 2025,
+        tag: 'retreat benin',
+    },
+    {
+        title: ["let us pray, benin republic", "Prions, Republic du Bénin"],
+        folderName: "2025-let-us-pray-benin",   
+        year: 2025,
+        tag: 'letuspray benin',
+    },
+    {
+        title: ["benin republic retreat", "Retraite de la Republic du Bénin"],
+        folderName: "2024-retreat-benin",   
+        year: 2024,
+        tag: 'retreat benin',
+    },
+    {
+        title: ["let us pray, benin republic", "Prions, Republic du Bénin"],
+        folderName: "2024-let-us-pray-benin",   
+        year: 2024,
+        tag: 'letuspray benin',
+    },
+    {
+        title: ["The cry for more, ibadan", "Le Cri pour plus, Ibadan"],
+        folderName: "2023-The-cry-for-more-ibadan",   
+        year: 2023,
+        tag: 'thecryformore ibadan',
+    },
+    {
+        title: ["benin republic retreat", "Retraite de la Republic du Bénin"],
+        folderName: "2023-retreat-benin",   
+        year: 2023,
+        tag: 'retreat benin',
+    },
+    {
+        title: ["let us pray, benin republic", "Prions, Republic du Bénin"],
+        folderName: "2023-let-us-pray-benin",   
+        year: 2023,
+        tag: 'letuspray benin',
+    },
+]
+
 
 export const Contacts = {
     social_media: [

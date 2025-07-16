@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { Button } from "../../../Components/Utils/Button"
 import { LoadingIcon } from "../../../Components/Utils/LoadingIcon"
-import { backendLocation } from "../../../assets/Constant"
+import { backendLocation } from "../../../../public/Constant"
 import { Link, useNavigate } from "react-router-dom"
 import { AppContext } from "../../../App"
 import Cookie from "js-cookie"

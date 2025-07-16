@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     showImageSlide: false,
     imageSrc: "",
-    images: []
+    images: [],
+    currentFolder: ""
 }
 
 const imageSlice = createSlice({
@@ -15,6 +16,9 @@ const imageSlice = createSlice({
         },
         setImageSrc: (state, action) => {
             state.imageSrc = action.payload
+        },
+        setCurrentFolder: (state, action) => {
+            state.currentFolder = action.payload
         },
         setImages: (state, action) => {
             state.images = action.payload
@@ -29,7 +33,7 @@ const imageSlice = createSlice({
 })
 
 
-export const { toggleShowImageSlide, setImageSrc, setImages, addImage, clearImage } = imageSlice.actions
+export const { toggleShowImageSlide, setImageSrc, setImages, addImage, clearImage, setCurrentFolder } = imageSlice.actions
 
 
 export default imageSlice.reducer

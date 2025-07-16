@@ -3,9 +3,10 @@ import ImageRenderer from "./ImageRenderer";
 import { useDispatch, useSelector } from "react-redux";
 import { addImage, clearImage, setImages } from "../../assets/store/ImageSlice";
 import { ImageLoadingAnimie } from "../../Pages/Media/Pictures/PicturesPage";
+import { backendLocation } from "../../../public/Constant";
 
 
-const GalleryComponent = ({ images, loading }) => {
+const GalleryComponent = ({ images, loading, folderName }) => {
   
   const dispatch = useDispatch()
   
@@ -18,13 +19,18 @@ const GalleryComponent = ({ images, loading }) => {
     }, [images])
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-4 w-full">
-      
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-4 w-full">
       {
         images.length > 0 &&
-        images?.map((image, index) => (
-          <ImageRenderer key={index} src={image?.fileName} alt={image?.fileName} />
+        images?.map((image) => (
+
+          <ImageRenderer 
+            key={image.fileName} 
+            src={folderName ? `${folderName}/${image.fileName}`
+            : image?.fileName} 
+            alt={image?.fileName} />
         ))
+
       }
 
       {

@@ -1,6 +1,6 @@
 import { Suspense, useContext, useEffect, useState } from "react";
 import { Button } from "../../Components/Utils/Button"
-import { About, Locations, Upcoming_program_content } from "../../assets/Constant";
+import { About, backendLocation, ImageFolders, Locations, Upcoming_program_content } from "../../../public/Constant";
 import { Hero } from "./Hero";
 import { useNavigate } from "react-router-dom";
 import { BsClockFill, BsGeoAltFill, BsHeadset, BsPeopleFill } from "react-icons/bs";
@@ -8,40 +8,62 @@ import { MessageSkeleton } from "../../Components/Utils/MessageSkeleton";
 import Message from "../../Components/Message";
 import { AppContext } from "../../App";
 import { LoadingIcon } from "../../Components/Utils/LoadingIcon";
-import { FetchImages, HandleSearch } from "../../assets/Functions";
+import { HandleSearch } from "../../assets/Functions";
 import { SlCalender } from "react-icons/sl";
 import { GrGallery } from "react-icons/gr";
 import GalleryComponent from "../../Components/Gallery/GalleryComponent";
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import axios from "axios"
+import { ImageLoadingAnimie } from "../Media/Pictures/PicturesPage";
+import ImageRenderer from "../../Components/Gallery/ImageRenderer";
 
 
 
 const Home = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const [ currentLocation, setCurrentLocation ] = useState(0)
     const [ messages, setMessages ] = useState([])
     const [ fetching, setFetching ] = useState(true)
     const [ total, setTotal ] = useState(0)
-    const { setShowAlert, setAlertType, setAlertMessage, images, setImages } = useContext(AppContext)
+    const [ images, setImages ] = useState([])
+    const [ loading, setLoading ] = useState(true)
+
+    const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
 
     const appslice = useSelector((state) => state.appslice)  
     const language = appslice.language
 
+    const FetchImages = async (lim, startingPoint) => {
+        setLoading(true)
+        await axios.get(`${backendLocation}/images.php/${lim}/${startingPoint}/${ImageFolders[0].year}/${(ImageFolders[0].tag.replaceAll(" ", "-"))}`)
+        .then((res) => {
+            setImages(res.data)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+      }
+    
+
         
     useEffect(() => {
         if(images.length < 1){
-            FetchImages(setImages, 8)
+            FetchImages(6, 0)
         }
 
         setFetching(true)
         const delay = setTimeout(() => {
-            HandleSearch("", setFetching, setMessages, setTotal, setShowAlert, setAlertType, setAlertMessage, 4)            
+            // HandleSearch("", setFetching, setMessages, setTotal, setShowAlert, setAlertType, setAlertMessage, 4)            
         }, 1000);
         return () => clearTimeout(delay)
 
-
     }, [])
+
 
 
     return(
@@ -51,7 +73,8 @@ const Home = () => {
 
             <div className="center w-11/12 lg:w-10/12 flex-col gap-[15vh] md:gap-[25vh] overflow-hidden mt-[10vh]"> 
 
-            <section className="flex flex-col w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 my-[15vh] text-center gap-8">
+
+            <section className="flex flex-col w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 my-[10vh] text-center gap-8">
                 <h2 className="text-4xl">
                     {language === "eng" ? "Who we are" : "Qui nous sommes"}
                 </h2>
@@ -71,6 +94,8 @@ const Home = () => {
             </section>
 
 
+
+
             {/* <section className="flex flex-col gap-9 w-full bg-white p-9 py-16 rounded-2xl">
                 <div className="flex flex-col gap-4 center">
                     <div className="flex gap-3 items-center">
@@ -88,6 +113,8 @@ const Home = () => {
 
                 </div>
             </section>  */}
+
+
 
             <section className="w-full flex flex-col gap-4 bg-fellowship">
                 <h2 className="font-bold text-3xl">
@@ -135,7 +162,7 @@ const Home = () => {
                                                 <a href={center.address} className="underline text-blue-900">
                                                     {
                                                         language === "eng" ? 
-                                                        "Join platform" : "Rejoindre la plateforme"
+                                                        "Join the platform" : "Rejoindre la plateforme"
                                                     }</a> 
                                             </div>
 
@@ -149,12 +176,15 @@ const Home = () => {
                                             </div>
 
                                         }
+                                        {
+                                            center.time &&
                                             <div className="flex items-center gap-2">
                                                 <BsClockFill className="text-lg"/>
                                                 <p className="text-sm">
                                                     {center.time}
                                                 </p>
                                             </div>
+                                        }
                                     </div>
                                 ))
                             }
@@ -163,7 +193,9 @@ const Home = () => {
                 }
             </section>
 
-            <section className="flex flex-col gap-9 w-full ">
+
+
+            {/* <section className="flex flex-col gap-9 w-full ">
                 <div className="flex flex-col gap-4">
                     <div className="flex gap-3 items-center">
                         <BsHeadset  className="text-xl"/>
@@ -213,7 +245,7 @@ const Home = () => {
                         </div>
                     }
                 </div>
-            </section>
+            </section> */}
 
             <section className="flex flex-col gap-9 w-full">
                 <div className="flex flex-col gap-4">
@@ -235,10 +267,34 @@ const Home = () => {
                         isDisabled={false}
                     />
                 </div>
+                <div className="grid grid-cols-3 gap-1 md:gap-4 w-full bg-green -400 col-span-3">
                 {
                     images.length > 0 &&
-                    <GalleryComponent images={images.filter((img, i) => i < 5 && img)} />
+                    images?.map((image) => (
+                    // <div>
+                    //     {image.id}
+                        <ImageRenderer 
+                        key={image?.fileName} 
+                        src={ImageFolders[0].folderName ? `${ImageFolders[0].folderName}/${image.fileName}`
+                        : image?.fileName} 
+                        alt={image?.fileName} 
+                        images={images}
+                        folder={ImageFolders[0].folderName}
+                        />
+                    // </div>
+                    ))
+
                 }
+
+                {
+                    loading &&
+                    <>
+                    <ImageLoadingAnimie />
+                    <ImageLoadingAnimie />
+                    <ImageLoadingAnimie />
+                    </>
+                }
+    </div>
             </section>
 
             </div>

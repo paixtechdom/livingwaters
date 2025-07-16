@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { backendLocation } from "../../../../assets/Constant"
+import { backendLocation } from "../../../../../public/Constant"
 import EditMessage from "./EditMessage"
 import { AppContext } from "../../../../App"
 import Cookie from "js-cookie"

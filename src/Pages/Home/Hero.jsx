@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { About } from "../../assets/Constant"
+import { About } from "../../../public/Constant"
 import videoBg from "../../assets/videos/ocean.mp4"
 import { useSelector } from "react-redux"
 
