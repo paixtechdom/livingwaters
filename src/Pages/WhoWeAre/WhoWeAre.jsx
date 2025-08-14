@@ -10,6 +10,7 @@ const WhoWeAre = () => {
     const appslice = useSelector((state) => state.appslice)  
     const language = appslice.language
 
+  
 
   return (
     <main className="w-full relative center flex-col min-h-screen pb-[10vh]">

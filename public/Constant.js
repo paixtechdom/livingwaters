@@ -36,8 +36,12 @@ export const Navigation =
                 sublinks: [
                     {
                         title: "Pictures",
-                        link: "pictures"
+                        link: "media/pictures"
                     },
+                    // {
+                    //     title: "Videos",
+                    //     link: "media/videos"
+                    // },
                     // {
                     //     title: "Messages",
                     //     link: "audio-messages"
@@ -437,16 +441,16 @@ export const Contacts = {
             link: "tel:+229 577 969 63"
         },
         {
-            title: "+229 481 294 56",
-            link: "tel:+229 481 294 56"
-        },
-        {
-            title: "+234 912 939 7179",
-            link: "tel:+234 912 939 7179"
-        },
-        {
             title: "+234 706 373 0930",
             link: "tel:+234 706 373 0930"
+        },
+        {
+            title: "+234 807 540 8149",
+            link: "tel:+234 807 540 8149"
+        },
+        {
+            title: "+229 481 294 56",
+            link: "tel:+229 481 294 56"
         },
     ],
     email: [

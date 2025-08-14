@@ -12,6 +12,7 @@ import WhoWeAre from './Pages/WhoWeAre/WhoWeAre';
 import MediaPage from './Pages/Media/MediaPage';
 import MessagesPage from './Pages/Media/Messages/MessagesPage';
 import PicturesPage from './Pages/Media/Pictures/PicturesPage';
+import VideosPage from './Pages/Media/Videos/VideosPage';
 import { ZoomedImage } from './Components/Gallery/ZoomedImage';
 
 
@@ -43,7 +44,8 @@ export const AppRouter = () => {
                         <Route path="/who-we-are" element={<WhoWeAre />} />
                         <Route path="/media" element={<MediaPage />} />
                         <Route path="/audio-messages" element={<MessagesPage />} />
-                        <Route path="/pictures" element={<PicturesPage />} />
+                        <Route path="/media/pictures" element={<PicturesPage />} />
+                        <Route path="/media/videos" element={<VideosPage />} />
                         <Route path="/admin/upload" element={<UploadNewMessagePage />} />
                         <Route path="/admin/login" element={<LoginPage />} />
                         <Route path="/admin/messages/:id" element={<AMessagePage />} />
