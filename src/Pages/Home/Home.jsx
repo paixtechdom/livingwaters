@@ -96,7 +96,7 @@ const Home = () => {
 
 
 
-            {/* <section className="flex flex-col gap-9 w-full bg-white p-9 py-16 rounded-2xl">
+            <section className="flex flex-col gap-9 w-full bg-white p-9 py-16 rounded-2xl">
                 <div className="flex flex-col gap-4 center">
                     <div className="flex gap-3 items-center">
                         <SlCalender />
@@ -112,7 +112,7 @@ const Home = () => {
                     </div>
 
                 </div>
-            </section>  */}
+            </section> 
 
 
 

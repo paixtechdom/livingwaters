@@ -125,7 +125,7 @@ const Navbar = () => {
                     
                 
 
-                    {/* CENTER NAV */}
+                    {/* LEFT NAV */}
                     <div className={`flex  items-center justify-center gap-5 flex-col w-full fixed top-0 shadow-xl lg:shadow-none bg-black bg-opacity-95 h-screen lg:bg-transparent z-40  transition-all duration-1000
                     ${showNav ? 'left-0' : 'left-[100vw] lg:left-0'}
 
