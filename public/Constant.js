@@ -38,10 +38,10 @@ export const Navigation =
                         title: "Pictures",
                         link: "media/pictures"
                     },
-                    // {
-                    //     title: "Videos",
-                    //     link: "media/videos"
-                    // },
+                    {
+                        title: "Videos",
+                        link: "media/videos"
+                    },
                     // {
                     //     title: "Messages",
                     //     link: "audio-messages"
