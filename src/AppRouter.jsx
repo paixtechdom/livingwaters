@@ -8,12 +8,14 @@ import { HelmetProvider } from 'react-helmet-async';
 import Home from './Pages/Home/Home';
 import { Footer } from './Components/Sections/Footer';
 import Navbar from './Components/Sections/Navbar';
-import WhoWeAre from './Pages/WhoWeAre/WhoWeAre';
+import WhoWeAre from './Pages/About/WhoWeAre';
 import MediaPage from './Pages/Media/MediaPage';
 import MessagesPage from './Pages/Media/Messages/MessagesPage';
 import PicturesPage from './Pages/Media/Pictures/PicturesPage';
 import VideosPage from './Pages/Media/Videos/VideosPage';
 import { ZoomedImage } from './Components/Gallery/ZoomedImage';
+import Give from './Pages/Give/Give';
+import Leaders from './Pages/About/Leaders';
 
 
 const AMessagePage = lazy(() => import('./Pages/Admin/messages/amessage/page'));
@@ -41,8 +43,10 @@ export const AppRouter = () => {
                     <ZoomedImage />
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/who-we-are" element={<WhoWeAre />} />
+                        <Route path="/about-us/who-we-are" element={<WhoWeAre />} />
+                        <Route path="/about-us/our-leaders" element={<Leaders />} />
                         <Route path="/media" element={<MediaPage />} />
+                        <Route path="/give" element={<Give />} />
                         <Route path="/audio-messages" element={<MessagesPage />} />
                         <Route path="/media/pictures" element={<PicturesPage />} />
                         <Route path="/media/videos" element={<VideosPage />} />

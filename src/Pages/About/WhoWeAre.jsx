@@ -75,7 +75,7 @@ const WhoWeAre = () => {
           <h3 className="font-bold text-center text-4xl">
             {language === "eng" ? "Our Core Activities" : ""}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 w-full">
             {
               About[language].core_activities.map((act, i) =>(
                 <div key={i} className="flex relative shadow-2xl rounded-xl overflow-hidden w-full">

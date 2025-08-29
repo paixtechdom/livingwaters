@@ -8,6 +8,8 @@ module.exports = {
       backgroundImage: {
         "footerBg": "url(/src/assets/images/dev/footer.jpg)",
         "aboutBg": "url(/src/assets/images/dev/about.jpg)",
+        "giveBg": "url(/src/assets/images/dev/give.jpg)",
+        "leadersBg": "url(/src/assets/images/dev/leaders.jpg)",
         "messagesBg": "url(/src/assets/images/dev/messages.jpg)",
       },
       colors: {

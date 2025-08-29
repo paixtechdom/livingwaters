@@ -108,7 +108,7 @@ const VideosPage = () => {
   return (
     <main className="bg-gray-950 min-h-screen text-white">
       {/* Hero */}
-      <section className="w-full relative h-[20vh] bg-no-repeat bg-fixed bg-cover bg-messagesBg">
+      <section className="w-full relative h-[50vh] bg-no-repeat bg-fixed bg-cover bg-messagesBg">
         <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
           <h1 className="font-extrabold text-4xl md:text-5xl text-blue-300 tracking-wide">
             {language === "eng" ? "Videos" : "Photos"}

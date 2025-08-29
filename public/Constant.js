@@ -5,6 +5,8 @@ import teaching from "../src/assets/images/dev/teaching.jpg"
 import evangelism from "../src/assets/images/dev/evangelism.jpg"
 import prophetic from "../src/assets/images/dev/prophetic.jpg"
 import worship from "../src/assets/images/dev/worship.jpg"
+import outreaches from "../src/assets/images/dev/outreaches.jpg"
+import crusades from "../src/assets/images/dev/crusades.jpg"
 import upcoming_program_eng from "/next eng.jpg";
 import upcoming_program_fr from "/next fr.jpg";
 import event_eng from "../src/assets/images/events/prophet wedding anniversary eng.jpg";
@@ -27,8 +29,19 @@ export const Navigation =
                 link: ''
             },
             {
-                title: 'Who we are',
-                link: 'who-we-are',
+                title: 'About Us',
+                link: 'about-us',
+                sublinks: [
+                    {
+                        title: 'Who we are',
+                        link: 'about-us/who-we-are',
+                    },
+                    {
+                        title: 'Our Leaders',
+                        link: 'about-us/our-leaders',
+                    },
+
+                ]
             },
             {
                 title: 'Media',
@@ -49,21 +62,10 @@ export const Navigation =
                 ]
                 
             },
-            // {
-            //     title: 'Testimonies',
-            //     link: 'testimonies',
-            //     sublinks: [
-            //         {
-            //             title: "Share Testimony",
-            //             link: "share-testimony"
-            //         },
-            //         {
-            //             title: "Read Testimonies",
-            //             link: "read-testimonies"
-            //         }
-            //     ]
-                
-            // },
+            {
+                title: 'Give',
+                link: 'give',
+            },
             // {
             //     title: 'Upload',
             //     link: 'admin/upload'
@@ -75,8 +77,19 @@ export const Navigation =
                 link: ''
             },
             {
-                title: 'Qui nous sommes',
-                link: 'who-we-are'
+                title: 'A Propos',
+                link: 'about-us',
+                sublinks: [
+                    {
+                        title: 'Qui nous sommes',
+                        link: 'about-us/who-we-are'
+                    },
+                    {
+                        title: 'Nos Leaders',
+                        link: 'about-us/our-leaders',
+                    },
+
+                ]
             },
             {
                 title: 'Média',
@@ -93,23 +106,13 @@ export const Navigation =
                 ]
             },
             // {
-            //     title: 'Témoignages',
-            //     link: 'testimonies',
-            //     sublinks: [
-            //         {
-            //             title: "Partager un témoignage",
-            //             link: "share-testimony"
-            //         },
-            //         {
-            //             title: "Lire les témoignages",
-            //             link: "read-testimonies"
-            //         }
-            //     ]
-            // },
-            // {
             //     title: 'Télécharger',
             //     link: 'admin/upload'
             // },
+            {
+                title: 'Donner',
+                link: 'give',
+            },
         ]
         
 }
@@ -143,7 +146,7 @@ export const About =  {
     eng:
     {
         who_we_are: [
-            "We are sure of who we are and what we represent in Christ Jesus, and we are certain through faith in our Lord Jesus Christ that within the space of time your life will be transformed positively to the Glory of our Lord Jesus Christ, and through you more lives wlll be transformed too.",
+            "We are sure of who we are and what we represent in Christ Jesus, we are certain through faith in our Lord Jesus Christ that within the space of time your life will be transformed positively to the Glory of our Lord Jesus Christ, and through you more lives wlll be transformed too.",
     
             "We trust and believe that we shall all come to the unity and oneness of Christ and His body",
     
@@ -200,6 +203,16 @@ export const About =  {
                 title: "The Prophetic",
                 img: prophetic,
                 bg: "bg-purple-500"
+            },
+            {
+                title: "Outreaches",
+                img: outreaches,
+                bg: "bg-indigo-500"
+            },
+            {
+                title: "Crusades",
+                img: crusades,
+                bg: "bg-gray-500"
             },
     
         ]
@@ -262,7 +275,17 @@ export const About =  {
                 title: "The Prophetic",
                 img: prophetic,
                 bg: "bg-purple-500"
-            }
+            },
+            {
+                title: "Activités de Mission",
+                img: outreaches,
+                bg: "bg-indigo-500"
+            },
+            {
+                title: "Croisades",
+                img: crusades,
+                bg: "bg-gray-500"
+            },
         ]
     }
     
@@ -411,6 +434,76 @@ export const ImageFolders = [
     },
 ]
 
+
+export const bankaccounts = {
+    fr: [
+    
+        {
+            type: "Compte Naira",
+            accounts: [
+                {
+                    number: "1027870340",
+                    bank: "UBA",
+                    type: "COMPTE NAIRA"
+                },
+                {
+                    number: "0126225833",
+                    bank: "WEMA BANK",
+                    type: "COMPTE NAIRA"
+                }
+            ]
+        },
+        {
+            type: "Compte en devise étrangère",
+            accounts: [
+                {
+                    number: "3004701234",
+                    bank: 'UBA',
+                    type: "Compte USD"
+                },
+                {
+                    number: "300470186",
+                    bank: "UBA",
+                    type: "Compte EURO"
+                }
+            ]
+        }
+    ],
+    eng: [
+    
+        {
+            type: "Naira Account",
+            accounts: [
+                {
+                    number: "1027870340",
+                    bank: "UBA",
+                    type: "NAIRA ACCOUNT"
+                },
+                {
+                    number: "0126225833",
+                    bank: "WEMA BANK",
+                    type: "NAIRA ACCOUNT"
+                }
+            ]
+        },
+        {
+            type: "Foreign Account",
+            accounts: [
+                {
+                    number: "3004701234",
+                    bank: 'UBA',
+                    type: "USD DOLLAR ACCOUNT"
+                },
+                {
+                    number: "300470186",
+                    bank: "UBA",
+                    type: "EURO ACCOUNT"
+                }
+            ]
+        }
+    ],
+
+}
 
 export const Contacts = {
     social_media: [

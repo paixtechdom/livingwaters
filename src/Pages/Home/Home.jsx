@@ -71,7 +71,7 @@ const Home = () => {
 
             <Hero /> 
 
-            <div className="center w-11/12 lg:w-10/12 flex-col gap-[15vh] md:gap-[25vh] overflow-hidden mt-[10vh]"> 
+            <div className="center w-11/12 lg:w-10/12 flex-col gap-[12vh] md:gap-[20vh] overflow-hidden mt-[10vh]"> 
 
 
             <section className="flex flex-col w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 my-[10vh] text-center gap-8">
@@ -83,7 +83,7 @@ const Home = () => {
                     <Button 
                         type="" 
                         text={language === "eng" ? "Read More" : "Lire la suite"} 
-                        func={() => navigate("/who-we-are")}
+                        func={() => navigate("/about-us/who-we-are")}
                         className="w-fit min-w-[200px] shadow-xl font-bold"
                         icon=""
                         btnType=""
@@ -92,8 +92,6 @@ const Home = () => {
                 </div>
 
             </section>
-
-
 
 
             <section className="flex flex-col gap-9 w-full bg-white p-9 py-16 rounded-2xl">
@@ -193,6 +191,24 @@ const Home = () => {
                 }
             </section>
 
+            <div className="flex flex-col gap-7 my-[10vh]">
+                <h3 className="font-bold text-center text-4xl">
+                    {language === "eng" ? "Our Core Activities" : ""}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 w-full">
+                    {
+                    About[language].core_activities.map((act, i) =>(
+                        <div key={i} className="flex relative shadow-2xl rounded-xl overflow-hidden w-full">
+                            <img src={act.img} alt={act.title} className="object-cover h-[50vh] md:h-[40vh] lg:h-[30vh] w-full"/>
+
+                            <div className="absolute bottom-0 [5 0%] top -[50%] left-0 bg-black w-full text-center h-[10vh] md:h-[7vh] center bg-opacity-80 text-white">
+                            {act.title}
+                            </div>
+                        </div>
+                    ))
+                    }
+                </div>
+                </div>
 
 
             {/* <section className="flex flex-col gap-9 w-full ">
