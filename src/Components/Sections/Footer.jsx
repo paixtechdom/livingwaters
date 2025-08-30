@@ -25,7 +25,7 @@ export const Footer = () => {
 
                         <p>{About[language].mission.pre}</p>
                         <p>{About[language].mission.desc[0].desc}</p>
-                        <Link to="/who-we-are">
+                        <Link to="/about-us/who-we-are">
                         <Button 
                             type={"primary"}
                             text={"Read More"}
