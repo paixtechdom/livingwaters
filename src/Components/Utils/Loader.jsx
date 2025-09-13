@@ -9,7 +9,7 @@ export const Loader = () => {
             <div className="animate-fade center flex-col gap-4">
                 <LoadingIcon />
                 <strong className="text-xl text-center">
-                    LIVING WATERS GLOBAL FELLOWSHIP
+                    LIVING WATERS GLOBAL Ministry
                 </strong>
             </div>
         </div>

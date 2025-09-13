@@ -8,6 +8,7 @@ import { useSelector } from "react-redux"
 import axios from 'axios'
 import { backendLocation, ImageFolders } from '../../../../public/Constant'
 import ImageRenderer from '../../../Components/Gallery/ImageRenderer'
+import { BreadCrumbs } from '../../../Components/Utils/BreadCrumbs'
 
 const PicturesPage = () => {   
   const appslice = useSelector((state) => state.appslice)  
@@ -24,11 +25,16 @@ const PicturesPage = () => {
 
   return (
     <main className="w-full center flex-col min-h-screen mb-[10vh]">
-      <section className="w-full center text-center h-[50vh] bg-no-repeat bg-fixed bg-cover bg-messagesBg relative">
-          <div className="absolute top-0 left-0 h-full w-full opacity-90 bg-black center flex-col">
-              <h1 className="font-bold text-4xl md:text-5xl w-full center text-blue-200 white tracking-wide leading-snug">
+      <section className="w-full center text-center h-[50vh] pt-[15vh] relative">
+          <div className="absolute top-0 left-0 h-full w-full bg-darkblue center flex-col">
+              <h1 className="font-bold text-3xl md:text-5xl center text-blue-200 white tracking-wide leading-snug bg-lightblue bg-opacity-20 backdrop-blur-lg p-3 px-10 rounded-3xl w-fit">
+                  <div className="bi bi-camera-fill mr-3"></div>
                   {language === "eng" ? "Pictures" : "Photos"}
               </h1>
+              <BreadCrumbs
+                  text={"text-gray-200"}
+                  link={"Pictures"}
+                />
           </div>
       </section>
 
@@ -98,15 +104,13 @@ export const ImageFolderComponent = ({folder}) => {
 
       <div className="flex flex-col gap-3 col-span-3 lg:col-span-1 ">
         <div className="flex items-center justify-between flex-wrap gap-2 bg-white shadow-xl p-3 rounded-xl h-fit">
-          <h2 className="font-bold text-lg">
+          <h2 className="font-bold text-lg capitalize">
             {language === "eng" ? folder.title[0] : folder.title[1]}
           </h2>
           <p className="text-[12px] font-bold text-gray-500">{folder.year}</p>
         </div>
-
-  
-
     </div>
+
 
       <div className="grid grid-cols-3 gap-1 md:gap-4 w-full col-span-3 ">
       {

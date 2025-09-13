@@ -1,21 +1,28 @@
-import { BrowserRouter as Router, Routes, Route, ScrollRestoration } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { lazy, Suspense, useState } from 'react';
 import { Loader } from './Components/Utils/Loader';
-import { Alert } from './Components/Utils/Alert';
 import { PageNotFound } from './Pages/PageNotFound';
 import { AppContext } from './App';
 import { HelmetProvider } from 'react-helmet-async';
-import Home from './Pages/Home/Home';
 import { Footer } from './Components/Sections/Footer';
 import Navbar from './Components/Sections/Navbar';
-import WhoWeAre from './Pages/About/WhoWeAre';
-import MediaPage from './Pages/Media/MediaPage';
-import MessagesPage from './Pages/Media/Messages/MessagesPage';
-import PicturesPage from './Pages/Media/Pictures/PicturesPage';
-import VideosPage from './Pages/Media/Videos/VideosPage';
 import { ZoomedImage } from './Components/Gallery/ZoomedImage';
-import Give from './Pages/Give/Give';
-import Leaders from './Pages/About/Leaders';
+import Alert from './Components/Alert';
+
+
+
+const WhoWeAre = lazy(() => import('./Pages/About/WhoWeAre'));
+
+const Home = lazy(() => import('./Pages/Home/Home'));
+const MessagesPage = lazy(() => import('./Pages/Media/Messages/MessagesPage'));
+const PicturesPage = lazy(() => import('./Pages/Media/Pictures/PicturesPage'));
+const VideosPage = lazy(() => import('./Pages/Media/Videos/VideosPage'));
+const Give = lazy(() => import('./Pages/Give/Give'));
+const TestimonyPage = lazy(() => import("./Pages/Testimonies/TestimonyPage"))
+const Leaders = lazy(() => import('./Pages/About/Leaders'));
+const Partnership = lazy(() => import("./Pages/Give/Partnership"))
+const Announcements = lazy(() => import("./Pages/info_center/Announcements")) 
+const Conferences = lazy(() => import("./Pages/info_center/Conferences")) 
 
 
 const AMessagePage = lazy(() => import('./Pages/Admin/messages/amessage/page'));
@@ -25,30 +32,33 @@ const LoginPage = lazy(() => import('./Pages/Admin/Login/LoginPage'));
 
 
 export const AppRouter = () => {  
-    
-    const [ showAlert, setShowAlert ] = useState(false)
-    const [ alertType, setAlertType ] = useState('')
-    const [ alertMessage, setAlertMessage ] = useState('')
     const [ loginTo, setLoginTo ] = useState('/admin/messages')
     const [ images, setImages ] = useState([])
 
 
     return (
         <HelmetProvider>
-            <AppContext.Provider value={{ images, setImages, showAlert, setShowAlert, alertType, setAlertType, alertMessage, setAlertMessage,   loginTo, setLoginTo }}>
-            { showAlert && <Alert /> } 
+            <AppContext.Provider value={{ images, setImages,  loginTo, setLoginTo }}>
+            <Alert /> 
             <Router>
                 <Suspense fallback={<Loader />}>
                     <Navbar />
                     <ZoomedImage />
-                    <Routes>
+                   <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about-us/who-we-are" element={<WhoWeAre />} />
                         <Route path="/about-us/our-leaders" element={<Leaders />} />
-                        <Route path="/media" element={<MediaPage />} />
-                        <Route path="/give" element={<Give />} />
-                        <Route path="/audio-messages" element={<MessagesPage />} />
                         <Route path="/media/pictures" element={<PicturesPage />} />
+                        <Route path="/give" element={<Give />} />
+                        <Route path="/partnership" element={<Partnership />} />
+                        <Route path="/media/messages" element={<MessagesPage />} />
+                        <Route path="/testimonies" element={<TestimonyPage />} />
+
+                        
+                        {/* <Route path="/info-center/announcements" element={<Announcements />} />
+                        <Route path="/info-center/conferences" element={<Conferences />} /> */}
+
+
                         <Route path="/media/videos" element={<VideosPage />} />
                         <Route path="/admin/upload" element={<UploadNewMessagePage />} />
                         <Route path="/admin/login" element={<LoginPage />} />

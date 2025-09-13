@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { About } from "../../../public/Constant"
 import videoBg from "../../assets/videos/ocean.mp4"
 import { useSelector } from "react-redux"
-
+import { Link } from "react-router-dom"
+import { Button } from "../../Components/Utils/Button"
 
 
 export const Hero = () => {
@@ -29,21 +30,21 @@ export const Hero = () => {
 
                 <video src={videoBg} className="absolute w-full h-screen object-cover animate-z oom" autoPlay muted loop>
                 </video>
-                <div className="absolute w-full h-full bg-black z-10 opacity-70">
+                <div className="absolute w-full h-full bg-black z-10 opacity-[0.95]">
                 </div>
             </div>
             
 
-            <div className="flex flex-col gap-4 z-20 w-11/12 lg:w-10/12 text-center">
+            <div className="flex flex-col gap-4 z-20 w-11/12 lg:w-10/12">
                 <p className="text-white blue-100">
                     {language === "eng" ? "Welcome to" : "Bienvenue à"}
                 </p>
 
-                <h1 className="font-bold text-4xl md:text-5xl w-full center text-blue-200 white tracking-wide leading-snug">
+                <h1 className="font-bold text-4xl md:text-5xl w-full  text-blue-200 white tracking-wide leading-snug">
                     Living Waters Global Ministry
                 </h1>
 
-                <div className="flex center flex-col mt-12">
+                <div className="flex cent er flex-col mt-12">
                     <div className="flex relative w-full">
 
                         {
@@ -55,8 +56,17 @@ export const Hero = () => {
                         }
                     </div>
 
-                    <div className={`h-2 w-16 mt-9 ${About[language].core_activities[i].bg}`}></div>
-
+                    <div className={`h-2 w-16 my-9 bg-red-300 ${About[language].core_activities[i].bg}`}></div>
+                    
+                    <Link to="/partnership">
+                        <Button
+                            type={"primary"} 
+                            text={"Become a Partner"} 
+                            className={""} 
+                            icon={<i className="bi bi-chevron-rig ht"></i>}
+                            btnType={""} 
+                        />
+                    </Link>
                 </div>
 
                 {/* <q className="text-white blue-100 text-lg md:text-xl">Whoever believes in me, as the scripture has said, "Streams of <strong className="font-bold"> Living Waters </strong> will flow from within him</q> */}

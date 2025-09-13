@@ -1,4 +1,4 @@
-export const LoadingIcon = ({className}) => {
+export const LoadingIcon = () => {
     return(
         <div className={`mx-2`}>
             <div className="rounded-full relative bg-gradient-to-l from-blue-500 to-orange-500 overflow-hidden h-8 w-8 animate-spin center flex-col">

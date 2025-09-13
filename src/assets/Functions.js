@@ -1,5 +1,24 @@
 import axios from "axios";
 
+
+
+export const TrimText = (text) => {
+
+  let trimmedText = text
+
+  for (let i = 0; i < text.length; i++) {
+
+      trimmedText = trimmedText.replace(' ', '')        
+      trimmedText = trimmedText.replace('+', 'plus')        
+      trimmedText = trimmedText.replace('/', 'plus')        
+      trimmedText = trimmedText.replace(/[^a-z]/g, '')
+      
+  }
+
+  return trimmedText.trim().toString()
+
+}
+
 export const DocscrollTop = () => {
   scrollTo({
     top: 0,
@@ -109,7 +128,7 @@ const fetchDataWithRetry = async (startingPoint, searchInput, setMessages, setFe
 export const HandleSearch = async (searchInput, setFetching, setMessages, setTotal, setShowAlert, setAlertType, setAlertMessage, no = 10) => {
   setFetching(true);
   setMessages([]);
-
+  console.log("fetching")
   try {
     // Fetch the total count of messages
     const countResponse = await fetchWithRetry(`${backendLocation}/messages.php/${searchInput}/count`, {
@@ -117,6 +136,7 @@ export const HandleSearch = async (searchInput, setFetching, setMessages, setTot
     });
 
     const countData = await countResponse.json();
+    console.log(countData)
     setTotal(countData[0].total);
 
     // Fetch the messages

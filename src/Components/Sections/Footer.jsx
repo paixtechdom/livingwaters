@@ -96,7 +96,7 @@ export const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-3 md:justify-end w-full">
+                    {/* <div className="flex items-center gap-3 md:justify-end w-full">
                         <p className="text-lg">
                             {language === "eng" ? "Changer de langue" : "Switch Language"}
                         </p>
@@ -113,7 +113,7 @@ export const Footer = () => {
                                 }
                             }}
                         />
-                    </div>
+                    </div> */}
                 </div>
 
             </div>

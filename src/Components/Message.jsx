@@ -1,19 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { Button } from "./Utils/Button";
-import { ConvertFileSize, FormatDate, FormatId } from "../assets/Functions";
+import { ConvertFileSize, FormatId } from "../assets/Functions";
 import { backendLocation } from "../../public/Constant";
-import { AppContext } from "../App";
 import { BiDownload } from "react-icons/bi";
 import { useSelector } from "react-redux"
+import { useMyAlert } from "./Alert";
 
 
 const 
 Message = ({message, i}) => {
     const [ clickedDownload, setClickedDownload ] = useState(false)
     const [ failedDownload, setFailedDownload ] = useState(false)
-    const { setShowAlert, setAlertType, setAlertMessage } = useContext(AppContext)
     const appslice = useSelector((state) => state.appslice)  
     const language = appslice.language
+    const triggerAlert = useMyAlert()
+
 
     const handleDownload = (e) => {
         e.preventDefault()
@@ -35,9 +36,7 @@ Message = ({message, i}) => {
                     setFailedDownload(false)
                 })
                 .catch(error => {
-                    setShowAlert(true)
-                    setAlertType('error')
-                    setAlertMessage('Error downloading message. Kindly try again')  
+                    triggerAlert("error", 'Error downloading message. Kindly try again')  
                     setFailedDownload(true)
                 });
         }
@@ -59,9 +58,9 @@ Message = ({message, i}) => {
                         className="flex items-center gap-2 text-[12px]"
                     >
                         <BiDownload className="text-lg"/>
-                            {/* <span>
+                            <span>
                                 {ConvertFileSize(message.size)}
-                            </span>  */}
+                            </span> 
                             {language === "eng" ? "Download" : "Télécharger"}
                          </span>
                     } 

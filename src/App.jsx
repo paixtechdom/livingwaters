@@ -30,8 +30,10 @@ function App() {
 
 
   return (
-    <div className='App w-full overflow-hidden bg-zinc-100  text-zinc-700'>
+    <div className='App w-full overflow-hidden'>
+      
         <AppRouter/>
+        {/* <div className="text-5xl font-bold">Living Waters Global Ministry</div> */}
     </div>
   );
 

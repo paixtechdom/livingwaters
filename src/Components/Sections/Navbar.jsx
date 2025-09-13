@@ -5,14 +5,13 @@ import { Button } from "../Utils/Button"
 import Cookie from "js-cookie"
 import { ConfirmLogout } from "../Utils/ConfirmLogout"
 import { useDispatch, useSelector } from "react-redux"
-import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, toggleShowNav } from "../../assets/store/navigation/navigationSlice"
+import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, setShowNav } from "../../assets/store/navigation/navigationSlice"
 import { setLanguage } from "../../assets/store/AppSlice/AppSlice"
 import { BiMenu, BiX } from "react-icons/bi"
-import { RiArrowDropDownFill, RiArrowDropUpFill } from "react-icons/ri"
-import { TbSwitch, TbSwitch2, TbSwitch3 } from "react-icons/tb"
-import { BsNintendoSwitch } from "react-icons/bs"
-import { AiOutlineSwitcher } from "react-icons/ai"
+
 // import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, toggleShowNav } from "../store/navigation/navigationSlice.jsx"
+
+
 
 
 const Navbar = () => {
@@ -23,11 +22,10 @@ const Navbar = () => {
     const [ promptAction, setPromptAction ] = useState(false)
     const [ showPrompt, setShowPrompt ] = useState(false)
 
-
     const navigation = useSelector((state) => state.navigation)
     const appslice = useSelector((state) => state.appslice)
     const dispatch = useDispatch()
-    const showNav = navigation.showNavbar
+    const showNav = navigation.showNav
     const currentNav = navigation.currentNav
     const currentDropDownIndex = navigation.currentDropDownIndex
     const scrolledDown = navigation.scrolledDown
@@ -35,6 +33,27 @@ const Navbar = () => {
 
     const language = appslice.language
 
+    const [ timeoutId, setTimeoutId ] = useState(null)
+
+    const handleMouseOver = () => {
+        const id = setTimeout(() => {
+            dispatch(setShowNav(false))
+        }, 100);
+        setTimeoutId(id)
+        
+    };
+    
+    const handleMouseOut = () => {
+        dispatch(setShowNav(true))
+        clearTimeout(timeoutId)
+        setIsHovered(true)
+    }
+
+    useEffect(() => {
+        return() => {
+            clearTimeout(timeoutId)
+        }
+    }, [timeoutId])
 
 
     const handleScroll = () => {
@@ -55,10 +74,11 @@ const Navbar = () => {
     }, [])
     
     useEffect(() => {
+        setShowNavbar(false)
         const cookie = Cookie.get('adminCookie')
         // const adminCookie = JSON.parse(cookie)
         setLoggedIn(cookie !== undefined)
-        setShowNavbar(document.URL.toLocaleLowerCase().includes('login') ? false : true)
+        // setShowNavbar(document.URL.toLocaleLowerCase().includes('login') ? false : true)
         
         Navigation[language].forEach((nav, i) =>{
             if(document.URL.includes(nav.link)){
@@ -67,7 +87,7 @@ const Navbar = () => {
         })
         
         document.documentElement.scrollTop = 0
-    }, [document.URL])
+    }, [window.location.href])
 
     const Logout = () => {
         navigate('/admin/login')
@@ -78,179 +98,208 @@ const Navbar = () => {
             document.body.style.overflowY = "auto"
         }, (300));
     }
+
+
     
     return(
         <>
 
-            {
-                showNavbar ? 
-                <header className={`center fixed top-0 left-0 h-[8vh] md:h-[10vh] w-full z-50 
-                ${!scrolledDown ? "bg-transparent" : "bg-gradient-to-l from-blue-200 via-white to-white shadow-lg"}`}>
-                <nav className="flex items-center justify-between w-11/12 lg:w-10/12">
-                
-                    <Link to={"/"} className={`${!scrolledDown ? "mt-[12vh] md:mt-[15vh] lg:mt-[7%] w-4/12 md:w-2/12 lg:w-2/12" : "w-2/12 md:w-1/12"} flex items-center justify-start transition-all duration-1000 text-white`}>
-                        <img src={Logo} alt="Living Waters Logo" className="w-9/12 z-50"/>
-                    </Link>
+            <header className={`flex justify-start fixed top-0 left-0 h-screen  ${showNav ? " w-full" : "lg:w-[4pc]"} ${showNavbar ? "left-0 " : "-left-[60vw] lg:left-0"} z-50 transition-all duration-500 overflow-hidden bg-r ed-300`}>
 
-                
-                    {/* NAVBAR TOGGLER */}
-                    <div className="flex gap-3 items-center ">
-                        {
-                            <div className={`flex justify-end w-fit gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row lg:hidden`}>
-                                <Button 
-                                    text={language==="eng" ? "Francais" : "English"} 
-                                    type={'primary'} 
-                                    className={'w-fit py-[6px]'} 
-                                    func={() => {
-                                        if(language === "eng"){
-                                            dispatch(setLanguage('fr'))
-                                        }else{
-                                            dispatch(setLanguage('eng'))
-                                        }
-                                    }}
-                                />
-                            </div> 
-                        }
+                {/* HEADER FOR SMALL SCREEN */}
+                <div className="fixed left-0 top-0 w-full center lg:hidden">
+                    <div className="p-2 w-11/12 lg:w-10/12 flex justify-between items-center bg-darkblue rounded-full mt-6 bg-opacity-15 backdrop-blur-md relative group overflow-hidden shadow-lg">
+                        <div className={`absolute top-0 left-0 h-full bg-gradient-to-l from-pink-400 to-blue-500 opacity-30 w-0 rounded-lg group-hover:w-full group-active:w-full z-[0] transition-all duration-500`}></div>
 
-                        <div onClick={() => dispatch(toggleShowNav(!showNav))}
-                            className={`relative lg:hidden cursor-pointer  ${scrolledDown && !showNav ? "text-black" : "text-white"} z-50`}>
+                        <Link to={"/"} className={`flex items-center justify-start transition-all duration-1000 text-white gap-[10px] w-[200px] bg-re d-200 z-10`}>
+
+                            <img src={Logo} alt="Living Waters Logo" 
+                            className=" bg-white rounded-full w-[2.9pc]"/>
+                        </Link>
+
+                        <div className="text-3xl z-20 text-gray-200 cursor-pointer bg-darkblue rounded-full p-2 bg-opacity-80" onClick={() => {
+                            setShowNavbar(!showNavbar)
+                        }}>
                             {
-                                showNav ? 
-                                <BiX className="text-5xl"/> :
-                                <BiMenu className="text-3xl"/> 
+                                showNavbar ?
+                                <BiX/>
+                                :
+                                <BiMenu/>
                             }
-
                         </div>
                     </div>
+                </div>
+
+                <nav className={` top-0 ${showNavbar ? "left-0 " : "-left-[100vw] lg:left-0"} h-screen bg-opacity-40 shadow-xl relative transition-all duration-500 ease-in-out ${showNav ? "w-8/12 lg:w-3/12" : "lg:w-[4pc]"} z-50 overflow-hidden`}
+                    onMouseOver={() => dispatch(setShowNav(true))}
+                >                   
+                    <div className={`absolute top-0 left-0 backdrop-blur bg-gradient-to-b from-blue-950  via-blue-950 to-blue-800 transition-all duration-500 w-full h-full ${showNav ? "" : "opacity-95"} `}></div>
                     
-                
+                    <section className="relative flex flex-col gap-[8vh] item-center h-full p-2 mt-6 w-full"
+                    >
 
-                    {/* LEFT NAV */}
-                    <div className={`flex  items-center justify-center gap-5 flex-col w-full fixed top-0 shadow-xl lg:shadow-none bg-black bg-opacity-95 h-screen lg:bg-transparent z-40  transition-all duration-1000
-                    ${showNav ? 'left-0' : 'left-[100vw] lg:left-0'}
+                        {/* LOGO */}
+                        <Link to={"/"} className={`flex items-center justify-start transition-all duration-1000 text-white gap-[10px] w-[200px] bg-re d-200`}>
 
-                    lg:flex-row lg:gap-0 lg:h-fit lg:top-0 lg:relative w-10/12 lg:border-0`}>
+                            <img src={Logo} alt="Living Waters Logo" 
+                            className=" bg-white rounded-full w-[2.9pc]"/>
 
-                        <div className={`flex flex-col w-11/12 gap-9 items-center lg:justify-end xl:ju stify-center lg:top-0 lg:flex-row  text-sm lg:gap-12 xl:gap-14 lg:w-full text-[#000000] lg:mt-0`}>
+                            <div className="flex flex-col text-sm uppercase w-full bg-red-60 0">
+                                <p className="">Living Waters</p>
+                                <p className="">Global Ministry</p>
+                            </div>
+                        </Link>
 
 
+                        {/* NAVIGATION AND GIVE BUTTON*/}
+
+                        <div className="flex flex-col gap-4 w-full"
+                        >
                             {
-                                Navigation[language].map((nav, i) => (
-                                    <div key={i} className={`flex flex-col transition-all duration-1000 justify-between w-[200px] text-blue lg:border-0 relative lg:w-fit`}>
-
-                                        <div className={`flex w-[200px] lg:w-fit py-4 px-[5%] lg:p-0 justify-between lg:justify-end lg:items-center cursor-pointer text-black bg-transparent
-                                        ${!scrolledDown ? 
-                                            'text-secondary text-white' 
-                                        : 'text-white lg:text-black hover:bg-opacity-90 lg:hover:bg-transparent'} hover:bg-opacity-10`} 
-
-                                        onClick={() => {
-                                            if( nav.sublinks){
-                                                dispatch(setCurrentDropDown(currentDropDown === nav.title ? '' : nav.title))
-
-                                            }else{
-                                                navigate(`/${nav.link}`)
-                                                dispatch(setCurrentNav(i))
-                                                dispatch(toggleShowNav())
-                                                dispatch(setCurrentDropDown(""))
-                                                DocscrollTop()
-                                            }
-                                        
-                                        }}>
-                                            <p className={` ${currentNav === i ? 
-                                            'border-b border-secondary font-bold': ''}`}>{nav.title}</p>        
-                                            {
-                                                nav.sublinks ?
-                                                currentDropDown == nav.title ?
-                                                <RiArrowDropUpFill className="cursor-pointer h-5 scale-[2] w-9"/>  
-                                                : 
-                                                <RiArrowDropDownFill className="cursor-pointer h-5 scale-[2] w-9"/>  
-                                                :  ''
-                                            }
-        
-                                        </div>
-
-
-                                        
-
-                                        {
-                                            nav.sublinks ?
-                                            <div className={`center flex-col gap-[1px] w-full overflow-hidden transition-all duration-200 lg:duration-1000 lg:absolute lg:min-w-[250px] bg-opacity-10 lg:bg-opacity-100 bg-primary
-                                            ${currentDropDown == nav.title ? 'lg:top-[7vh] lg:left-0' : 'h-0 lg:h-fit text-[0px]  lg:-top-[500px]'} lg:shadow-xl`}>
-        
-                                                {   
-                                                    nav?.sublinks?.map((sublink, j) => (
-                                                        <Link to={`/${sublink.link?.replaceAll(" ", "-")?.toLowerCase()}`} key={j} className={`flex gap-5 py-4 bg-white bg-opacity-[0.35] lg:bg-opacity-[1] hover:bg-opacity-[0] lg:hover:bg-opacity-[0.95] text-white lg:text-black
-                                                        w-[200px] px-8 lg:px-5 text-sm transition-all duration-500
-                                                        ${
-                                                            currentNav == i && 
-                                                            currentDropDownIndex == j ? 'font-bold text-secondary' :
-                                                            ``
-                                                        }
-                                                         `} 
-                                                         onClick={() => {
-                                                            dispatch(toggleShowNav())
-                                                            dispatch(setCurrentNav(i))
-                                                            dispatch(setCurrentDropDownIndex(j))
-                                                            dispatch(setCurrentDropDown(""))
-                                                            DocscrollTop()
-                                                        }}>
-                                                        <p className={``}>{sublink.title}</p>
-                                                    </Link>
-                                                    ))
+                                Navigation[language].map((nav, i) => {
+                                
+                                return (
+                                    <div key={i} className="flex flex-col gap-2">
+                                        <div className="flex items-center justify-between -ml-1  w-full lg:w-[200px] gap-3 relative group cursor-pointer p-1" 
+                                            onClick={() => {
+                                                if(nav.sublinks){
+                                                    dispatch(setCurrentDropDown(nav.title))
+                                                    dispatch(setCurrentDropDownIndex(i))
+                                                }else{
+                                                    dispatch(setCurrentDropDown(""))
+                                                    navigate(`/${nav.link}`)
                                                 }
-                                            </div>  : ''
+                                            }}
+                                            onMouseOver={() => {
+                                                if(nav.sublinks){
+                                                    dispatch(setCurrentDropDown(nav.title))
+                                                    dispatch(setCurrentDropDownIndex(i))
+                                                }else{
+                                                    dispatch(setCurrentDropDown(""))
+                                                }
+                                            }}
+                                        >
+                                            <div className={`absolute top-0 left-0 h-full bg-gradient-to-l from-pink-400 to-blue-500 opacity-30 w-0 rounded-lg group-hover:w-full z-[0] transition-all duration-500`}></div>
+                                            
+                                            <div className="flex items-center gap-3 w-full z-50 cursor-pointer">
+                                                <p className="w-[2.9pc] center "
+                                                ><i className={`bi bi-${nav.icon} text-gray-300 text-2xl md:text-3xl
+                                                `}></i></p>
+                                                
+                                                <p className={`${currentNav == i ? "text-lightblue font-bold" : "text-gray-100"}`}>{nav.title}</p>
+                                                
+                                            </div>
+                                            {
+                                                nav.sublinks && 
+                                                <>
+                                                {/* arrow button for small screen for sublinks */}
+                                                <i className="center bi bi-chevron-down lg:hidden size-4 text-xs rounded-b-md px-3 text-gray-300 bg-gray-200 bg-opacity-30 "></i>
+
+                                                <i className="lg:flex lg:justify-center lg:items-center pt-[2.5px] bi-chevron-right size-5 text-xs rounded-r-md text-gray-300 bg-gray-200 bg-opacity-30 hidden"></i>
+                                                </>
+                                            }                                        
+                                        </div>
+                                        {
+                                            currentDropDownIndex == i && 
+                                            <div className="lg:hidden flex flex-col gap-2 ml-5">
+                                            {
+                                                Navigation["eng"][currentDropDownIndex]?.sublinks?.map((subnav, i) => (
+                                                    <Link to={`/${subnav.link}`} key={i} className="flex items-center justify-between  gap-3 relative group cursor-pointer p-1">
+                                                    
+                                                    <div className={`absolute h-full bg-gradient-to-r from-pink-400 to-blue-500 opacity-30 w-0 rounded-lg group-hover:w-full z-[0] transition-all duration-500`}></div>
+
+
+                                                        <div className="flex items-center gap-3 w-full z-50 cursor-pointer">
+
+                                                            <p className="w-[2.9pc] center "
+                                                                ><i className={`bi bi-${subnav.icon} text-gray-300 text-2xl md:text-3xl
+                                                                `}></i>
+                                                            </p>
+                                                                
+                                                            <p className={`${currentNav == i ? "text-lightblue font-bold" : "text-gray-100"}`}>{subnav.title}
+                                                            </p>
+                                                        </div>
+                                                    </Link>
+                                                ))
+                                            }
+                                            </div>
                                         }
                                     </div>
-                                ))
+                                ) })
                             }
-                        </div> 
 
-                        <div className={`lg:ml-5 w-fit hidden lg:flex`}>
-                            <Button 
-                                text={language==="eng" ? "Francais" : "English"} 
-                                type={'primary'} 
-                                className={'w-fit py-[6px]'} 
-                                func={() => {
-                                    if(language === "eng"){
-                                        dispatch(setLanguage('fr'))
-                                    }else{
-                                        dispatch(setLanguage('eng'))
-                                    }
-                                }}
-                            />
-                        </div> 
+                            {/* GIVE BUTTON */}
+                            <div className={`flex flex-col gap-5 my-[5vh] relative transition-all duration-500 ${!showNav ? "lg:translate-x-[-120px]" : "translate-x-0"}`}>
+                                <Link to={'/give'} className={` `}>
+                                    <Button 
+                                        text={language==="eng" ? "Give" : "English"} 
+                                        type={'primary'} 
+                                        className={'w-full py-[8px] text-base'} 
+                                    />
+                                </Link>
 
-
+                                {/* <div className={``}>
+                                    <Button 
+                                        text={language==="eng" ? "Francais" : "English"} 
+                                        type={'primary'} 
+                                        className={'w-full py-[8px] text-base px-5'} 
+                                        func={() => {
+                                            if(language === "eng"){
+                                                dispatch(setLanguage('fr'))
+                                            }else{
+                                                dispatch(setLanguage('eng'))
+                                            }
+                                        }}
+                                    />
+                                </div> */}
+                            </div>
+                        </div>
                         
-                        {/* {
-                            loggedIn ?
-                            <div className={`flex justify-end w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row ${loggedIn && 'mt-9'}`}>
-                                <Button text={'Logout'} type={'primary'} className={'w-[150px]'} 
-                                func={() => {
-                                    toggleShowNav(false)
-                                    setPromptAction(true)
-                                }}/>
-                            </div> 
-                            : 
-                            <div className={`flex justify-end  w-fit  gap-5 flex-col lg:mt-0 lg:w-3/12 lg:flex-row ${loggedIn && 'mt-9'}`}>
-                                <Button text={'Login'} type={'primary'} className={'w-[150px]'} 
-                                func={() => {
-                                    navigate('/admin/Login')
-                                    toggleShowNav(false)
-                                }}/>
-                            </div> 
-                        } */}
+                    </section>
 
-                    
-
-                    </div>
-                    
                 </nav>
-            
-                </header> 
-            : ''
-            }
 
+                {/* SUB LINKS - SECONDARY LINKS  */}
+                 <div className={`hidden absolute top-0 h-screen bg-black bg-opacity-60 backdrop-blur-sm w-[550px] transition-all duration-1000 ease-in-out lg:flex justify-center items-end pr-9 flex-col gap-3 ${(Navigation["eng"][currentDropDownIndex]?.sublinks && showNav) ? "left-0" : "-left-[-100vw] lg:-left-[70vw]"} lg:pb-[15vh]`}>
+                    {
+                        Navigation["eng"][currentDropDownIndex]?.sublinks?.map((subnav, i) => (
+                            <Link to={`/${subnav.link}`} key={i} className="flex items-center justify-between  w-[200px] gap-3 relative group cursor-pointer p-1"
+                                onClick={() => {
+                                    dispatch(setCurrentDropDown(nav.title))
+                                    dispatch(setCurrentDropDownIndex(i))
+                                    alert("ddd")
+                                }} 
+                            >
+                            
+                            <div className={`absolute top-0 right-0 h-full bg-gradient-to-r from-pink-400 to-blue-500 opacity-30 w-0 rounded-lg group-hover:w-full z-[0] transition-all duration-500`}></div>
+
+
+                                <div className="flex items-center gap-3 w-full z-50 cursor-pointer">
+
+                                    <p className="w-[2.9pc] center "
+                                        ><i className={`bi bi-${subnav.icon} text-gray-300 text-2xl md:text-3xl
+                                        `}></i>
+                                    </p>
+                                        
+                                    <p className="text-gray-100">{subnav.title}
+                                    </p>
+                                </div>
+                            </Link>
+                        ))
+                    }
+                </div>
+
+                {showNav &&
+                    <div className="hidden lg:block h-screen w-full "
+                        onMouseOver={handleMouseOver}
+                        onMouseOut={handleMouseOut}
+                    >
+                    </div>
+                }
+            
+        
+            </header> 
+     
 
 {
                 promptAction ?
@@ -270,3 +319,6 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+
+                  
