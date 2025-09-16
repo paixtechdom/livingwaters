@@ -1,11 +1,11 @@
 import React from 'react'
 
-const NewTestimony = () => {
+const BeninPage = () => {
   return (
     <main>
-      
+        
     </main>
   )
 }
 
-export default NewTestimony
+export default BeninPage

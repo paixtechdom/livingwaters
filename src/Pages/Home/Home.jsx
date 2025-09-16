@@ -5,28 +5,21 @@ import { Hero } from "./Hero";
 import { useNavigate } from "react-router-dom";
 import { BsClockFill, BsGeoAltFill, BsPeopleFill } from "react-icons/bs";
 import { SlCalender } from "react-icons/sl";
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { ImageText } from "../../Components/Sections/ImageText";
-import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 import homewho from "../../assets/images/dev/homewho.jpg"
 import homewho2 from "../../assets/images/dev/homewho2.jpg"
 import { Activities } from "../About/WhoWeAre";
 import { Location } from "./Location";
-import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, setShowNav } from "../../assets/store/navigation/navigationSlice";
 
 
 const Home = () => {  
 
     const appslice = useSelector((state) => state.appslice)  
     const language = appslice.language
+    const navigate = useNavigate()
 
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(setShowNav(false))
-    //     setCurrentNav(0)
-    //     setCurrentDropDownIndex(0)
-    //     setCurrentDropDown("")
-    // }, [])
+
 
     return(
         <main className="center w-full flex-col overflow-hidden min-h-screen pb-[15vh] bg-gray-50 z-10 ">

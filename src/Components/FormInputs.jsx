@@ -168,3 +168,43 @@ export const CountriesOption = ({setFormInputs, setShowCountries, showCountries,
             </div>
     )
 }
+
+
+
+
+
+
+export const SelectMultiple = ({label, name, value, formInputs, setFormInputs, options}) => {
+    return(
+        <div className="flex flex-col w-full gap-3">
+            <label htmlFor={"focus"} className={`${formInputs.focus.length == 0 ? "text-darkblue" : "text-gray-500"} font-bold text- sm`}>
+              {label}
+          </label>      
+            <div className="grid md:gr id-cols-2 gap-3 ml-2">
+                {options.map((o, i) => (
+                    <div key={i} className="flex items-center gap-2 cursor-pointer"
+                        onClick={() => {
+                            if(formInputs[name].includes(o)) {
+                                const a = formInputs[name].filter(a => o !== a)
+                                setFormInputs({
+                                    ...formInputs,
+                                    [name]: a
+                                })
+
+                            }else{
+                                setFormInputs({
+                                    ...formInputs,
+                                    [name]: [...formInputs[name], o]
+                                })
+                            }
+                            // console.table(formInputs[name])
+                        }}
+                    >
+                        <div className={`size-4 ${formInputs[name].includes(o) ? "bg-darkblue" : "bg-white" } transition-colors duration-500 rounded-[2px] border border-darkblue`}></div>
+                        <p>{o}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}

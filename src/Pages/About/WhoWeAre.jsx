@@ -15,20 +15,11 @@ import { BreadCrumbs } from "../../Components/Utils/BreadCrumbs"
 import { useEffect } from "react"
 import { ImageText } from "../../Components/Sections/ImageText"
 import { Link } from "react-router-dom"
-import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, setShowNav } from "../../assets/store/navigation/navigationSlice"
 
 
 const WhoWeAre = () => {
     const appslice = useSelector((state) => state.appslice)  
     const language = appslice.language
-
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(setShowNav(false))
-    //     setCurrentNav(1)
-    //     setCurrentDropDownIndex(1)
-    //     setCurrentDropDown("About Us")
-    // }, [])
 
 
   return (

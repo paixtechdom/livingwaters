@@ -29,8 +29,20 @@
 
     3. YOUTUBE
 
+mission
+vision
+core values
+days of meetings - 
+prayer - friday - 4pm - 7,
+bible study / teachings - 4-7
+Saturday - evangelism / monthly workers meeting - 11-4pm
 
+
+
+small screen, clicking the right side should close the nav
 translation
-sql, database and uploading of messages
+message editing
+video bg
+page for benin and ibadan
 google emailing
 

@@ -23,12 +23,15 @@ const Leaders = lazy(() => import('./Pages/About/Leaders'));
 const Partnership = lazy(() => import("./Pages/Give/Partnership"))
 const Announcements = lazy(() => import("./Pages/info_center/Announcements")) 
 const Conferences = lazy(() => import("./Pages/info_center/Conferences")) 
+const IbadanPage = lazy(() => import ('./Pages/Centers/IbadanPage'));
+const BeninPage = lazy(() => import ('./Pages/Centers/BeninPage'));
 
 
 const AMessagePage = lazy(() => import('./Pages/Admin/messages/amessage/page'));
 // const MessagesPage = lazy(() => import('./Pages/Admin/messages/page'));
 const UploadNewMessagePage = lazy(() => import('./Pages/Admin/upload/UploadNewMessagePage'));
 const LoginPage = lazy(() => import('./Pages/Admin/Login/LoginPage'));
+
 
 
 export const AppRouter = () => {  
@@ -53,6 +56,8 @@ export const AppRouter = () => {
                         <Route path="/partnership" element={<Partnership />} />
                         <Route path="/media/messages" element={<MessagesPage />} />
                         <Route path="/testimonies" element={<TestimonyPage />} />
+                        <Route path="/centers/ibadan" element={<IbadanPage />} />
+                        <Route path="/centers/benin-republic" element={<BeninPage />} />
 
                         
                         {/* <Route path="/info-center/announcements" element={<Announcements />} />

@@ -5,7 +5,7 @@ import { Button } from "../Utils/Button"
 import Cookie from "js-cookie"
 import { ConfirmLogout } from "../Utils/ConfirmLogout"
 import { useDispatch, useSelector } from "react-redux"
-import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, setShowNav } from "../../assets/store/navigation/navigationSlice"
+import { setCurrentDropDown, setCurrentDropDownIndex, setCurrentNav, setExpandNav } from "../../assets/store/navigation/navigationSlice"
 import { setLanguage } from "../../assets/store/AppSlice/AppSlice"
 import { BiMenu, BiX } from "react-icons/bi"
 
@@ -25,7 +25,7 @@ const Navbar = () => {
     const navigation = useSelector((state) => state.navigation)
     const appslice = useSelector((state) => state.appslice)
     const dispatch = useDispatch()
-    const showNav = navigation.showNav
+    const expandNav = navigation.expandNav
     const currentNav = navigation.currentNav
     const currentDropDownIndex = navigation.currentDropDownIndex
     const scrolledDown = navigation.scrolledDown
@@ -33,20 +33,21 @@ const Navbar = () => {
 
     const language = appslice.language
 
+    // expandNav is for large screen to expand the nav
+
     const [ timeoutId, setTimeoutId ] = useState(null)
 
     const handleMouseOver = () => {
         const id = setTimeout(() => {
-            dispatch(setShowNav(false))
+            dispatch(setExpandNav(false))
         }, 100);
         setTimeoutId(id)
         
     };
     
     const handleMouseOut = () => {
-        dispatch(setShowNav(true))
+        dispatch(setExpandNav(true))
         clearTimeout(timeoutId)
-        setIsHovered(true)
     }
 
     useEffect(() => {
@@ -104,12 +105,12 @@ const Navbar = () => {
     return(
         <>
 
-            <header className={`flex justify-start fixed top-0 left-0 h-screen  ${showNav ? " w-full" : "lg:w-[4pc]"} ${showNavbar ? "left-0 " : "-left-[60vw] lg:left-0"} z-50 transition-all duration-500 overflow-hidden bg-r ed-300`}>
+            <header className={`flex justify-start fixed top-0 left-0 h-screen  ${expandNav ? " w-full" : "lg:w-[4pc]"} ${showNavbar ? "left-0 " : "left-[-100vw] lg:left-0"} z-50 transition-all duration-500 overflow-hidden bg-re d-300`}>
 
                 {/* HEADER FOR SMALL SCREEN */}
                 <div className="fixed left-0 top-0 w-full center lg:hidden">
                     <div className="p-2 w-11/12 lg:w-10/12 flex justify-between items-center bg-darkblue rounded-full mt-6 bg-opacity-15 backdrop-blur-md relative group overflow-hidden shadow-lg">
-                        <div className={`absolute top-0 left-0 h-full bg-gradient-to-l from-pink-400 to-blue-500 opacity-30 w-0 rounded-lg group-hover:w-full group-active:w-full z-[0] transition-all duration-500`}></div>
+                        <div className={`absolute top-0 left-0 h-full bg-gradient-to-l from-pink-400 to-blue-500 opacity-30 w-0 rounded-lg group-hover:w-full ${showNavbar ? "w-full" : ""} group-active:w-full z-[0] transition-all duration-500`}></div>
 
                         <Link to={"/"} className={`flex items-center justify-start transition-all duration-1000 text-white gap-[10px] w-[200px] bg-re d-200 z-10`}>
 
@@ -130,10 +131,10 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <nav className={` top-0 ${showNavbar ? "left-0 " : "-left-[100vw] lg:left-0"} h-screen bg-opacity-40 shadow-xl relative transition-all duration-500 ease-in-out ${showNav ? "w-8/12 lg:w-3/12" : "lg:w-[4pc]"} z-50 overflow-hidden`}
-                    onMouseOver={() => dispatch(setShowNav(true))}
+                <nav className={` top-0 ${showNavbar ? "left-0 " : "-left-[100vw] lg:left-0"} h-screen bg-opacity-40 shadow-xl relative transition-all duration-500 ease-in-out ${expandNav ? "w-8/12 lg:w-3/12" : "lg:w-[4pc]"} z-50 overflow-hidden`}
+                    onMouseOver={() => dispatch(setExpandNav(true))}
                 >                   
-                    <div className={`absolute top-0 left-0 backdrop-blur bg-gradient-to-b from-blue-950  via-blue-950 to-blue-800 transition-all duration-500 w-full h-full ${showNav ? "" : "opacity-95"} `}></div>
+                    <div className={`absolute top-0 left-0 backdrop-blur bg-gradient-to-b from-blue-950  via-blue-950 to-blue-800 transition-all duration-500 w-full h-full ${expandNav ? "" : "opacity-95"} `}></div>
                     
                     <section className="relative flex flex-col gap-[8vh] item-center h-full p-2 mt-6 w-full"
                     >
@@ -201,7 +202,7 @@ const Navbar = () => {
                                         </div>
                                         {
                                             currentDropDownIndex == i && 
-                                            <div className="lg:hidden flex flex-col gap-2 ml-5">
+                                            <div className="lg:hidden flex flex-col gap-2 ml-2 scale-90">
                                             {
                                                 Navigation["eng"][currentDropDownIndex]?.sublinks?.map((subnav, i) => (
                                                     <Link to={`/${subnav.link}`} key={i} className="flex items-center justify-between  gap-3 relative group cursor-pointer p-1">
@@ -229,7 +230,7 @@ const Navbar = () => {
                             }
 
                             {/* GIVE BUTTON */}
-                            <div className={`flex flex-col gap-5 my-[5vh] relative transition-all duration-500 ${!showNav ? "lg:translate-x-[-120px]" : "translate-x-0"}`}>
+                            <div className={`flex flex-col gap-5 my-[5vh] relative transition-all duration-500 ${!expandNav ? "lg:translate-x-[-120px]" : "translate-x-0"}`}>
                                 <Link to={'/give'} className={` `}>
                                     <Button 
                                         text={language==="eng" ? "Give" : "English"} 
@@ -238,7 +239,7 @@ const Navbar = () => {
                                     />
                                 </Link>
 
-                                {/* <div className={``}>
+                                {/* <div ishoveredclassName={``}>
                                     <Button 
                                         text={language==="eng" ? "Francais" : "English"} 
                                         type={'primary'} 
@@ -259,8 +260,8 @@ const Navbar = () => {
 
                 </nav>
 
-                {/* SUB LINKS - SECONDARY LINKS  */}
-                 <div className={`hidden absolute top-0 h-screen bg-black bg-opacity-60 backdrop-blur-sm w-[550px] transition-all duration-1000 ease-in-out lg:flex justify-center items-end pr-9 flex-col gap-3 ${(Navigation["eng"][currentDropDownIndex]?.sublinks && showNav) ? "left-0" : "-left-[-100vw] lg:-left-[70vw]"} lg:pb-[15vh]`}>
+                {/* SUB LINKS - SECONDARY LINKS  FOR LARGE SCREENS*/}
+                 <div className={`hidden absolute top-0 h-screen bg-black bg-opacity-60 backdrop-blur-sm w-[550px] transition-all duration-1000 ease-in-out lg:flex justify-center items-end pr-9 flex-col gap-3 ${(Navigation["eng"][currentDropDownIndex]?.sublinks && expandNav) ? "left-0" : "-left-[-100vw] lg:-left-[70vw]"} lg:pb-[15vh]`}>
                     {
                         Navigation["eng"][currentDropDownIndex]?.sublinks?.map((subnav, i) => (
                             <Link to={`/${subnav.link}`} key={i} className="flex items-center justify-between  w-[200px] gap-3 relative group cursor-pointer p-1"
@@ -289,12 +290,19 @@ const Navbar = () => {
                     }
                 </div>
 
-                {showNav &&
-                    <div className="hidden lg:block h-screen w-full "
+                {expandNav &&
+                <>
+                    <div className="block lg:hidden h-screen w-4/12 lg:w-full bg-gree n-500"
+                        onClick={() => {setShowNavbar(false)}}
+                    >
+                    </div>
+                    <div className="hidden lg:block h-screen w-4/12 lg:w-full bg-gree n-500"
                         onMouseOver={handleMouseOver}
+                        onClick={() => {setShowNavbar(false)}}
                         onMouseOut={handleMouseOut}
                     >
                     </div>
+                </>
                 }
             
         

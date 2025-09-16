@@ -3,7 +3,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState  = {
-    showNav: false,
+    expandNav: false,
     currentNav: 0,
     currentDropDownIndex: 0,
     scrolledDown: false,
@@ -16,8 +16,8 @@ const navigationSlice = createSlice({
     name: "navigation",
     initialState,
     reducers: {
-        setShowNav: (state, action) => {
-            state.showNav = action.payload;
+        setExpandNav: (state, action) => {
+            state.expandNav = action.payload;
         },
         setCurrentNav: (state, action) => {
             state.currentNav = action.payload
@@ -35,7 +35,7 @@ const navigationSlice = createSlice({
 })
 
 
-export const { setShowNav, setCurrentNav, setCurrentDropDownIndex, toggleScrolledDown, setCurrentDropDown } = navigationSlice.actions
+export const { setExpandNav, setCurrentNav, setCurrentDropDownIndex, toggleScrolledDown, setCurrentDropDown } = navigationSlice.actions
 
 
 export default navigationSlice.reducer

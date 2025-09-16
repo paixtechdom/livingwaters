@@ -22,8 +22,11 @@ import event_fr from "../src/assets/images/events/prophet wedding anniversary fr
 export const Logo = logo
 
 
-// export const backendLocation = 'http://localhost:80/livingBackend'
-export const backendLocation = 'https://livingwatersglobalministry.org/'
+export const backendLocation = 'http://localhost:80/livingBackend'
+// export const backendLocation = 'https://livingwatersglobalministry.org/'
+
+
+export const BEST_SHEET_CONNECTION_URL = ""
 
 export const Navigation =
     {
@@ -104,33 +107,33 @@ export const Navigation =
                 link: 'Partnership',
                 icon: "diagram-3-fill"
             },
-            // {
-            //     title: 'Centers',
-            //     link: 'centers',
-            //     icon: "geo-alt-fill",
-            //     sublinks : [
+            {
+                title: 'Centers',
+                link: 'centers',
+                icon: "geo-alt-fill",
+                sublinks : [
             //         {
             //             title: 'Lagos',
             //             link: 'Lagos',
             //             icon: "geo-fill",
             //         },
-            //         {
-            //             title: 'Ibadan',
-            //             link: 'ibadan',
-            //             icon: "geo-fill",
-            //         },
-            //         {
-            //             title: 'Benin Republic',
-            //             link: 'benin-republic',
-            //             icon: "geo-fill",
-            //         },
+                    {
+                        title: 'Ibadan',
+                        link: 'centers/ibadan',
+                        icon: "geo-fill",
+                    },
+                    {
+                        title: 'Benin Republic',
+                        link: 'centers/benin-republic',
+                        icon: "geo-fill",
+                    },
             //         {
             //             title: 'Online',
             //             link: 'Online',
             //             icon: "camera-video-fill",
             //         }
-            //     ]
-            // },
+                ]
+            },
          
         ],
         fr: [
@@ -244,41 +247,53 @@ export const About =  {
             {
                 title: "Intercession",
                 img: prayers,
-                bg: "red-500"
+                bg: "red"
             },
             {
                 title: "Intense Worship",
                 img: worship,
-                bg: "blue-500"
+                bg: "blue"
             },
             {
                 title: "Teaching of The Word",
                 img: teaching,
-                bg: "green-500"
+                bg: "green"
             },
             {
                 title: "Evangelism",
                 img: evangelism,
-                bg: "yellow-500"
+                bg: "yellow"
             },
             {
                 title: "The Prophetic",
                 img: prophetic,
-                bg: "purple-500"
+                bg: "purple"
             },
             {
                 title: "Outreaches",
                 img: outreaches,
-                bg: "indigo-500"
+                bg: "indigo"
             },
             {
                 title: "Crusades",
                 img: crusades,
-                bg: "gray-500"
+                bg: "gray"
             },
     
+        ],
+        core_values: [
+            "Christ centeredness",
+            "Holiness",
+            "Faith",
+            "Prayer",
+            "Integrity",
+            "Stewardship",
+            "Unity",
+            "Service",
+            "Excellence",
+            "Accountability"
         ]
-    
+        
     },
     fr: {
         who_we_are: [
@@ -316,37 +331,37 @@ export const About =  {
             {
                 title: "Intercession",
                 img: prayers,
-                bg: "bg-red-500"
+                bg: "red"
             },
             {
                 title: "Adoration Intense",
                 img: worship,
-                bg: "bg-blue-500"
+                bg: "blue"
             },
             {
                 title: "Enseignement de la Parole",
                 img: teaching,
-                bg: "bg-green-500"
+                bg: "green"
             },
             {
                 title: "Évangélisation",
                 img: evangelism,
-                bg: "bg-yellow-500"
+                bg: "yellow"
             },
             {
                 title: "The Prophetic",
                 img: prophetic,
-                bg: "bg-purple-500"
+                bg: "purple"
             },
             {
                 title: "Activités de Mission",
                 img: outreaches,
-                bg: "bg-indigo-500"
+                bg: "indigo"
             },
             {
                 title: "Croisades",
                 img: crusades,
-                bg: "bg-gray-500"
+                bg: "gray"
             },
         ]
     }
@@ -597,16 +612,16 @@ export const Contacts = {
             link: "tel:+229 577 969 63"
         },
         {
+            title: "+229 577 969 63",
+            link: "tel:+229 577 969 63"
+        },
+        {
             title: "+234 706 373 0930",
             link: "tel:+234 706 373 0930"
         },
         {
             title: "+234 807 540 8149",
             link: "tel:+234 807 540 8149"
-        },
-        {
-            title: "+229 481 294 56",
-            link: "tel:+229 481 294 56"
         },
     ],
     email: [
@@ -622,196 +637,206 @@ export const Contacts = {
 }
 
 export const countries = [
-    { country: "Afghanistan", flag: "fi fi-af" },
-    { country: "Albania", flag: "fi fi-al" },
-    { country: "Algeria", flag: "fi fi-dz" },
-    { country: "Andorra", flag: "fi fi-ad" },
-    { country: "Angola", flag: "fi fi-ao" },
-    { country: "Argentina", flag: "fi fi-ar" },
-    { country: "Armenia", flag: "fi fi-am" },
-    { country: "Australia", flag: "fi fi-au" },
-    { country: "Austria", flag: "fi fi-at" },
-    { country: "Azerbaijan", flag: "fi fi-az" },
-    { country: "Bahamas", flag: "fi fi-bs" },
-    { country: "Bahrain", flag: "fi fi-bh" },
-    { country: "Bangladesh", flag: "fi fi-bd" },
-    { country: "Barbados", flag: "fi fi-bb" },
-    { country: "Belarus", flag: "fi fi-by" },
-    { country: "Belgium", flag: "fi fi-be" },
-    { country: "Belize", flag: "fi fi-bz" },
-    { country: "Benin", flag: "fi fi-bj" },
-    { country: "Bhutan", flag: "fi fi-bt" },
-    { country: "Bolivia", flag: "fi fi-bo" },
-    { country: "Botswana", flag: "fi fi-bw" },
-    { country: "Brazil", flag: "fi fi-br" },
-    { country: "Brunei", flag: "fi fi-bn" },
-    { country: "Bulgaria", flag: "fi fi-bg" },
-    { country: "Burkina", flag: "fi fi-bf" },
-    { country: "Burundi", flag: "fi fi-bi" },
-    { country: "Cambodia", flag: "fi fi-kh" },
-    { country: "Cameroon", flag: "fi fi-cm" },
-    { country: "Canada", flag: "fi fi-ca" },
-    { country: "Cape Verde", flag: "fi fi-cv" },
-    { country: "Chad", flag: "fi fi-td" },
-    { country: "Chile", flag: "fi fi-cl" },
-    { country: "China", flag: "fi fi-cn" },
-    { country: "Colombia", flag: "fi fi-co" },
-    { country: "Comoros", flag: "fi fi-km" },
-    { country: "Costa Rica", flag: "fi fi-cr" },
-    { country: "Croatia", flag: "fi fi-hr" },
-    { country: "Cuba", flag: "fi fi-cu" },
-    { country: "Cyprus", flag: "fi fi-cy" },
-    { country: "Czech Republic", flag: "fi fi-cz" },
-    { country: "Denmark", flag: "fi fi-dk" },
-    { country: "Djibouti", flag: "fi fi-dj" },
-    { country: "Dominica", flag: "fi fi-dm" },
-    { country: "Dominican Republic", flag: "fi fi-do" },
-    { country: "Ecuador", flag: "fi fi-ec" },
-    { country: "Egypt", flag: "fi fi-eg" },
-    { country: "El Salvador", flag: "fi fi-sv" },
-    { country: "Equatorial Guinea", flag: "fi fi-gq" },
-    { country: "Eritrea", flag: "fi fi-er" },
-    { country: "Estonia", flag: "fi fi-ee" },
-    { country: "Ethiopia", flag: "fi fi-et" },
-    { country: "Fiji", flag: "fi fi-fj" },
-    { country: "Finland", flag: "fi fi-fi" },
-    { country: "France", flag: "fi fi-fr" },
-    { country: "Gabon", flag: "fi fi-ga" },
-    { country: "Gambia", flag: "fi fi-gm" },
-    { country: "Georgia", flag: "fi fi-ge" },
-    { country: "Germany", flag: "fi fi-de" },
-    { country: "Ghana", flag: "fi fi-gh" },
-    { country: "Greece", flag: "fi fi-gr" },
-    { country: "Grenada", flag: "fi fi-gd" },
-    { country: "Guatemala", flag: "fi fi-gt" },
-    { country: "Guinea", flag: "fi fi-gn" },
-    { country: "Guinea-Bissau", flag: "fi fi-gw" },
-    { country: "Guyana", flag: "fi fi-gy" },
-    { country: "Haiti", flag: "fi fi-ht" },
-    { country: "Honduras", flag: "fi fi-hn" },
-    { country: "Hungary", flag: "fi fi-hu" },
-    { country: "Iceland", flag: "fi fi-is" },
-    { country: "India", flag: "fi fi-in" },
-    { country: "Indonesia", flag: "fi fi-id" },
-    { country: "Iran", flag: "fi fi-ir" },
-    { country: "Iraq", flag: "fi fi-iq" },
-    { country: "Ireland", flag: "fi fi-ie" },
-    { country: "Israel", flag: "fi fi-il" },
-    { country: "Italy", flag: "fi fi-it" },
-    { country: "Ivory Coast", flag: "fi fi-ci" },
-    { country: "Jamaica", flag: "fi fi-jm" },
-    { country: "Japan", flag: "fi fi-jp" },
-    { country: "Jordan", flag: "fi fi-jo" },
-    { country: "Kazakhstan", flag: "fi fi-kz" },
-    { country: "Kenya", flag: "fi fi-ke" },
-    { country: "Kiribati", flag: "fi fi-ki" },
-    { country: "Kuwait", flag: "fi fi-kw" },
-    { country: "Kyrgyzstan", flag: "fi fi-kg" },
-    { country: "Laos", flag: "fi fi-la" },
-    { country: "Latvia", flag: "fi fi-lv" },
-    { country: "Lebanon", flag: "fi fi-lb" },
-    { country: "Lesotho", flag: "fi fi-ls" },
-    { country: "Liberia", flag: "fi fi-lr" },
-    { country: "Libya", flag: "fi fi-ly" },
-    { country: "Liechtenstein", flag: "fi fi-li" },
-    { country: "Lithuania", flag: "fi fi-lt" },
-    { country: "Luxembourg", flag: "fi fi-lu" },
-    { country: "Macedonia", flag: "fi fi-mk" },
-    { country: "Madagascar", flag: "fi fi-mg" },
-    { country: "Malawi", flag: "fi fi-mw" },
-    { country: "Malaysia", flag: "fi fi-my" },
-    { country: "Maldives", flag: "fi fi-mv" },
-    { country: "Mali", flag: "fi fi-ml" },
-    { country: "Malta", flag: "fi fi-mt" },
-    { country: "Marshall Islands", flag: "fi fi-mh" },
-    { country: "Mauritania", flag: "fi fi-mr" },
-    { country: "Mauritius", flag: "fi fi-mu" },
-    { country: "Mexico", flag: "fi fi-mx" },
-    { country: "Micronesia", flag: "fi fi-fm" },
-    { country: "Moldova", flag: "fi fi-md" },
-    { country: "Monaco", flag: "fi fi-mc" },
-    { country: "Mongolia", flag: "fi fi-mn" },
-    { country: "Montenegro", flag: "fi fi-me" },
-    { country: "Morocco", flag: "fi fi-ma" },
-    { country: "Mozambique", flag: "fi fi-mz" },
-    { country: "Myanmar", flag: "fi fi-mm" },
-    { country: "Namibia", flag: "fi fi-na" },
-    { country: "Nauru", flag: "fi fi-nr" },
-    { country: "Nepal", flag: "fi fi-np" },
-    { country: "Netherlands", flag: "fi fi-nl" },
-    { country: "New Zealand", flag: "fi fi-nz" },
-    { country: "Nicaragua", flag: "fi fi-ni" },
-    { country: "Niger", flag: "fi fi-ne" },
-    { country: "Nigeria", flag: "fi fi-ng" },
-    { country: "North Korea", flag: "fi fi-kp" },
-    { country: "Norway", flag: "fi fi-no" },
-    { country: "Pakistan", flag: "fi fi-pk" },
-    { country: "Palau", flag: "fi fi-pw" },
-    { country: "Panama", flag: "fi fi-pa" },
-    { country: "Papua New Guinea", flag: "fi fi-pg" },
-    { country: "Paraguay", flag: "fi fi-py" },
-    { country: "Peru", flag: "fi fi-pe" },
-    { country: "Philippines", flag: "fi fi-ph" },
-    { country: "Poland", flag: "fi fi-pl" },
-    { country: "Portugal", flag: "fi fi-pt" },
-    { country: "Romania", flag: "fi fi-ro" },
-    { country: "Russia", flag: "fi fi-ru" },
-    { country: "Rwanda", flag: "fi fi-rw" },
-    { country: "Saint Kitts and Nevis", flag: "fi fi-kn" },
-    { country: "Saint Lucia", flag: "fi fi-lc" },
-    { country: "Saint Vincent and the Grenadines", flag: "fi fi-vc" },
-    { country: "Samoa", flag: "fi fi-ws" },
-    { country: "San Marino", flag: "fi fi-sm" },
-    { country: "Sao Tome and Principe", flag: "fi fi-st" },
-    { country: "Saudi Arabia", flag: "fi fi-sa" },
-    { country: "Senegal", flag: "fi fi-sn" },
-    { country: "Serbia", flag: "fi fi-rs" },
-    { country: "Seychelles", flag: "fi fi-sc" },
-    { country: "Sierra Leone", flag: "fi fi-sl" },
-    { country: "Singapore", flag: "fi fi-sg" },
-    { country: "Slovakia", flag: "fi fi-sk" },
-    { country: "Solomon Islands", flag: "fi fi-sb" },
-    { country: "Somalia", flag: "fi fi-so" },
-    { country: "South Africa", flag: "fi fi-za" },
-    { country: "South Korea", flag: "fi fi-kr" },
-    { country: "South Sudan", flag: "fi fi-ss" },
-    { country: "Spain", flag: "fi fi-es" },
-    { country: "Sri Lanka", flag: "fi fi-lk" },
-    { country: "Sudan", flag: "fi fi-sd" },
-    { country: "Suriname", flag: "fi fi-sr" },
-    { country: "Swaziland", flag: "fi fi-sz" },
-    { country: "Sweden", flag: "fi fi-se" },
-    { country: "Switzerland", flag: "fi fi-ch" },
-    { country: "Syria", flag: "fi fi-sy" },
-    { country: "Taiwan", flag: "fi fi-tw" },
-    { country: "Tajikistan", flag: "fi fi-tj" },
-    { country: "Tanzania", flag: "fi fi-tz" },
-    { country: "Thailand", flag: "fi fi-th" },
-    { country: "Togo", flag: "fi fi-tg" },
-    { country: "Tonga", flag: "fi fi-to" },
-    { country: "Trinidad and Tobago", flag: "fi fi-tt" },
-    { country: "Tunisia", flag: "fi fi-tn" },
-    { country: "Turkey", flag: "fi fi-tr" },
-    { country: "Turkmenistan", flag: "fi fi-tm" },
-    { country: "Tuvalu", flag: "fi fi-tv" },
-    { country: "Uganda", flag: "fi fi-ug" },
-    { country: "Ukraine", flag: "fi fi-ua" },
-    { country: "United Arab Emirates", flag: "fi fi-ae" },
-    { country: "United Kingdom", flag: "fi fi-gb" },
-    { country: "United States", flag: "fi fi-us" },
-    { country: "Uruguay", flag: "fi fi-uy" },
-    { country: "Uzbekistan", flag: "fi fi-uz" },
-    { country: "Vanuatu", flag: "fi fi-vu" },
-    { country: "Vatican City", flag: "fi fi-va" },
-    { country: "Venezuela", flag: "fi fi-ve" },
-    { country: "Vietnam", flag: "fi fi-vn" },
-    { country: "Yemen", flag: "fi fi-ye" },
-    { country: "Zambia", flag: "fi fi-zm" },
-    { country: "Zimbabwe", flag: "fi fi-zw" }
+    { country: "Afghanistan" },
+    { country: "Albania" },
+    { country: "Algeria" },
+    { country: "Andorra" },
+    { country: "Angola" },
+    { country: "Argentina" },
+    { country: "Armenia" },
+    { country: "Australia" },
+    { country: "Austria" },
+    { country: "Azerbaijan" },
+    { country: "Bahamas" },
+    { country: "Bahrain" },
+    { country: "Bangladesh" },
+    { country: "Barbados" },
+    { country: "Belarus" },
+    { country: "Belgium" },
+    { country: "Belize" },
+    { country: "Benin" },
+    { country: "Bhutan" },
+    { country: "Bolivia" },
+    { country: "Botswana" },
+    { country: "Brazil" },
+    { country: "Brunei" },
+    { country: "Bulgaria" },
+    { country: "Burkina" },
+    { country: "Burundi" },
+    { country: "Cambodia" },
+    { country: "Cameroon" },
+    { country: "Canada" },
+    { country: "Cape Verde" },
+    { country: "Chad" },
+    { country: "Chile" },
+    { country: "China" },
+    { country: "Colombia" },
+    { country: "Comoros" },
+    { country: "Costa Rica" },
+    { country: "Croatia" },
+    { country: "Cuba" },
+    { country: "Cyprus" },
+    { country: "Czech Republic" },
+    { country: "Denmark" },
+    { country: "Djibouti" },
+    { country: "Dominica" },
+    { country: "Dominican Republic" },
+    { country: "Ecuador" },
+    { country: "Egypt" },
+    { country: "El Salvador" },
+    { country: "Equatorial Guinea" },
+    { country: "Eritrea" },
+    { country: "Estonia" },
+    { country: "Ethiopia" },
+    { country: "Fiji" },
+    { country: "Finland" },
+    { country: "France" },
+    { country: "Gabon" },
+    { country: "Gambia" },
+    { country: "Georgia" },
+    { country: "Germany" },
+    { country: "Ghana" },
+    { country: "Greece" },
+    { country: "Grenada" },
+    { country: "Guatemala" },
+    { country: "Guinea" },
+    { country: "Guinea-Bissau" },
+    { country: "Guyana" },
+    { country: "Haiti" },
+    { country: "Honduras" },
+    { country: "Hungary" },
+    { country: "Iceland" },
+    { country: "India" },
+    { country: "Indonesia" },
+    { country: "Iran" },
+    { country: "Iraq" },
+    { country: "Ireland" },
+    { country: "Israel" },
+    { country: "Italy" },
+    { country: "Ivory Coast" },
+    { country: "Jamaica" },
+    { country: "Japan" },
+    { country: "Jordan" },
+    { country: "Kazakhstan" },
+    { country: "Kenya" },
+    { country: "Kiribati" },
+    { country: "Kuwait" },
+    { country: "Kyrgyzstan" },
+    { country: "Laos" },
+    { country: "Latvia" },
+    { country: "Lebanon" },
+    { country: "Lesotho" },
+    { country: "Liberia" },
+    { country: "Libya" },
+    { country: "Liechtenstein" },
+    { country: "Lithuania" },
+    { country: "Luxembourg" },
+    { country: "Macedonia" },
+    { country: "Madagascar" },
+    { country: "Malawi" },
+    { country: "Malaysia" },
+    { country: "Maldives" },
+    { country: "Mali" },
+    { country: "Malta" },
+    { country: "Marshall Islands" },
+    { country: "Mauritania" },
+    { country: "Mauritius" },
+    { country: "Mexico" },
+    { country: "Micronesia" },
+    { country: "Moldova" },
+    { country: "Monaco" },
+    { country: "Mongolia" },
+    { country: "Montenegro" },
+    { country: "Morocco" },
+    { country: "Mozambique" },
+    { country: "Myanmar" },
+    { country: "Namibia" },
+    { country: "Nauru" },
+    { country: "Nepal" },
+    { country: "Netherlands" },
+    { country: "New Zealand" },
+    { country: "Nicaragua" },
+    { country: "Niger" },
+    { country: "Nigeria" },
+    { country: "North Korea" },
+    { country: "Norway" },
+    { country: "Pakistan" },
+    { country: "Palau" },
+    { country: "Panama" },
+    { country: "Papua New Guinea" },
+    { country: "Paraguay" },
+    { country: "Peru" },
+    { country: "Philippines" },
+    { country: "Poland" },
+    { country: "Portugal" },
+    { country: "Romania" },
+    { country: "Russia" },
+    { country: "Rwanda" },
+    { country: "Saint Kitts and Nevis" },
+    { country: "Saint Lucia" },
+    { country: "Saint Vincent and the Grenadines" },
+    { country: "Samoa" },
+    { country: "San Marino" },
+    { country: "Sao Tome and Principe" },
+    { country: "Saudi Arabia" },
+    { country: "Senegal" },
+    { country: "Serbia" },
+    { country: "Seychelles" },
+    { country: "Sierra Leone" },
+    { country: "Singapore" },
+    { country: "Slovakia" },
+    { country: "Solomon Islands" },
+    { country: "Somalia" },
+    { country: "South Africa" },
+    { country: "South Korea" },
+    { country: "South Sudan" },
+    { country: "Spain" },
+    { country: "Sri Lanka" },
+    { country: "Sudan" },
+    { country: "Suriname" },
+    { country: "Swaziland" },
+    { country: "Sweden" },
+    { country: "Switzerland" },
+    { country: "Syria" },
+    { country: "Taiwan" },
+    { country: "Tajikistan" },
+    { country: "Tanzania" },
+    { country: "Thailand" },
+    { country: "Togo" },
+    { country: "Tonga" },
+    { country: "Trinidad and Tobago" },
+    { country: "Tunisia" },
+    { country: "Turkey" },
+    { country: "Turkmenistan" },
+    { country: "Tuvalu" },
+    { country: "Uganda" },
+    { country: "Ukraine" },
+    { country: "United Arab Emirates" },
+    { country: "United Kingdom" },
+    { country: "United States" },
+    { country: "Uruguay" },
+    { country: "Uzbekistan" },
+    { country: "Vanuatu" },
+    { country: "Vatican City" },
+    { country: "Venezuela" },
+    { country: "Vietnam" },
+    { country: "Yemen" },
+    { country: "Zambia" },
+    { country: "Zimbabwe"  }
 ];
 
 
 export const testimonies = [
+    {
+        id: "",
+        name: "Moronkola Tomiwa",
+        title: "Delivered from a Costly Surgery",
+        content: [
+        "I want to sincerely appreciate the name of the Lord for this beautiful testimony. Around May this year, after going back and forth to different hospitals without a definite diagnosis or solution, my health situation remained unresolved. However, this month took a different turn. I decided to try one more hospital, where they conducted a full scan. After the tests, the doctor informed me that I was diagnosed with intestinal congestion, a condition that, according to him, could only be resolved through surgery.",
+        "I was immediately admitted and placed on IV medication. I was not allowed to eat any food, as the doctor explained that the food I had been eating was not passing through my system properly, which had caused persistent vomiting. To summarize, on a Wednesday while lying weak in bed and gaining a little consciousness, I decided to reach out to Papa Onido Innocent. I prayed for me and spoke against the spirit of death off my life. I also connected to the Living Water online prayer by faith. I placed my phone next to my ear and joined the session in faith. The next morning during devotion, a word came forth: \"The Holy Spirit has taken over.\"",
+        "I was scheduled for another test and scan before the surgery would proceed. By then, a pipe had already been passed through my nose in preparation. But after the new scan, the doctor was shocked. He looked at the result and said, \"You are gracefully special.\" He confirmed that my intestines had returned to their normal condition, something he admitted was medically impossible. I give all the glory to GOD, who delivered me from a surgery that could have cost me my life and so much money. Hallelujah!"
+      ]
+    },
     {
         id: "",
         name: "Mr. Oluwaferanmi Morakinyo",
@@ -835,16 +860,6 @@ export const testimonies = [
         title: "Divine Healing from Drug Reaction",
         content: [
         "On Sunday (23rd August), I felt sick and bought malaria drugs. After using them, my body started itching me seriously, so that I couldn’t sleep until Monday. I went to the nurse and was told that my body system had reacted wrongly to the drugs I took. Drugs were prescribed, but there were no changes. I couldn’t sleep even with sedatives, so I proceeded to injections, yet there were no changes. I called and prayed messaged Papa Onido Innocent at midnight; he called and prayed for me in the morning. To my surprise, there was great relief, and for me in the morning. I’m healed. I didn’t even later take the remaining injections finally, because there was no need for them. I give all glory to God."
-      ]
-    },
-    {
-        id: "",
-        name: "Moronkola Tomiwa",
-        title: "Delivered from a Costly Surgery",
-        content: [
-        "I want to sincerely appreciate the name of the Lord for this beautiful testimony. Around May this year, after going back and forth to different hospitals without a definite diagnosis or solution, my health situation remained unresolved. However, this month took a different turn. I decided to try one more hospital, where they conducted a full scan. After the tests, the doctor informed me that I was diagnosed with intestinal congestion, a condition that, according to him, could only be resolved through surgery.",
-        "I was immediately admitted and placed on IV medication. I was not allowed to eat any food, as the doctor explained that the food I had been eating was not passing through my system properly, which had caused persistent vomiting. To summarize, on a Wednesday while lying weak in bed and gaining a little consciousness, I decided to reach out to Papa Onido Innocent. I prayed for me and spoke against the spirit of death off my life. I also connected to the Living Water online prayer by faith. I placed my phone next to my ear and joined the session in faith. The next morning during devotion, a word came forth: \"The Holy Spirit has taken over.\"",
-        "I was scheduled for another test and scan before the surgery would proceed. By then, a pipe had already been passed through my nose in preparation. But after the new scan, the doctor was shocked. He looked at the result and said, \"You are gracefully special.\" He confirmed that my intestines had returned to their normal condition, something he admitted was medically impossible. I give all the glory to GOD, who delivered me from a surgery that could have cost me my life and so much money. Hallelujah!"
       ]
     },
     {

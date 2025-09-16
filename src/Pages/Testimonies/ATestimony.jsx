@@ -12,7 +12,7 @@ export const ATestimony = ({testimony, show, setShow }) => {
 }, [show])
   
   return (
-    <section className={`fixed h-screen w-full overflow-y-auto overflow-x-hidden  bg-darkblue bg-opacity-80 backdrop-blur-lg py-12 ${show ? "left-0" : "left-[-100vw]"} flex justify-center items-start transition-all duration-1000 ease-in-out top-0 `}>
+    <section className={`fixed h-screen w-full overflow-y-auto overflow-x-hidden  bg-darkblue bg-opacity-80 backdrop-blur-lg py-12 pt-[15vh] lg:pt-[10vh] ${show ? "left-0" : "left-[-100vw]"} flex justify-center items-start transition-all duration-1000 ease-in-out top-0 `}>
 
 
       <div className="flex flex-col gap-3 w-11/12 md:w-9/12 lg:w-8/1/2 text-gray-100">
@@ -21,7 +21,7 @@ export const ATestimony = ({testimony, show, setShow }) => {
           <i className="text-sm">Testimony by {testimony?.name}</i>
         </div>
 
-        <div className="flex flex-col leading-relaxed tracking-wide gap-4">
+        <div className="flex flex-col leading-relaxed tracking-wide gap-4 mb-[8vh]">
           {
             testimony?.content?.map((con, i) => (
               <p key={i}>{con}</p>
@@ -34,7 +34,7 @@ export const ATestimony = ({testimony, show, setShow }) => {
           func={() => {
             setShow(false)
           }}
-          className={"w-[150px] font-bold text-darkblue"}
+          className={"w-[150px] font-bold text-darkblue "}
         />
       </div>
 

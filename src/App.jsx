@@ -4,6 +4,7 @@ import './assets/Styles/index.css';
 import { useDispatch } from "react-redux";
 import { DocscrollTop } from "./assets/Functions"
 import { toggleScrolledDown } from './assets/store/navigation/navigationSlice';
+import { Loader } from './Components/Utils/Loader';
 
 
 
@@ -33,6 +34,7 @@ function App() {
     <div className='App w-full overflow-hidden'>
       
         <AppRouter/>
+        {/* <Loader /> */}
         {/* <div className="text-5xl font-bold">Living Waters Global Ministry</div> */}
     </div>
   );

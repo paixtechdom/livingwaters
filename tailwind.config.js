@@ -12,6 +12,7 @@ module.exports = {
         "leadersBg": "url(/src/assets/images/dev/leaders.jpg)",
         "messagesBg": "url(/src/assets/images/dev/messages.jpg)",
         "partnersBg": "url(/src/assets/images/dev/partners.jpg)",
+        "ibadan": "linear-gradient(rgba(0,0,0,0.95),rgba(0,0,0,0.95)), url(/src/assets/images/dev/ibadan.jpg)"
       },
       colors: {
         "darkblue": "rgba(0,0,24)",
