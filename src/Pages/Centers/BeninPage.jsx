@@ -76,7 +76,7 @@ const BeninPage = () => {
               <Parallax id={"beninaboutbtn"}>
                   <Link to="/about-us/who-we-are" className="mt-9 z-[2]">
                       <Button 
-                            text={language == eng ? "Read more" : "Lire la suite"}
+                            text={language == "eng" ? "Read more" : "Lire la suite"}
                             className={"mt-9 z-[9]"}
                       />
                   </Link>
@@ -115,7 +115,7 @@ const BeninPage = () => {
                 </div>
 
                 <div className="flex flex-col gap-2 mt-7 text-gray-100 lg:w-6/12">
-                    <h3 className="font-bold text-xl text-blue-100">{language == eng ? "Location" : ""}</h3>
+                    <h3 className="font-bold text-xl text-blue-100">{language == "eng" ? "Location" : ""}</h3>
                     <>
                         
                       <div className="flex items-center gap-2">

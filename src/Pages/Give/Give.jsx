@@ -26,7 +26,7 @@ const Give = () => {
   return (
     <main className="w-full relative center flex-col">
 
-      <section className="center w-full h-[70vh]  pt-[15vh] bg-gray-950 text-gray-100 relative bg-no-repeat bg-fixed bg-cover bg-giveBg">
+      <section className="center w-full h-[60vh]  pt-[15vh] bg-gray-950 text-gray-100 relative bg-no-repeat bg-fixed bg-cover bg-giveBg">
         <div className="absolute top-0 left-0 h-full w-full opacity-90 bg-black center flex-col"></div>
         <div className="center gap-3 h-full w-11/12 lg:w-10/12 flex-col text-center z-[1]">
 

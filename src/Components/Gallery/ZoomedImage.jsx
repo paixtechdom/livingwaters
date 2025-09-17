@@ -102,7 +102,7 @@ export const ZoomedImage = () => {
                             <div key={folder.folderName} className="flex justify-between flex-wrap w-full text-gray-200 uppercase">
                                 <h2>{language === "eng" ? folder.title[0] : folder.title[1]}
                                 </h2>
-                                <p>{folder.year}</p>
+                                <p>{language === "eng" ? folder.year[0] : folder.year[1]}</p>
                             </div>
                         ))
                     }
