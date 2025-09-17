@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { BsExclamationCircleFill } from 'react-icons/bs'
 import { BEST_SHEET_CONNECTION_URL } from '../../../public/Constant'
+import { useSelector } from 'react-redux'
 // import DatePicker from '../../Components/Utils/DatePicker'
 
 export const PartnershipForm = () => {
@@ -17,6 +18,9 @@ export const PartnershipForm = () => {
   const [ emptyFieldsError, setEmptyFieldsError ] = useState(false)
   const triggerAlert = useMyAlert()
   const navigate = useNavigate()
+  const appslice = useSelector((state) => state.appslice)  
+    const language = appslice.language
+
   const [ formInputs, setFormInputs ] = useState({
     firstName: "",
     lastName: "",
@@ -41,14 +45,20 @@ const handleSubmit = async (e) => {
   e.preventDefault()
   setLoading(true)
  
-  const isEmpty = Object.values(cleanedInputs).some(value => value === "");
+  const isEmpty = false;
+  // const isEmpty = Object.values(cleanedInputs).some(value => value === "");
   if (isEmpty) {
       setEmptyFieldsError(true)
       setLoading(false)
       document.querySelector(`form`)?.scrollIntoView({
           behavior: "smooth"
       })         
-      triggerAlert("error", "Please, fill out all fields!")
+      {
+        language == "eng" ?
+        triggerAlert( "error", "Please, fill out all fields!") 
+        :
+        triggerAlert( "error", "Veuillez remplir tous les champs!") 
+      }
       return;
     }
       try {
@@ -64,15 +74,28 @@ const handleSubmit = async (e) => {
 
         
         if (response.status === 200) {
-          triggerAlert("success", 'Request Submitted successfully!');
+          {language == "eng" ? 
+            triggerAlert("success", 'Request Submitted successfully!')
+            :
+            triggerAlert("success", "Demande envoyée avec succès !");
+
+          }
           clearForm()  
           navigate("/give")
         } else {
-          triggerAlert("error", "Failed to submit request.");
+          {
+            language == "eng" ?
+            triggerAlert("error", "Failed to submit request.")
+            : triggerAlert("error",  "Échec de l’envoi de la demande.");
+          }
         }
       } catch (error) {
         console.error("Error:", error);
-        triggerAlert("error", "Failed to submit request.");
+        {
+          language == "eng" ?
+          triggerAlert("error", "Failed to submit request.")
+          : triggerAlert("error", "Échec de l’envoi de la demande.");
+        }
         // Provide more specific error messages if available from the error object
 
         setLoading(false);
@@ -92,15 +115,20 @@ const clearForm = () => {
       focus: [],
     })
 }
-  const focusAreas = ["Bus Services", "Feeding", "Clothing Materials", "Crusades", "Finances", "Prayers", "Schollarship for Students" ]
+  const focusAreas = {
+    eng: ["Bus Services", "Feeding", "Clothing Materials", "Crusades", "Finances", "Prayers", "Schollarship for Students" ],
+    fr: ["Services de bus", "Restauration", "Vêtements", "Croisades", "Finances", "Prières", "Bourses pour étudiants"]
+  }
 
   return (
     <section className="w-11/12 lg:w-10/12 mb-9 z-10">
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full bg-opa city-30  px-7 md:px-9 p-9 rounded-2xl py-[5vh] bg-darkblue bg-opacity-5 border shado w-xl drop-shadow-2xl">
-      <h2 className="text-xl lg:text-2xl font-bold mb-9 text-darkblue uppercase">Partnership Form</h2>
+      <h2 className="text-xl lg:text-2xl font-bold mb-9 text-darkblue uppercase">
+      {language == "eng" ? "Partnership Form" : "Formulaire de partenariat"}
+        </h2>
       <div className="flex flex-col lg:flex-row gap-9 justify-between items-center">
         <InputField 
-          label="First Name"
+          label={language == "eng" ? "First Name" : "Prénom" }
           name="firstName"
           handleChange={handleChange}
           type="text"
@@ -108,7 +136,7 @@ const clearForm = () => {
           value={formInputs.firstName}
         />
         <InputField 
-          label="Last Name"
+          label={language == "eng" ? "Last Name" : "Nom de famille" }
           name="lastName"
           handleChange={handleChange}
           type="text"
@@ -118,7 +146,7 @@ const clearForm = () => {
       </div>
       <div className="flex flex-col lg:flex-row gap-9 justify-between items-center">
         <InputField 
-        label="Email Address"
+        label={language == "eng" ? "Email Address" : "Adresse e-mail" }
         name="email"
         handleChange={handleChange}
         type="email"
@@ -126,7 +154,7 @@ const clearForm = () => {
         value={formInputs.email}
         />
         <InputField 
-        label="Phone Number"
+        label={language == "eng" ? "Phone Number" : "Téléphone" }
         name="phoneNumber"
         handleChange={handleChange}
         type="tel"
@@ -138,7 +166,7 @@ const clearForm = () => {
       <div className="flex flex-col lg:flex-row gap-9 justify-between items-center">          
         {/* Country */}
         <InputField 
-        label="Select Country"
+        label={language == "eng" ? "Select Country" : "Sélectionner un pays" }
         name="country"
         handleChange={handleChange}
         type="text"
@@ -162,7 +190,7 @@ const clearForm = () => {
         />
         </InputField>
         <InputField 
-          label="State"
+          label={language == "eng" ? "State" : "État" }
           name="state"
           handleChange={handleChange}
           type="text"
@@ -177,18 +205,18 @@ const clearForm = () => {
 
       <div className="flex flex-col lg:flex-row gap-9 justify-between icent er">
       <SelectMultiple 
-        label="Focus"
+        label={language == "eng" ? "Areas of partnership" : "Domaines de partenariat"}
         name="focus"
         value={formInputs.focus}
         formInputs={formInputs}
         setFormInputs={setFormInputs}
-        options={focusAreas}
+        options={focusAreas[language]}
         />
 
 
 
         <InputField 
-            label="Frequency"
+            label={language == "eng" ? "Frequency" : "Fréquence" }
             name="frequency"
             handleChange={handleChange}
             type="text"
@@ -204,12 +232,12 @@ const clearForm = () => {
           >
 
           <Select 
-              options={["Weekly", "Monthly", "Quaterly", "Annually"]}
+              options={language == "eng" ? ["Weekly", "Monthly", "Quaterly", "Annually"]: ["Hebdomadaire", "Mensuel", "Trimestriel", "Annuel"]}
               showPopUp={showPopUp}
               setShowPopUp={setShowPopUp}
               formInputs={formInputs}
               name={"frequency"}
-              label={"Frequency"}
+              label={language == "eng" ? "Frequency" : "Fréquence"}
               />
         </InputField>
 
@@ -217,7 +245,7 @@ const clearForm = () => {
       
 
       {emptyFieldsError ? 
-      <div className="text-red-900 text-lg flex gap-2 items-center col-span-2"><BsExclamationCircleFill /> Please, fill out all fields
+      <div className="text-red-900 text-lg flex gap-2 items-center col-span-2"><BsExclamationCircleFill /> {language == "eng" ? "Please, fill out all fields": "Veuillez remplir tous les champs!"}
       </div> 
       : ""
       }
@@ -226,10 +254,10 @@ const clearForm = () => {
       <Button 
           text={loading ? 
               <>
-                  <span>Submitting</span>
+                  <span>{language == "eng" ? "Submitting" : "Envoi en cours"}</span>
                   <BiLoaderAlt className="animate-spin ml-2 text-xl" />
               </> 
-              : <>Become a partner</>}
+              : <>{language == "eng" ? "Become a partner" : "Devenez partenaire"}</>}
           btnType="primary"
       />
       </div>

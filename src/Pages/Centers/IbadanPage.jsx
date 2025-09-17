@@ -5,7 +5,10 @@ import { About, backendLocation, Locations } from '../../../public/Constant'
 import { Link } from 'react-router-dom'
 import { Button } from '../../Components/Utils/Button'
 import { ImageText } from '../../Components/Sections/ImageText'
-import { BsGeoAltFill, BsPeopleFill } from 'react-icons/bs'
+import { BsClockFill, BsGeoAltFill, BsPeopleFill } from 'react-icons/bs'
+import { InfoCard } from '../../Components/Utils/InfoCard'
+import { Parallax } from '../../Components/Sections/Parallax'
+import { Activities } from '../About/WhoWeAre'
 
 const IbadanPage = () => {
   const [ i, setI ] = useState(0)
@@ -25,7 +28,7 @@ const IbadanPage = () => {
 
 
   return (
-    <main className="center flex-col gap-[10vh] lg:gap-[15vh]">
+    <main className="center flex-col gap-[10vh] lg:gap-[15vh] mb-[10vh] lg:mb-[15vh]">
         <section className="w-full center text-center h-[70vh] pt-[15vh] relative">
           <div className="absolute top-0 left-0 h-full w-full bg-ibadan center flex-col">
               
@@ -52,7 +55,7 @@ const IbadanPage = () => {
                 
                 <Button
                     type={"primary"} 
-                    text={"Join us"} 
+                    text={language == "eng" ? "Join us" : "Rejoignez-nous"} 
                     className={""} 
                     icon={<i className="bi bi-chevron-rig ht"></i>}
                     btnType={""} 
@@ -61,19 +64,28 @@ const IbadanPage = () => {
           </div>
       </section>
 
-      <ImageText 
-        img1={`${backendLocation}/images/2025-let-us-pray-ibadan/IMG-20250710-WA0073.jpg`}
-        img2={`${backendLocation}/images/workers-meeting-aug-2025/IMG-20250831-WA0034.jpg`}
-        header={language === "eng" ? "Fellowship with us" : "Qui nous sommes"}
-        desc={About[language].mission.more}
-      />
+      <InfoCard
+            data={About[language].vision.desc} 
+            title={language === "eng" ?["Our", "Vision"] : ["Notre", "Vision"]}
+            img={`${backendLocation}/images/2025-let-us-pray-ibadan/IMG-20250708-WA0016.jpg`}
+            btn={
+                <Parallax id={"ibadanaboutbtnvision"}>
+                    <Link to="/about-us/who-we-are" className="mt-9 z-[2]">
+                        <Button 
+                            text={language == eng ? "Read more" : "Lire la suite"}
+                            className={"mt-9 z-[9]"}
+                        />
+                    </Link>
+                </Parallax>
+            }
+        />
       
       <section className="w-full center flex-col bg-fellowship bg-darkblue py-16">
         <div className="w-11/12 lg:w-10/12 flex flex-col gap-4 text-gray-200">
             <h2 className="font-bold text-3xl text-gray-200">
                 {
                     language === "eng" ? 
-                    "Join us" : 
+                    "Fellowship with us" : 
                     "Venez en communion avec nous." 
                 }
             </h2>
@@ -99,7 +111,7 @@ const IbadanPage = () => {
                   </div>
 
                   <div className="flex flex-col gap-2 mt-7 text-gray-100 lg:w-6/12">
-                      <h3 className="font-bold text-xl text-blue-100">Location</h3>
+                      <h3 className="font-bold text-xl text-blue-100">{language == eng ? "Location" : ""}</h3>
                       <>
                           
                         <div className="flex items-center gap-2">
@@ -108,8 +120,7 @@ const IbadanPage = () => {
                                 {location.address}
                             </p>
                         </div>
-
-                          
+                        
                           {
                             location.time &&
                                 location.time.map((time, a) => (
@@ -132,6 +143,33 @@ const IbadanPage = () => {
 
         
     </section>
+
+    <div className="flex flex-col gap-9">
+          <InfoCard 
+            data={About[language].mission.desc} 
+            title={language === "eng" ? ["Our", "Mission"] : ["Notre", "Mission"]}
+            img={`${backendLocation}/images/2025-let-us-pray-ibadan/IMG-20250710-WA0017.jpg`}
+            btn={
+                <Parallax id={"ibadanaboutbtn"}>
+                    <Link to="/about-us/who-we-are" className="mt-9 z-[2]">
+                        <Button 
+                            text={language == eng ? "Read more" : "Lire la suite"}
+                            className={"mt-9 z-[9]"}
+                        />
+                    </Link>
+                </Parallax>
+            }
+
+            />
+        </div>
+
+        <ImageText 
+        img1={`${backendLocation}/images/2025-let-us-pray-ibadan/IMG-20250710-WA0073.jpg`}
+        img2={`${backendLocation}/images/workers-meeting-aug-2025/IMG-20250831-WA0034.jpg`}
+        header={language === "eng" ? "Fellowship with us" : "Qui nous sommes"}
+        desc={About[language].mission.more}
+      />
+      <Activities />
     </main>
   )
 }

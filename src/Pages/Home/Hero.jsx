@@ -56,12 +56,12 @@ export const Hero = () => {
                         }
                     </div>
 
-                    <div className={`h-2 w-16 my-9 bg-red-300 ${About[language].core_activities[i].bg}`}></div>
+                    <div className={`h-2 w-16 my-9 bg-gradient-to-r from-pink-300 to-blue-300 ${About[language].core_activities[i].bg}`}></div>
                     
                     <Link to="/partnership">
                         <Button
                             type={"primary"} 
-                            text={"Become a Partner"} 
+                            text={language == "eng" ? "Become a Partner" : "Devenez partenaire"} 
                             className={""} 
                             icon={<i className="bi bi-chevron-rig ht"></i>}
                             btnType={""} 
@@ -69,7 +69,7 @@ export const Hero = () => {
                     </Link>
                 </div>
 
-                {/* <q className="text-white blue-100 text-lg md:text-xl">Whoever believes in me, as the scripture has said, "Streams of <strong className="font-bold"> Living Waters </strong> will flow from within him</q> */}
+
 
             </div>
 

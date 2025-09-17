@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    language: "eng"
+    language: "fr"
 }
 
 const AppSlice = createSlice({

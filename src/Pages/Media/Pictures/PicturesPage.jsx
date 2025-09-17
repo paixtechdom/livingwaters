@@ -33,7 +33,7 @@ const PicturesPage = () => {
               </h1>
               <BreadCrumbs
                   text={"text-gray-200"}
-                  link={"Pictures"}
+                  link={language == "eng" ? "Pictures" : "Photos"}
                 />
           </div>
       </section>
@@ -107,7 +107,9 @@ export const ImageFolderComponent = ({folder}) => {
           <h2 className="font-bold text-lg capitalize">
             {language === "eng" ? folder.title[0] : folder.title[1]}
           </h2>
-          <p className="text-[12px] font-bold text-gray-500">{folder.year}</p>
+          <p className="text-[12px] font-bold text-gray-500">
+            {language === "eng" ? folder.year[0] : folder.year[1]}
+          </p>
         </div>
     </div>
 

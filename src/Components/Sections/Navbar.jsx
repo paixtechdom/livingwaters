@@ -204,7 +204,7 @@ const Navbar = () => {
                                             currentDropDownIndex == i && 
                                             <div className="lg:hidden flex flex-col gap-2 ml-2 scale-90">
                                             {
-                                                Navigation["eng"][currentDropDownIndex]?.sublinks?.map((subnav, i) => (
+                                                Navigation[language][currentDropDownIndex]?.sublinks?.map((subnav, i) => (
                                                     <Link to={`/${subnav.link}`} key={i} className="flex items-center justify-between  gap-3 relative group cursor-pointer p-1">
                                                     
                                                     <div className={`absolute h-full bg-gradient-to-r from-pink-400 to-blue-500 opacity-30 w-0 rounded-lg group-hover:w-full z-[0] transition-all duration-500`}></div>
@@ -233,15 +233,15 @@ const Navbar = () => {
                             <div className={`flex flex-col gap-5 my-[5vh] relative transition-all duration-500 ${!expandNav ? "lg:translate-x-[-120px]" : "translate-x-0"}`}>
                                 <Link to={'/give'} className={` `}>
                                     <Button 
-                                        text={language==="eng" ? "Give" : "English"} 
+                                        text={language==="eng" ? "Give" : "Donner"} 
                                         type={'primary'} 
                                         className={'w-full py-[8px] text-base'} 
                                     />
                                 </Link>
 
-                                {/* <div ishoveredclassName={``}>
+                                <div>
                                     <Button 
-                                        text={language==="eng" ? "Francais" : "English"} 
+                                        text={language==="eng" ? "Changer de langue" : "Switch Language"} 
                                         type={'primary'} 
                                         className={'w-full py-[8px] text-base px-5'} 
                                         func={() => {
@@ -252,7 +252,7 @@ const Navbar = () => {
                                             }
                                         }}
                                     />
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                         
@@ -263,7 +263,7 @@ const Navbar = () => {
                 {/* SUB LINKS - SECONDARY LINKS  FOR LARGE SCREENS*/}
                  <div className={`hidden absolute top-0 h-screen bg-black bg-opacity-60 backdrop-blur-sm w-[550px] transition-all duration-1000 ease-in-out lg:flex justify-center items-end pr-9 flex-col gap-3 ${(Navigation["eng"][currentDropDownIndex]?.sublinks && expandNav) ? "left-0" : "-left-[-100vw] lg:-left-[70vw]"} lg:pb-[15vh]`}>
                     {
-                        Navigation["eng"][currentDropDownIndex]?.sublinks?.map((subnav, i) => (
+                        Navigation[language][currentDropDownIndex]?.sublinks?.map((subnav, i) => (
                             <Link to={`/${subnav.link}`} key={i} className="flex items-center justify-between  w-[200px] gap-3 relative group cursor-pointer p-1"
                                 onClick={() => {
                                     dispatch(setCurrentDropDown(nav.title))

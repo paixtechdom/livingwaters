@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from '../../Components/Utils/Button'
+import { useSelector } from 'react-redux'
 
 export const ATestimony = ({testimony, show, setShow }) => {
-  
+  const appslice = useSelector((state) => state.appslice)  
+  const language = appslice.language
+
+
   useEffect(() => {
     if(!show){
         document.body.style.overflowY="auto"
@@ -18,7 +22,7 @@ export const ATestimony = ({testimony, show, setShow }) => {
       <div className="flex flex-col gap-3 w-11/12 md:w-9/12 lg:w-8/1/2 text-gray-100">
       <div className="flex flex-col gap-1 border-l-4 border-orange-700 pl-2 ">
           <h3 className="capitalize font-bold text-lightblue text-xl lg:text-2xl">{testimony?.title}</h3>
-          <i className="text-sm">Testimony by {testimony?.name}</i>
+          <i className="text-sm">{language == "eng" ? "Testimony by" : "Témoignage de"} {testimony?.name}</i>
         </div>
 
         <div className="flex flex-col leading-relaxed tracking-wide gap-4 mb-[8vh]">
@@ -30,7 +34,7 @@ export const ATestimony = ({testimony, show, setShow }) => {
         </div>
 
         <Button
-          text="Close"
+          text={language == "eng" ? "Close": "Fermer" }
           func={() => {
             setShow(false)
           }}

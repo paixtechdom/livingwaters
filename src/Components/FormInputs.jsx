@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react"
 import { BiX } from "react-icons/bi"
 import { BsSearch } from "react-icons/bs"
 import { countries } from "../../public/Constant"
+import { useSelector } from "react-redux"
 
 // ******************* INPUT FIELD************************//
 
@@ -112,6 +113,9 @@ export const RadioSelect = ({options, formInputs, label, name, setFormInputs }) 
 
 export const CountriesOption = ({setFormInputs, setShowCountries, showCountries, searchInput, setSearchInput, formInputs }) => {
     const [ Countries, setCountries ] = useState([])
+    const appslice = useSelector((state) => state.appslice)  
+    const language = appslice.language
+
 
     useEffect(() => {
         const newCountriesList = countries.filter((c) => c.country.toLowerCase().includes(searchInput.toLowerCase()))
@@ -127,7 +131,7 @@ export const CountriesOption = ({setFormInputs, setShowCountries, showCountries,
                     <div className="flex justify-between items-center w-full font-bold text-xl" onClick={() => {
                     setShowCountries(false)
                 }}>
-                        Select Country
+                        {language == "eng" ? "Select Country" : "Sélectionnez un pays"}
                         <BiX className="text-3xl text-gray-200"/>
                     </div>
                     <div className="flex bg-darkblue bg-opacity-10 w-full rounded-full border border-orange-700 overflow-hidden border-opacity-40">

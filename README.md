@@ -39,10 +39,8 @@ Saturday - evangelism / monthly workers meeting - 11-4pm
 
 
 
-small screen, clicking the right side should close the nav
 translation
 message editing
 video bg
-page for benin and ibadan
 google emailing
 

@@ -45,8 +45,9 @@ export const InfoCard = ({data, title, img, btn}) => {
                         ))
                     }
                 </div>
-                
-                {btn}
+                <div className="z-[2]">
+                    {btn}
+                </div>
             </div>
         </section>
     )

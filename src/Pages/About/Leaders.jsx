@@ -23,7 +23,7 @@ const Leaders = () => {
       name: "Onido Innocent A.",
       position: {
         eng: "Lead Minister",
-        fr: "Ministre Principal"
+        fr: "Ministre principal"
       },
       img: lead_minister
     },
@@ -31,7 +31,7 @@ const Leaders = () => {
     //   name: "Eunice Onido",
     //   position: {
     //     eng: "Director of Ministry Affairs",
-    //     fr: ""
+    //     fr: "Directrice des affaires ministérielles"
     //   },
     //   img: lead_minister
     // },
@@ -39,7 +39,7 @@ const Leaders = () => {
       name: "Funmilayo Adelowo",
       position: {
         eng: "Director of Programmes / Services",
-        fr: ""
+        fr: "Directrice des programmes / services"
       },
       img: funmi
     },
@@ -47,7 +47,7 @@ const Leaders = () => {
     //   name: "Susan Bello",
     //   position: {
     //     eng: "Director of Ministry Treasury",
-    //     fr: ""
+    //     fr: "Directrice du trésor du ministère"
     //   },
     //   img: lead_minister
     // },
@@ -55,7 +55,7 @@ const Leaders = () => {
       name: "Oluwaferanmi Hassan",
       position: {
         eng: "Director of Missions (Western Region of Nigeria)",
-        fr: ""
+        fr: "Directeur des missions (région occidentale du Nigéria)"
       },
       img: feranmi
     },
@@ -63,7 +63,7 @@ const Leaders = () => {
       name: "Noah Oyewale",
       position: {
         eng: "Director of Protocol and Security",
-        fr: ""
+        fr: "Directeur du protocole et de la sécurité"
       },
       img: noah
     },
@@ -71,15 +71,15 @@ const Leaders = () => {
       name: "Daniel Ajayi ",
       position: {
         eng: "Director of Public Relations Media",
-        fr: ""
+        fr: "Directeur des relations publiques et des médias"
       },
       img: daniel
     },
     {
       name: "Oluwaferanmi John",
       position: {
-        eng: "Director of ICT & Technical ",
-        fr: ""
+        eng: "Director of ICT & Technical",
+        fr: "Directeur des TIC et techniques"
       },
       img: peace
     },
@@ -87,15 +87,15 @@ const Leaders = () => {
       name: "Delight Oyelopo",
       position: {
         eng: "Director of Ministry - Benin Republic",
-        fr: ""
+        fr: "Directeur du ministère - République du Bénin"
       },
       img: delight
     },
     {
       name: "Busola Alimi",
       position: {
-        eng: "Director of Internal Public Relations and Communications ",
-        fr: ""
+        eng: "Director of Internal Public Relations and Communications",
+        fr: "Directrice des relations publiques internes et de la communication"
       },
       img: busola
     },
@@ -103,7 +103,7 @@ const Leaders = () => {
     //   name: "Favor Ogundipe",
     //   position: {
     //     eng: "Director of Welfare and Hospitality",
-    //     fr: ""
+    //     fr: "Directeur du bien-être et de l’hospitalité"
     //   },
     //   img: lead_minister
     // },
@@ -111,11 +111,12 @@ const Leaders = () => {
       name: "Dasola Olayiwola",
       position: {
         eng: "Official Yoruba Language Interpreter",
-        fr: ""
+        fr: "Interprète officiel de la langue yoruba"
       },
       img: dasola
     }
   ]
+
   return (
     <main className="w-full relative center flex-col">
 
@@ -124,14 +125,14 @@ const Leaders = () => {
       <div className="center gap-3 h-full w-11/12 lg:w-10/12 flex-col text-center z-[1]">
 
           <h1 className="font-bold text-4xl md:text-5xl w-full center text- blue-200 white tracking-wide leading-snug">
-              {language === "eng" ? "Our  Leaders" : "Nos Leaders"}
+              {language === "eng" ? "Our  Leaders" : "Nos Dirigeants"}
           </h1>
 
           <p className="font-bold">{language == "eng" ? "Meet our Leaders and Ministers" : "Recontrez nos dirigeants et ministres"}</p>
          
         <BreadCrumbs
           text={"text-gray-300"}
-            link={"Our Leaders"}
+            link={language == "eng" ? "Our Leaders" : "Nos Dirigeants"}
           />
       </div>
     </section>

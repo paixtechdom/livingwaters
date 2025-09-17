@@ -26,7 +26,7 @@ const Give = () => {
   return (
     <main className="w-full relative center flex-col">
 
-      <section className="center w-full h-[50vh] pt-[15vh] bg-gray-950 text-gray-100 relative bg-no-repeat bg-fixed bg-cover bg-giveBg">
+      <section className="center w-full h-[70vh]  pt-[15vh] bg-gray-950 text-gray-100 relative bg-no-repeat bg-fixed bg-cover bg-giveBg">
         <div className="absolute top-0 left-0 h-full w-full opacity-90 bg-black center flex-col"></div>
         <div className="center gap-3 h-full w-11/12 lg:w-10/12 flex-col text-center z-[1]">
 
@@ -45,7 +45,7 @@ const Give = () => {
 
           </div>
           <BreadCrumbs
-                  link={"Give"}
+                  link={language === "eng" ? "Give" : "Doner"}
               />
         </div>
       </section>
@@ -61,10 +61,9 @@ const Give = () => {
 
                         {bankaccount.type == "Foreign Account" &&
                             <div  className="flex items-center flex-co l lg: flex-row gap-2 flex-wrap">
-                                <h3 className="uppercase font-bol">{language == "eng" ? "Swift Code:" : "Code SWIFT" } </h3>
+                                <h3 className="uppercase font-bol">{language == "eng" ? "Swift Code:" : "Code Swift" } </h3>
                                 <p className="font-bold text-lg text-darkblue uppercase">UNAFNGLA005</p>
-                            </div>
-                        }
+                            </div>                        }
 
                         <div key={i} className="grid lg:grid-cols-2 gap-4">
                             {
@@ -114,15 +113,16 @@ const Give = () => {
 
         <div className="w-11/12 lg:w-10/12 flex mb-[10vh] lg:[15vh]">
             <InfoCard 
-                data={["Partners are friends of Living Waters Global Minstry (both members and non members), who are committed to sowing financially on a regular basis to help move forward the vision of the ministry."]}
-                title={["Become", "a Partner"]}
+                data={language == "eng" ? ["Partners are friends of Living Waters Global Minstry (both members and non members), who are committed to sowing financially on a regular ba xsis to help move forward the vision of the ministry."]: ["Les partenaires sont des amis de Living Waters Global Ministry (membres et non-membres), qui s’engagent à semer financièrement de façon régulière afin de faire avancer la vision du ministère."]}
+                title={language == "eng" ? ["Become", "a Partner"] : ["Devenez", "partenaire"]}
                 img={partners}
                 btn={
                     <Link to={"/partnership"} className="z-[2] mt-4">
                         <Parallax id={"givepartnerbtn"} type={"left"}>
                             <Button
                                 type={"primary"}
-                                text={"Become a partner"}
+                                text={language == "eng" ? "Become a partner" : "Devenez partenaire"}
+                                className={"mt-6"}
                             />
                         </Parallax>
                     </Link>

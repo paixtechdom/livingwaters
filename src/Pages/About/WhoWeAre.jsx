@@ -2,11 +2,9 @@ import { About } from "/public/Constant"
 import { Button } from "../../Components/Utils/Button"
 import { InfoCard } from "../../Components/Utils/InfoCard"
 import { useDispatch, useSelector } from "react-redux"
-import homewho from "../../assets/images/dev/homewho.jpg"
 import homewho2 from "../../assets/images/dev/homewho2.jpg"
 import { OtherHeros } from "./OtherHeros"
 import abouthero1 from "../../assets/images/dev/abouthero1.jpg"
-import Papa from "../../assets/images/dev/papa 1.jpg"
 import abouthero2 from "../../assets/images/dev/abouthero2.jpg"
 import abouthero3 from "../../assets/images/dev/abouthero3.jpg"
 import { Parallax } from "../../Components/Sections/Parallax"
@@ -41,16 +39,11 @@ const WhoWeAre = () => {
                       })
                   }
                   className="w-fit min-w-[200px] shadow-xl font-bold"
-                  icon=""
-                  btnType=""
-                  isDisabled={false}
               />
           }
-          span={""}
-          subHeader={""}
       />
       <BreadCrumbs
-        link={"Who we are"}
+        link={language == "eng" ?"Who we are" : "Qui nous sommes"}
       />
       <div id="aboutMore" className="w-11/12 lg:w-10/12 flex flex-col items-center gap-[10vh] mt-[15vh]">
 
@@ -80,15 +73,31 @@ const WhoWeAre = () => {
             />
         </div>
 
-          <Activities />
+        
+        {/* <div className="flex flex-col gap-9 mt-[5vh] mb-[10vh] lg:mb-[15vh]">
+          <h3 className="font-bold text-center text-4xl">
+            {language == "eng" ? "Our Core Values" : "Nos valeurs fondamentales"}
+        </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 items-center justify-center  ">
+
+            {About[language].core_values.map((value, i) => (
+              <div key={i} className="center bg-gradient-to-r from-pink-200 to-blue-200 p-2 px-7 rounded-lg text-darkblue text-lg py-4 items-center">
+                <div className="size-4 rounded-full bg-darkblue"></div>
+                {value}
+              </div>
+            ))}
+          </div>
+        </div> */}
+
+
+
           <div className="my-[-10vh] mb-[10vh]">
             <ImageText 
-                header={language === "eng" ? "Our Leaders" : "Qui nous sommes"}
+                header={language === "eng" ? "Our Leaders" : "Nos Dirigeants"}
                 desc={About[language].mission.more}
                 btn={
                   <Link to="/about-us/our-leaders">
                     <Button 
-                        type="" 
                         text={language === "eng" ? "Read More" : "Lire la suite"} 
                         className="w-fit min-w-[200px] shadow-xl font-bold"
                         isDisabled={false}
@@ -113,7 +122,7 @@ export const Activities = () => {
   return(
     <div className="w-11/12 lg:w-10/12 flex flex-col gap-7 my-[10vh]">
     <h3 className="font-bold text-center text-4xl">
-        {language === "eng" ? "Our Core Activities" : ""}
+        {language === "eng" ? "Our Core Activities" : "Nos activités principales"}
     </h3>
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 w-full justify-items-center items-center justify-content-center">
         {

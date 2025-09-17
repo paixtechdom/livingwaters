@@ -12,7 +12,6 @@ import homewho2 from "../../assets/images/dev/homewho2.jpg"
 import { Activities } from "../About/WhoWeAre";
 import { Location } from "./Location";
 
-
 const Home = () => {  
 
     const appslice = useSelector((state) => state.appslice)  
@@ -21,31 +20,28 @@ const Home = () => {
 
 
 
+
     return(
         <main className="center w-full flex-col overflow-hidden min-h-screen pb-[15vh] bg-gray-50 z-10 ">
             
             <Hero /> 
-                <div className="mt-[10vh]"></div>
-                <ImageText 
-                    img2={homewho}
-                    img1={homewho2}
-                    header={language === "eng" ? "Who we are" : "Qui nous sommes"}
-                    desc={About[language].mission.more}
-                    btn={
-                        <Button 
-                            type="" 
-                            text={language === "eng" ? "Read More" : "Lire la suite"} 
-                            func={() => navigate("/about-us/who-we-are")}
-                            className="w-fit min-w-[200px] shadow-xl font-bold"
-                            icon=""
-                            btnType=""
-                            isDisabled={false}
-                        />
-                    }
-                    span={""}
-                    subHeader={""}
-                />
-            <div className="center w-11/12 lg:w-10/12 flex-col gap-[7vh] md:gap-[10vh] overflow-hidden mt-[10vh]"> 
+            <div className="mt-[10vh]"></div>
+            <ImageText 
+                img2={homewho}
+                img1={homewho2}
+                header={language === "eng" ? "Who we are" : "Qui nous sommes"}
+                desc={About[language].mission.more}
+                btn={
+                    <Button 
+                        type="" 
+                        text={language === "eng" ? "Read More" : "Lire la suite"} 
+                        func={() => navigate("/about-us/who-we-are")}
+                        className="w-fit min-w-[200px] shadow-xl font-bold"
+                        isDisabled={false}
+                    />
+                }
+            />
+        <div className="center w-11/12 lg:w-10/12 flex-col gap-[7vh] md:gap-[10vh] overflow-hidden mt-[10vh]"> 
                 <section className="flex flex-col gap-9 w-full bg-white p-9 rounded-2xl">
                     <div className="flex flex-col gap-4 center">
                         <div className="flex gap-3 items-center">
