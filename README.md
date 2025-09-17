@@ -39,7 +39,7 @@ Saturday - evangelism / monthly workers meeting - 11-4pm
 
 
 
-translation
+add give to the footer
 message editing
 video bg
 google emailing

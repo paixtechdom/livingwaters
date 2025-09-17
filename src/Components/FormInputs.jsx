@@ -3,6 +3,7 @@ import { BiX } from "react-icons/bi"
 import { BsSearch } from "react-icons/bs"
 import { countries } from "../../public/Constant"
 import { useSelector } from "react-redux"
+import { PiCheckFill } from "react-icons/pi"
 
 // ******************* INPUT FIELD************************//
 
@@ -178,10 +179,10 @@ export const CountriesOption = ({setFormInputs, setShowCountries, showCountries,
 
 
 
-export const SelectMultiple = ({label, name, value, formInputs, setFormInputs, options}) => {
+export const SelectMultiple = ({label, name, formInputs, setFormInputs, options}) => {
     return(
         <div className="flex flex-col w-full gap-3">
-            <label htmlFor={"focus"} className={`${formInputs.focus.length == 0 ? "text-darkblue" : "text-gray-500"} font-bold text- sm`}>
+            <label htmlFor={name} className={`${formInputs.focus.length == 0 ? "text-darkblue" : "text-gray-500"} font-bold text- sm`}>
               {label}
           </label>      
             <div className="grid md:gr id-cols-2 gap-3 ml-2">
@@ -204,7 +205,7 @@ export const SelectMultiple = ({label, name, value, formInputs, setFormInputs, o
                             // console.table(formInputs[name])
                         }}
                     >
-                        <div className={`size-4 ${formInputs[name].includes(o) ? "bg-darkblue" : "bg-white" } transition-colors duration-500 rounded-[2px] border border-darkblue`}></div>
+                        <i className={`bi bi-${formInputs[name].includes(o) ? "check-square-fill " : "square" } text-darkblue`} ></i>
                         <p>{o}</p>
                     </div>
                 ))}

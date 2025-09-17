@@ -53,6 +53,13 @@ export const Footer = () => {
                                     </Link>
                                 ))
                             }
+                            <Link to="/give">
+                                <Button 
+                                    type={"primary"}
+                                    text={"Give"}
+                                    className={"w-fit"}
+                                />
+                            </Link>
                         </div>
                     </div>
 

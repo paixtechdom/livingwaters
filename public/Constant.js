@@ -40,6 +40,7 @@ export const Navigation =
             {
                 title: 'About Us',
                 link: 'about-us',
+                
                 icon: "globe2",
                 sublinks: [
                     {

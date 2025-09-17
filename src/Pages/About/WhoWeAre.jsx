@@ -91,7 +91,7 @@ const WhoWeAre = () => {
 
 
 
-          <div className="my-[-10vh] mb-[10vh]">
+          <div className="my-[1vh]">
             <ImageText 
                 header={language === "eng" ? "Our Leaders" : "Nos Dirigeants"}
                 desc={About[language].mission.more}

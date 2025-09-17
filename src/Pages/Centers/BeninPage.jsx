@@ -60,10 +60,12 @@ const BeninPage = () => {
               <Button
                   type={"primary"} 
                   text={language == "eng" ? "Join us" : "Rejoignez-nous"} 
-                  className={""} 
                   icon={<i className="bi bi-chevron-rig ht"></i>}
-                  btnType={""} 
-              />
+                  func={() => {
+                    document.querySelector("#location").scrollIntoView({
+                        behavior: "smooth"
+                    })
+                }}              />
             </div>
         </div>
     </section>
@@ -84,7 +86,7 @@ const BeninPage = () => {
           }
       />
     
-    <section className="w-full center flex-col bg-fellowship bg-darkblue py-16">
+    <section id='location' className="w-full center flex-col bg-fellowship bg-darkblue py-16">
       <div className="w-11/12 lg:w-10/12 flex flex-col gap-4 text-gray-200">
           <h2 className="font-bold text-3xl text-gray-200">
               {
