@@ -4,7 +4,7 @@ import './assets/Styles/index.css';
 import { useDispatch } from "react-redux";
 import { DocscrollTop } from "./assets/Functions"
 import { toggleScrolledDown } from './assets/store/navigation/navigationSlice';
-import { Loader } from './Components/Utils/Loader';
+// import { Loader } from './Components/Utils/Loader';
 
 
 
@@ -28,34 +28,11 @@ function App() {
     DocscrollTop()
   }, [window.URL])
 
-  // useEffect(() => {
-  //       const script = document.createElement('script');
-  //       script.type = 'text/javascript';
-  //       script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-  //       document.body.appendChild(script);
-
-  //       window.googleTranslateElementInit = () => {
-  //         new window.google.translate.TranslateElement(
-  //           { pageLanguage: 'en', layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE },
-  //           'google_translate_element'
-  //         );
-  //       };
-
-  //       return () => {
-  //         // Cleanup function if needed, e.g., removing the script
-  //         document.body.removeChild(script);
-  //         delete window.googleTranslateElementInit;
-  //       };
-  //     }, []);
-
-
-  return (
+    return (
     <div className='App w-full overflow-hidden'>
            
         <AppRouter/>
-        {/* <div id="google_translate_element"></div> */}
         {/* <Loader /> */}
-        {/* <div className="text-5xl font-bold">Living Waters Global Ministry</div> */}
     </div>
   );
 

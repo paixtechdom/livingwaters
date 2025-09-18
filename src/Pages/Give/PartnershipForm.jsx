@@ -6,7 +6,7 @@ import { useMyAlert } from '../../Components/Alert'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { BsExclamationCircleFill } from 'react-icons/bs'
-import { BEST_SHEET_CONNECTION_URL } from '../../../public/Constant'
+import { GOOGLE_SHEET_URL } from '../../../public/Constant'
 import { useSelector } from 'react-redux'
 // import DatePicker from '../../Components/Utils/DatePicker'
 
@@ -62,9 +62,10 @@ const handleSubmit = async (e) => {
       return;
     }
       try {
+        const params = new URLSearchParams(formInputs).toString();
+
         const response = await axios.post(
-            BEST_SHEET_CONNECTION_URL,
-            JSON.stringify(formInputs),
+          (`${GOOGLE_SHEET_URL}?${params}`),
             {
             headers: {
                 'Content-Type': 'application/json'
@@ -122,7 +123,11 @@ const clearForm = () => {
 
   return (
     <section className="w-11/12 lg:w-10/12 mb-9 z-10">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full bg-opa city-30  px-7 md:px-9 p-9 rounded-2xl py-[5vh] bg-darkblue bg-opacity-5 border shado w-xl drop-shadow-2xl">
+      <form 
+        // onSubmit={handleSubmit} 
+        // onSubmit={(e) => e.preventDefault()} 
+         action={GOOGLE_SHEET_URL} method="GET" target="_blank"
+        className="flex flex-col gap-6 w-full bg-opa city-30  px-7 md:px-9 p-9 rounded-2xl py-[5vh] bg-darkblue bg-opacity-5 border shado w-xl drop-shadow-2xl">
       <h2 className="text-xl lg:text-2xl font-bold mb-9 text-darkblue uppercase">
       {language == "eng" ? "Partnership Form" : "Formulaire de partenariat"}
         </h2>
@@ -258,7 +263,7 @@ const clearForm = () => {
                   <BiLoaderAlt className="animate-spin ml-2 text-xl" />
               </> 
               : <>{language == "eng" ? "Become a partner" : "Devenez partenaire"}</>}
-          btnType="primary"
+          btnType="submit"
       />
       </div>
 

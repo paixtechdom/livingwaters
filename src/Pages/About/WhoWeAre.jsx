@@ -74,20 +74,36 @@ const WhoWeAre = () => {
         </div>
 
         
-        {/* <div className="flex flex-col gap-9 mt-[5vh] mb-[10vh] lg:mb-[15vh]">
-          <h3 className="font-bold text-center text-4xl">
-            {language == "eng" ? "Our Core Values" : "Nos valeurs fondamentales"}
-        </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 items-center justify-center  ">
-
-            {About[language].core_values.map((value, i) => (
-              <div key={i} className="center bg-gradient-to-r from-pink-200 to-blue-200 p-2 px-7 rounded-lg text-darkblue text-lg py-4 items-center">
-                <div className="size-4 rounded-full bg-darkblue"></div>
-                {value}
-              </div>
-            ))}
+        <div className="flex flex-col gap-9 mt-[5vh] py-[10vh] lg:mb-[15vh] w-full bg-darkblue rounded-2xl">
+          <div className="center flex-col">
+            <h3 className="font-bold text-center text-4xl text-gray-100">
+              {language == "eng" ? "Our Core Values" : "Nos valeurs fondamentales"}
+            </h3>
+            <div className="w-[200px] border b-2 border-orange-700"></div>
           </div>
-        </div> */}
+
+          <div className="grid md:grid-cols-2 lg:grid- cols-3 w-full bg-aboutBg bg-center bg-no-repeat bg-cover relative ">
+
+              {About[language].core_values.map((value, i) => (
+                <div key={i} className="flex  relative w-full rounded-xl">
+                  
+                    <div className="center w-full border-[15px] lg:border-[20px] border-darkblue  overflow-hidden h-full bg-black blue bg-opacity-80 p-3 ">
+                      <Parallax id={TrimText(value)} 
+                      type={i % 2 == 0 ? "left" : i % 3 == 0 ? "right" : ""}
+                      >
+                      <div className="text-lg w-full h-full text-gray-100 center text-center ">
+                          <span className="text-2xl lg:text-3xl font-bold">
+                            {value[0]}
+                          </span>
+                          {value.slice(1, 300)}
+                        </div>        
+                      </Parallax>
+                      </div>        
+                  </div>
+
+              ))}
+            </div>
+        </div>
 
 
 

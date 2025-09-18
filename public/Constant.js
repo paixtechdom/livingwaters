@@ -25,7 +25,7 @@ export const Logo = logo
 export const backendLocation = 'https://livingwatersglobalministry.org/'
 
 
-export const BEST_SHEET_CONNECTION_URL = ""
+export const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbyDkPC8iQ9nU59mvfTLO8dy6vQITXP6RhWY1lZRGMiKj1lpc18Hu1D-GMXGd4AOzOHF/exec"
 
 export const Navigation =
     {
@@ -40,7 +40,7 @@ export const Navigation =
             {
                 title: 'About Us',
                 link: 'about-us',
-                
+
                 icon: "globe2",
                 sublinks: [
                     {

@@ -37,6 +37,9 @@ h1, h2, h3{
     display: none;
   }
   
+  .animateload{
+    animation: animateload 3s ease-in-out infinite;
+  }
 
 @keyframes  animate-zoom {
     from{
@@ -50,3 +53,16 @@ h1, h2, h3{
     }
 }
 
+
+
+@keyframes animateload {
+    from{
+        left: -5%
+    }
+    50%{
+        left: 95%
+    }
+    to{
+        left: -5%
+    }
+}
