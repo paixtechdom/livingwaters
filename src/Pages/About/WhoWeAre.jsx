@@ -27,7 +27,7 @@ const WhoWeAre = () => {
           img2={abouthero2}
           img1={abouthero3}
           header={language === "eng" ? "Who we are" : "Qui nous sommes"}
-          desc={About[language].mission.more}
+          desc={About[language].mission.more[1]}
           btn={
               <Button 
                   type="primary" 
@@ -57,11 +57,7 @@ const WhoWeAre = () => {
 
           <div className="flex flex-col gap-3 text-center w-11/12 lg:w-10/12 text-zinc-700">
           {
-            About[language].mission.more.map((j, i) => (
-              <p key={i}>
-                {j}
-              </p>
-            ))
+            About[language].mission.pre
           }
           </div>
 
@@ -110,7 +106,7 @@ const WhoWeAre = () => {
           <div className="my-[1vh]">
             <ImageText 
                 header={language === "eng" ? "Our Leaders" : "Nos Dirigeants"}
-                desc={About[language].mission.more}
+                desc={About[language].vision.desc[0].desc}
                 btn={
                   <Link to="/about-us/our-leaders">
                     <Button 

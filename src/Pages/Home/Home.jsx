@@ -30,7 +30,7 @@ const Home = () => {
                 img2={homewho}
                 img1={homewho2}
                 header={language === "eng" ? "Who we are" : "Qui nous sommes"}
-                desc={About[language].mission.more}
+                desc={About[language].mission.more[1]}
                 btn={
                     <Button 
                         type="" 

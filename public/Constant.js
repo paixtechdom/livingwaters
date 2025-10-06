@@ -295,7 +295,7 @@ export const About =  {
                 }
             ],
             more: [
-                // "Zechariah 14:9 - The LORD will be King over the whole earth. On that day there will be one LORD, and his name the only name. - And the purpose of that is that all tongues, all nations will cry out Jesus IS Lord over all",
+                "Zechariah 14:9 - The LORD will be King over the whole earth. On that day there will be one LORD, and his name the only name. - And the purpose of that is that all tongues, all nations will cry out Jesus IS Lord over all",
                 "We are called to come to the state whereby each and everyone of us are representatives of God's Kingdom, bodily channels through which the life of God flows, and portals through which the Kingdom of God will come to our home, neighbourhood, churches, schools, street, states, countries and the world at large, that the Kingdom of the Father come, His will be done all over the face of the Earth and all men confess that Jesus is Lord"
             ]
         },
@@ -381,7 +381,7 @@ export const About =  {
                 }
             ],
             more: [
-                // "Zacharie 14:9 - L’Éternel sera roi de toute la terre. En ce jour-là, l’Éternel sera le seul Éternel, et son nom sera le seul nom. — Et le but est que toutes les langues, toutes les nations proclament que Jésus est Seigneur sur tout.",
+                "Zacharie 14:9 - L’Éternel sera roi de toute la terre. En ce jour-là, l’Éternel sera le seul Éternel, et son nom sera le seul nom. — Et le but est que toutes les langues, toutes les nations proclament que Jésus est Seigneur sur tout.",
                 "Nous sommes appelés à parvenir à l’état où chacun de nous est un représentant du Royaume de Dieu, un canal corporel par lequel la vie de Dieu coule, et une porte par laquelle le Royaume de Dieu vient dans nos foyers, nos quartiers, nos églises, nos écoles, nos rues, nos États, nos pays et le monde entier, afin que le Royaume du Père vienne, que sa volonté soit faite sur toute la terre et que tous les hommes confessent que Jésus est Seigneur."
             ]
         },
