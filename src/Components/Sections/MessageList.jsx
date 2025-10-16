@@ -33,16 +33,16 @@ const MessagesList = () => {
 
   
     const FetchMessages = async () => {
-        axios.get( `${backendLocation}/messages.php/0/${30}/${searchInput}`)
-            .then((response) => {
-                // console.log(response.data)
-                setMessages(response.data);
-            }).catch(() => {
-                triggerAlert('error', 'Error fetching messages. Please wait')
-            })
-            .finally(() => {
-                setFetching(false);
-            })
+        // axios.get( `${backendLocation}/messages.php/0/${30}/${searchInput}`)
+        //     .then((response) => {
+        //         // console.log(response.data)
+        //         setMessages(response.data);
+        //     }).catch(() => {
+        //         triggerAlert('error', 'Error fetching messages. Please wait')
+        //     })
+        //     .finally(() => {
+        //         setFetching(false);
+        //     })
     }
    
     useEffect(() => {

@@ -11,8 +11,8 @@ export const InfoCard = ({data, title, img, btn}) => {
    
     return(
         <section id={title[1]} className="w-full center relative">
-            <div className="flex flex-col justify-between w-11/12  h-full lg:gap-0 p-4 py-9 lg:p-9 rounded-3xl shadow-xl relative overflow-hidden">
-                <div className="bg-darkblue opacity-55 size-full absolute left-0 top-0 z-[1]">f</div>
+            <div className="flex flex-col justify-between w-11/12 lg:w-8/12 h-full lg:gap-0 p-4 py-9 lg:p-9 rounded-3xl shadow-xl relative overflow-hidden">
+                <div className="bg-darkblue opacity-55 size-full absolute left-0 top-0 z-[1]"></div>
                 <div className="absolute w-full h-full top-0 left-0 z-0">
                     <img src={img} alt={title} className="size-full object-cover " />
                 </div>

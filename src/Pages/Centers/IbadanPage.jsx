@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { BreadCrumbs } from '../../Components/Utils/BreadCrumbs'
-import { About, backendLocation, Locations } from '../../../public/Constant'
+import { About, backendLocation, ImageFolders, Locations } from '../../../public/Constant'
 import { Link } from 'react-router-dom'
 import { Button } from '../../Components/Utils/Button'
 import { ImageText } from '../../Components/Sections/ImageText'
@@ -9,6 +9,7 @@ import { BsClockFill, BsGeoAltFill, BsPeopleFill } from 'react-icons/bs'
 import { InfoCard } from '../../Components/Utils/InfoCard'
 import { Parallax } from '../../Components/Sections/Parallax'
 import { Activities } from '../About/WhoWeAre'
+import { ImageFolderComponent } from '../Media/Pictures/PicturesPage'
 
 const IbadanPage = () => {
   const [ i, setI ] = useState(0)
@@ -28,7 +29,7 @@ const IbadanPage = () => {
 
 
   return (
-    <main className="center flex-col gap-[10vh] lg:gap-[15vh] mb-[10vh] lg:mb-[15vh]">
+    <main className="center flex-col gap-[10vh] lg:gap-[15vh] mb-[10vh] lg:mb-[15vh] w-full">
         <section className="w-full center text-center h-[70vh] pt-[15vh] relative">
           <div className="absolute top-0 left-0 h-full w-full bg-ibadan center flex-col">
               
@@ -67,29 +68,30 @@ const IbadanPage = () => {
           </div>
       </section>
 
-      <InfoCard
-            data={About[language].vision.desc} 
-            title={language === "eng" ?["Our", "Vision"] : ["Notre", "Vision"]}
-            img={`${backendLocation}/images/2025-let-us-pray-ibadan/IMG-20250708-WA0016.jpg`}
-            btn={
-                <Parallax id={"ibadanaboutbtnvision"}>
-                    <Link to="/about-us/who-we-are" className="mt-9 z-[2]">
-                        <Button 
-                            text={language == "eng" ? "Read more" : "Lire la suite"}
-                            className={"mt-9 z-[9]"}
-                        />
-                    </Link>
-                </Parallax>
-            }
-        />
+        <InfoCard
+                data={About[language].vision.desc} 
+                title={language === "eng" ?["Our", "Vision"] : ["Notre", "Vision"]}
+                img={`${backendLocation}/images/2025-let-us-pray-ibadan/IMG-20250708-WA0016.jpg`}
+                btn={
+                    <Parallax id={"ibadanaboutbtnvision"}>
+                        <Link to="/about-us/who-we-are" className="mt-9 z-[2]">
+                            <Button 
+                                text={language == "eng" ? "Read more" : "Lire la suite"}
+                                className={"mt-9 z-[9]"}
+                            />
+                        </Link>
+                    </Parallax>
+                }
+            />
+ 
       
       <section id='location' className="w-full center flex-col bg-fellowship bg-darkblue py-16">
         <div className="w-11/12 lg:w-10/12 flex flex-col gap-4 text-gray-200">
             <h2 className="font-bold text-3xl text-gray-200">
                 {
                     language === "eng" ? 
-                    "Fellowship with us" : 
-                    "Venez en communion avec nous." 
+                    "Plan your visit" : 
+                    "Planifiez votre visite" 
                 }
             </h2>
             <p>
@@ -114,10 +116,10 @@ const IbadanPage = () => {
                   </div>
 
                   <div className="flex flex-col gap-2 mt-7 text-gray-100 lg:w-6/12">
-                      <h3 className="font-bold text-xl text-blue-100">{language == "eng" ? "Location" : ""}</h3>
+                      <h3 className="font-bold text-2xl text-blue-100">{language == "eng" ? "Location" : ""}</h3>
                       <>
                           
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 text-lg">
                             <BsGeoAltFill className="text-lg text-blue-200"/>
                             <p>
                                 {location.address}
@@ -129,7 +131,7 @@ const IbadanPage = () => {
                                 location.time.map((time, a) => (
                                     <div key={a} className="flex items-center gap-2">
                                         <BsClockFill className="text-lg text-blue-200"/>
-                                        <p className="text-sm">
+                                        <p className="text-lg">
                                             {time}
                                         </p>
                                     </div>
@@ -168,10 +170,42 @@ const IbadanPage = () => {
 
         <ImageText 
         img1={`${backendLocation}/images/2025-let-us-pray-ibadan/IMG-20250710-WA0073.jpg`}
-        img2={`${backendLocation}/images/workers-meeting-aug-2025/IMG-20250831-WA0034.jpg`}
+        img2={`${backendLocation}/images/sunday-service-05-10-2025/IMG-20251007-WA0007.jpg`}
         header={language === "eng" ? "Fellowship with us" : "Qui nous sommes"}
         desc={About[language].mission.more}
       />
+
+      
+      <div className="center w-11/12 lg:w-10/12  flex-col gap-12 mt-[10vh]">
+            <div className="flex flex-col gap-3 w-full">
+                <h2 className="w-full font-bold text-3xl ">
+                    {
+                        language === "eng" ? 
+                        "Worship in Pictures" : 
+                        "Adoration en Images" 
+                    }
+                </h2>
+                <Link to="/media/pictures">
+                    <Button
+                        text={language === "eng" ? "View All" : "Voir tout"} 
+                        icon={<i className="bi bi-chevron-right ml-1 text-md"> </i>}
+                        type={"primary"}
+                        className={"w-fit min-w-[150px] shadow-xl font-bold text-[12.1px] "}
+                        />
+                </Link>
+            </div>
+            <div className="center w-full flex-col gap-12 md:gap-16 ">
+
+            <ImageFolderComponent 
+            folder={ImageFolders.filter(a => a?.tag.includes("sunday service ibadan"))[0]}
+            />
+
+
+                </div>
+
+      </div>
+
+
       <Activities />
     </main>
   )

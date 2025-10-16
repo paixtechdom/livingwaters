@@ -117,10 +117,10 @@ const BeninPage = () => {
                 </div>
 
                 <div className="flex flex-col gap-2 mt-7 text-gray-100 lg:w-6/12">
-                    <h3 className="font-bold text-xl text-blue-100">{language == "eng" ? "Location" : ""}</h3>
+                    <h3 className="font-bold text-2xl text-blue-100">{language == "eng" ? "Location" : ""}</h3>
                     <>
                         
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 text-lg">
                           <BsGeoAltFill className="text-lg text-blue-200"/>
                           <p>
                               {location.address}
@@ -132,7 +132,7 @@ const BeninPage = () => {
                               location.time.map((time, a) => (
                                   <div key={a} className="flex items-center gap-2">
                                       <BsClockFill className="text-lg text-blue-200"/>
-                                      <p className="text-sm">
+                                      <p className="text-lg">
                                           {time}
                                       </p>
                                   </div>

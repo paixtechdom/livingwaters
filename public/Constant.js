@@ -523,6 +523,18 @@ export const Locations = {
 
 export const ImageFolders = [
     {
+        title: ["Sunday Service", "Culte du Dimanche"],
+        folderName: "sunday-service-12-10-2025",   
+        year: ["October 12 2025", "Octombre 12 2025"],
+        tag: 'sunday service ibadan october 12',
+    },
+    {
+        title: ["Sunday Service", "Culte du Dimanche"],
+        folderName: "sunday-service-05-10-2025",   
+        year: ["October 05 2025", "Octombre 05 2025"],
+        tag: 'sunday service ibadan october 05',
+    },
+    {
         title: ["worker's meeting", "Réunion de travailleurs"],
         folderName: "workers-meeting-aug-2025",   
         year: ["Aug. 2025", "Aout 2025"],
@@ -658,7 +670,7 @@ export const Contacts = {
     social_media: [
         {
             title: "Living Waters",
-            link: "https://www.facebook.com/profile.php?id=100094922293903",
+            link: "https://www.facebook.com/profile.php?id=61581670743128",
             icon: "facebook"
         },
         {

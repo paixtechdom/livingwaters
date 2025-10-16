@@ -30,7 +30,7 @@ export const Hero = () => {
 
                 <video src={videoBg} className="absolute w-full h-screen object-cover animate-z oom" autoPlay muted loop>
                 </video>
-                <div className="absolute w-full h-full bg-black z-10 opacity-[0.95]">
+                <div className="absolute w-full h-full bg-black z-10 opacity-[0.85]">
                 </div>
             </div>
             

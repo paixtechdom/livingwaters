@@ -41,10 +41,9 @@ const PicturesPage = () => {
       <div className="center flex-col gap-12 md:gap-16 w-11/12 lg:w-10/12 min-h -screen mt-[10vh]">
 
         {
-          ImageFolders.map((folder) => (
-            // i == 0 &&
+          ImageFolders?.map((folder) => (
             <ImageFolderComponent 
-              key={folder.folderName+folder.year}
+              key={folder?.folderName+folder?.year}
               folder={folder}
             />
           ))
@@ -73,7 +72,7 @@ export const ImageFolderComponent = ({folder}) => {
 
   const FetchImages = async (lim, startingPoint) => {
     setLoading(true)
-    await axios.get(`${backendLocation}/images.php/${lim}/${startingPoint}/${folder.year}/${(folder.tag.replaceAll(" ", "-"))}`)
+    await axios.get(`${backendLocation}/images.php/${lim}/${startingPoint}/${folder?.year}/${(folder?.tag.replaceAll(" ", "-"))}`)
     .then((res) => {
       setImgs([...imgs, ...res.data])
     })
@@ -86,7 +85,7 @@ export const ImageFolderComponent = ({folder}) => {
   }
 
   const getTotalNoOfImages = async () => {
-    axios.get(`${backendLocation}/images.php/count/${(folder.tag.replaceAll(" ", "-"))}/${folder.year}`)
+    axios.get(`${backendLocation}/images.php/count/${(folder?.tag.replaceAll(" ", "-"))}/${folder?.year}`)
     .then((res) => {
       setTotalNoPictures(res.data[0].total)
     })
@@ -105,10 +104,10 @@ export const ImageFolderComponent = ({folder}) => {
       <div className="flex flex-col gap-3 col-span-3 lg:col-span-1 ">
         <div className="flex items-center justify-between flex-wrap gap-2 bg-white shadow-xl p-3 rounded-xl h-fit">
           <h2 className="font-bold text-lg capitalize">
-            {language === "eng" ? folder.title[0] : folder.title[1]}
+            {language === "eng" ? folder?.title[0] : folder?.title[1]}
           </h2>
           <p className="text-[12px] font-bold text-gray-500">
-            {language === "eng" ? folder.year[0] : folder.year[1]}
+            {language === "eng" ? folder?.year[0] : folder?.year[1]}
           </p>
         </div>
     </div>
@@ -122,11 +121,11 @@ export const ImageFolderComponent = ({folder}) => {
           //     {image.id}
             <ImageRenderer 
               key={image?.fileName} 
-              src={folder.folderName ? `${folder.folderName}/${image.fileName}`
+              src={folder?.folderName ? `${folder?.folderName}/${image.fileName}`
               : image?.fileName} 
               alt={image?.fileName} 
               images={imgs}
-              folder={folder.folderName}
+              folder={folder?.folderName}
             />
           // </div>
         ))
