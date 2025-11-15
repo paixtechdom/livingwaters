@@ -455,7 +455,7 @@ export const Locations = {
             },
             {
                 name: "Ibadan Branch",
-                address: "Federal Cooperative College, Eleyele, Ibadan",
+                address: "Police Barracks, Eleyele, Ibadan",
                 img: ibadan,
                 time: [
                     "Friday (4:00 pm - 7:00pm)",
@@ -491,7 +491,7 @@ export const Locations = {
     },
     {
         name: "Branche d’Ibadan",
-        address: "Federal Cooperative College, Eleyele, Ibadan",
+        address: "Police Barracks, Eleyele, Ibadan",
         img: ibadan,
         time: [
             "Vendredi (16h00 - 19h00)",
@@ -522,6 +522,12 @@ export const Locations = {
 
 
 export const ImageFolders = [
+    {
+        title: ["100 Men Evangelism", "Évangélisation des hommes 100"],
+        folderName: "2025-100-men-evangelism",   
+        year: ["November 2025", "Novembre 12 2025"],
+        tag: '100menevangelism ibadan 2025',
+    },
     {
         title: ["Sunday Service", "Culte du Dimanche"],
         folderName: "sunday-service-12-10-2025",   

@@ -1,6 +1,6 @@
 import { Suspense, useContext, useEffect, useState } from "react";
 import { Button } from "../../Components/Utils/Button"
-import { About, Locations, Upcoming_program_content } from "../../../public/Constant";
+import { About, backendLocation, Locations, Upcoming_program_content } from "../../../public/Constant";
 import { Hero } from "./Hero";
 import { useNavigate } from "react-router-dom";
 import { BsClockFill, BsGeoAltFill, BsPeopleFill } from "react-icons/bs";
@@ -28,7 +28,7 @@ const Home = () => {
             <div className="mt-[10vh]"></div>
             <ImageText 
                 img2={homewho}
-                img1={homewho2}
+                img1={`${backendLocation}/images/2025-100-men-evangelism/IMG-20251109-WA0034.jpg`}
                 header={language === "eng" ? "Who we are" : "Qui nous sommes"}
                 desc={About[language].mission.more[1]}
                 btn={
@@ -42,7 +42,7 @@ const Home = () => {
                 }
             />
         <div className="center w-11/12 lg:w-10/12 flex-col gap-[7vh] md:gap-[10vh] overflow-hidden mt-[10vh]"> 
-                <section className="flex flex-col gap-9 w-full bg-white p-9 rounded-2xl">
+                {/* <section className="flex flex-col gap-9 w-full bg-white p-9 rounded-2xl">
                     <div className="flex flex-col gap-4 center">
                         <div className="flex gap-3 items-center">
                             <SlCalender />
@@ -58,7 +58,7 @@ const Home = () => {
                         </div>
 
                     </div>
-                </section> 
+                </section>  */}
             </div>
 
             <Location
